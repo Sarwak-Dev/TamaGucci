@@ -9,10 +9,9 @@ struct Item {
 
 // Estructura para representar el Tamagotchi
 struct Tamagotchi {
-    int vida;
     int hambre;
-    int sed;
-    bool feliz;
+    int cansancio;
+    int aburrimiento;
 };
 
 // Definir acciones para los items
