@@ -13,7 +13,6 @@ struct Tamagotchi {
     int cansancio;
     int aburrimiento;
 };
-
 // Definir acciones para los items
 void aplicarEfecto(struct Item *item, struct Tamagotchi *mascota);
 

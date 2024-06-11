@@ -1,3 +1,4 @@
+#include <string.h>
 #include "items.h"
 
 // Definir acciones para los items
