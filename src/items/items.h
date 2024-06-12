@@ -4,6 +4,10 @@
 // Estructura para representar los items disponibles
 struct Item {
     char nombre[20];
+    int restantes;
+    int comida;
+    int cansancio;
+    int aburrimiento;
     // Otras propiedades relevantes
 };
 
