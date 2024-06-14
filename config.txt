@@ -1,0 +1,5 @@
+Manzana:
+    restantes = 5;
+    comida = 20;
+    cansancio = -10;
+    aburrimiento = 10;
