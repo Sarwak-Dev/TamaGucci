@@ -9,7 +9,7 @@
 
 
 // librerias creadas
-#include "items/items.h"
+#include "functions/effect/effect.h"
 
 #define GREEN printf("\033[0;32m");
 #define WHITE printf("\033[0m");

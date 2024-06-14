@@ -1,5 +1,5 @@
-#ifndef ITEMS_H
-#define ITEMS_H
+#ifndef EFFECT_H
+#define ITEM_H
 
 // Estructura para representar los items disponibles
 struct Item {

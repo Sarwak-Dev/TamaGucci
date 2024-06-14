@@ -1,5 +1,5 @@
 #include <string.h>
-#include "items.h"
+#include "effect.h"
 
 // Definir acciones para los items
 void aplicarEfecto(struct Item *item, struct Tamagotchi *mascota) {
