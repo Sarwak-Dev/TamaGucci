@@ -1,5 +1,5 @@
 # Proyecto_Estructura
  
-gcc -o programa.exe main.c functions/effect/effect.c
+gcc -o TamaGucci.exe src/main.c src/functions/effect/effect.c resources/icon.res 
 
 ./programa.exe
