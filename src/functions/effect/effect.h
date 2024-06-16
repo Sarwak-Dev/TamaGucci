@@ -1,23 +1,17 @@
 #ifndef EFFECT_H
-#define ITEM_H
+#define EFFECT_H
 
-// Estructura para representar los items disponibles
-struct Item {
-    char nombre[20];
-    int restantes;
-    int comida;
-    int cansancio;
-    int aburrimiento;
-    // Otras propiedades relevantes
-};
+// Estructura para indicar cómo un efecto alterará las estadísticas
+typedef struct Efecto {
+    int alteracion_comida;
+    int alteracion_descanso;
+    int alteracion_animo;
+} Efecto;
 
-// Estructura para representar el Tamagotchi
-struct Tamagotchi {
-    int hambre;
-    int cansancio;
-    int aburrimiento;
-};
+// Incializa mapa de acciones y efectos en estadísticas
+HashMap inicializar_mapa_acciones(HashMap mapa_acciones);
+
 // Definir acciones para los items
-void aplicarEfecto(struct Item *item, struct Tamagotchi *mascota);
+bool aplicar_efecto(char * accion, struct Tamagotchi *mascota, HashMap *mapa_acciones);
 
 #endif
