@@ -18,4 +18,13 @@ typedef struct Item {
     int restantes;
 } Item;
 
+typedef struct Juego {
+    Tamagotchi mascota;
+    /*List mochila;
+    time_t ultima_actualización;
+    time_t ultima_caricia;*/
+    bool dormido;
+    bool vivo;
+} Juego;
+
 #endif
