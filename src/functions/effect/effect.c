@@ -1,7 +1,7 @@
 #include <string.h>
 #include <stdbool.h>
-#include "../structs/structs.h"
 #include "../TDAs/hashmap.h"
+#include "../structs/structs.h"
 #include "effect.h"
 
 // Incializa mapa de acciones y efectos en estadísticas
@@ -9,19 +9,19 @@ HashMap inicializar_mapa_acciones(HashMap mapa_acciones) {
 
     // Inicializar acción jugar y añadirla al mapa
     Efecto efecto_jugar = {0, -10, 20};
-    insert_pair("Jugar", &efecto_jugar);
+    insert_map(&mapa_acciones, "Jugar", &efecto_jugar);
 
     // Inicializar acción acariciar y añadirla al mapa
     Efecto efecto_acariciar = {0, 0, 15};
-    insert_pair("Acariciar", &efecto_acariciar);
+    insert_map(&mapa_acciones, "Acariciar", &efecto_acariciar);
 
     // Inicializar acción comer pescado y añadirla al mapa
     Efecto efecto_pescado = {30, -10, 10};
-    insert_pair("Pescado", &efecto_pescado);
+    insert_map(&mapa_acciones, "Pescado", &efecto_pescado);
 
     // Inicializar acción comere hamburguesa y añadirla al mapa
     Efecto efecto_hamburguesa = {30, -20, 20};
-    insert_pair("Hamburguesa", &efecto_hamburguesa);
+    insert_map(&mapa_acciones, "Hamburguesa", &efecto_hamburguesa);
 
 
     // Retornamos mapa con sus pares acción-efecto inicializadas
@@ -36,7 +36,7 @@ los efectos de los objetos en un .txt que esta función se encargue de leer para
 
 // Definir acciones para los items
 bool aplicar_efecto(char * nombre_accion, struct Tamagotchi *mascota, HashMap *mapa_acciones) {
-
+    
     // Buscamos par acción-efecto por nombre en el mapa de acciones
     Pair * par_accion = search_map(mapa_acciones, nombre_accion);
     if (par_accion == NULL) return false; // Indicar que no se pudo aplicar

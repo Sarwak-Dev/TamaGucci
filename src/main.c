@@ -4,12 +4,12 @@
 #include <ctype.h>
 #include <stdbool.h>
 #include <time.h>
-#include <windows.h>
 #include <unistd.h>
 
-
 // librerias creadas
+#include "functions/TDAs/hashmap.h"
 #include "functions/effect/effect.h"
+#include "functions/structs/structs.h"
 
 #define GREEN printf("\033[0;32m");
 #define WHITE printf("\033[0m");
@@ -22,15 +22,15 @@ void menuInferior();
 void menuInventario();
 void esperarInput();
 void limpiarPantalla();
-void printItem(char *item, int restantes, int comida, int cansancio, int aburrimiento, struct Tamagotchi mascota);
+void printItem(char *item, int restantes, int comida, int descanso, int animo, struct Tamagotchi mascota);
 
 
 int main() {
     // Crear un Tamagotchi
     struct Tamagotchi mascota;
-    mascota.hambre = 100;
-    mascota.cansancio = 100;
-    mascota.aburrimiento = 100;
+    mascota.comida = 100;
+    mascota.descanso = 100;
+    mascota.animo = 100;
 
     // Crear un item
     struct Item manzana;
@@ -42,8 +42,8 @@ int main() {
     char item[20];
     int restantes;
     int comida;
-    int cansancio;
-    int aburrimiento;
+    int descanso;
+    int animo;
 
     int opcion;
 
@@ -74,30 +74,30 @@ int main() {
                             strcpy(item, "Manzana");
                             restantes = 5;
                             comida = 20;
-                            cansancio = -10;
-                            aburrimiento = 10;
+                            descanso = -10;
+                            animo = 10;
 
-                            printItem(item, restantes, comida, cansancio, aburrimiento, mascota);
+                            printItem(item, restantes, comida, descanso, animo, mascota);
                             break;
                         case 2:
                             //Agua
                             strcpy(item, "Agua");
                             restantes = 2;
                             comida = 7;
-                            cansancio = -3;
-                            aburrimiento = 8;
+                            descanso = -3;
+                            animo = 8;
 
-                            printItem(item, restantes, comida, cansancio, aburrimiento, mascota);
+                            printItem(item, restantes, comida, descanso, animo, mascota);
                             break;
                         case 3:
                             //Super8
                             strcpy(item, "Super 8");
                             restantes = 7;
                             comida = 60;
-                            cansancio = 40;
-                            aburrimiento = 50;
+                            descanso = 40;
+                            animo = 50;
 
-                            printItem(item, restantes, comida, cansancio, aburrimiento, mascota);
+                            printItem(item, restantes, comida, descanso, animo, mascota);
                             break;
                             
                         case 4:
@@ -105,10 +105,10 @@ int main() {
                             strcpy(item, "Coca-Cola");
                             restantes = 7;
                             comida = -10;
-                            cansancio = 80;
-                            aburrimiento = 20;
+                            descanso = 80;
+                            animo = 20;
 
-                            printItem(item, restantes, comida, cansancio, aburrimiento, mascota);
+                            printItem(item, restantes, comida, descanso, animo, mascota);
                             break;
                         case 5:
                             //Salir
@@ -163,19 +163,19 @@ void menuPrincipal(struct Tamagotchi mascota) {
     printf(" > ^ <   \n\n");
     WHITE
 
-    printf("Hambre: ");
+    printf("Comida: ");
     GREEN
-    printf("%d\n", mascota.hambre);
+    printf("%d\n", mascota.comida);
     WHITE
 
-    printf("Cansancio: ");
+    printf("Descanso: ");
     GREEN
-    printf("%d\n", mascota.cansancio);
+    printf("%d\n", mascota.descanso);
     WHITE
 
-    printf("Aburrimiento: ");
+    printf("Animo: ");
     GREEN
-    printf("%d\n", mascota.aburrimiento);
+    printf("%d\n", mascota.animo);
     WHITE
 }
 
@@ -210,7 +210,7 @@ void esperarInput() {
 
 void limpiarPantalla() { system("cls"); }
 
-void printItem(char *item, int restantes, int comida, int cansancio, int aburrimiento, struct Tamagotchi mascota) {
+void printItem(char *item, int restantes, int comida, int descanso, int animo, struct Tamagotchi mascota) {
     limpiarPantalla();
     YELLOW
     printf("Has comido una ");
@@ -221,8 +221,8 @@ void printItem(char *item, int restantes, int comida, int cansancio, int aburrim
     printf(" (%d restantes)\n", restantes);
     GREEN
     printf("    %d Comida\n", comida);
-    printf("    %d Cansancio\n", cansancio);
-    printf("    %d Aburrimiento\n", aburrimiento);
+    printf("    %d Descanso\n", descanso);
+    printf("    %d Animo\n", animo);
     WHITE
     esperarInput();
     limpiarPantalla();

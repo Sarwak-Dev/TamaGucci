@@ -1,12 +1,9 @@
 #ifndef EFFECT_H
 #define EFFECT_H
 
-// Estructura para indicar cómo un efecto alterará las estadísticas
-typedef struct Efecto {
-    int alteracion_comida;
-    int alteracion_descanso;
-    int alteracion_animo;
-} Efecto;
+#include "../structs/structs.h"
+
+struct HashMap;
 
 // Incializa mapa de acciones y efectos en estadísticas
 HashMap inicializar_mapa_acciones(HashMap mapa_acciones);

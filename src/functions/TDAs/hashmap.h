@@ -1,6 +1,19 @@
 #ifndef HashMap_h
 #define HashMap_h
 
+//#include "../effect/effect.h"
+typedef struct Efecto {
+    int alteracion_comida;
+    int alteracion_descanso;
+    int alteracion_animo;
+} Efecto;
+
+// Estructura para los pares clave-valor del mapa
+typedef struct Pair {
+     char * key;
+     Efecto * value;
+} Pair;
+
 // Definición de tipo HashMap
 typedef struct HashMap {
     Pair ** buckets;
@@ -8,12 +21,6 @@ typedef struct HashMap {
     long capacity; //capacidad de la tabla
     long current; //indice del ultimo dato accedido
 } HashMap;
-
-// Estructura para los pares clave-valor del mapa
-typedef struct Pair {
-     char * key;
-     Efecto * value;
-} Pair;
 
 // Función para crear un nuevo par
 Pair * create_pair(char * key,  Efecto * value);

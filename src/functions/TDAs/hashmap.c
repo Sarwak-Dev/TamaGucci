@@ -3,6 +3,7 @@
 #include <string.h>
 #include <math.h>
 #include <ctype.h>
+
 #include "../effect/effect.h"
 #include "hashmap.h"
 #include <stdbool.h>
