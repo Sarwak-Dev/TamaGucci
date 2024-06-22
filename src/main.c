@@ -235,4 +235,3 @@ void printItem(char *item, int restantes, int comida, int descanso, int animo, s
     menuInferior();
 }
 //ME GUSTA EL PENEEEEEEE
-//asdasddasasdasd
