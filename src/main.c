@@ -6,11 +6,12 @@
 #include <time.h>
 #include <unistd.h>
 
-// librerias creadas
+// Librerias creadas
 #include "functions/TDAs/hashmap.h"
 #include "functions/effect/effect.h"
 #include "functions/structs/structs.h"
 
+// Definición de Colores
 #define GREEN printf("\033[0;32m");
 #define WHITE printf("\033[0m");
 #define CYAN printf("\033[0;36m");
@@ -54,6 +55,10 @@ int main() {
         YELLOW
         printf("\nSelecciona una opcion: \n");
         WHITE
+        
+        // Prueba para conocer si TamaGucci.exe ejecuta el .exe actualizado (No lo hace)
+        //printf("\nActualizado\n");
+        
         scanf("%d", &opcion);
         while (getchar() != '\n');
 

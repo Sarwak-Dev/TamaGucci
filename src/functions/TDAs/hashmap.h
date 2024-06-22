@@ -1,12 +1,7 @@
 #ifndef HashMap_h
 #define HashMap_h
 
-//#include "../effect/effect.h"
-typedef struct Efecto {
-    int alteracion_comida;
-    int alteracion_descanso;
-    int alteracion_animo;
-} Efecto;
+#include "../structs/structs.h"
 
 // Estructura para los pares clave-valor del mapa
 typedef struct Pair {

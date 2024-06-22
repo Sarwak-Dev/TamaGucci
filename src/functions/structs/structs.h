@@ -18,6 +18,13 @@ typedef struct Item {
     int restantes;
 } Item;
 
+// Estructura para definir los efectos que tendrán las acciones en las estadísticas
+typedef struct Efecto {
+    int alteracion_comida;
+    int alteracion_descanso;
+    int alteracion_animo;
+} Efecto;
+
 typedef struct Juego {
     Tamagotchi mascota;
     /*List mochila;
