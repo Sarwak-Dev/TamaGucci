@@ -1,15 +1,28 @@
 #ifndef STRUCTS_H
 #define STRUCTS_H
 
+// Inclusión de bibliotecas para definiciones
+#include "../TDAs/list.h"
+#include <time.h>
+
+
 // Constantes de cambio de nivel de estado
-#define LVL2 60
-#define LVL3 30
+#define LIMIT_LVL2 60
+#define LIMIT_LVL3 30
+
+// Constantes de horas para estadística máxima
+#define MAX_HORAS_COMIDA 50
+#define MAX_HORAS_ANIMO 72
+#define MAX_HORAS_DESCANSO 8
+
 
 // Estructura para representar el Tamagotchi
 typedef struct Tamagotchi {
-    int comida;
-    int descanso;
-    int animo;
+    float comida;   // Nivel de alimentación actual
+    float descanso; // Nivel de descanso actual
+    float animo;    // Nivel de animo actual
+    bool dormido;   // Indica si la mascota está dormida
+    bool vivo;      // Indica si la mascota sigue con vida
 } Tamagotchi;
 
 // Estructura para representar los items almacenados
@@ -25,13 +38,12 @@ typedef struct Efecto {
     int alteracion_animo;
 } Efecto;
 
+// Estructura para almacenar variables de juego
 typedef struct Juego {
-    Tamagotchi mascota;
-    /*List mochila;
-    time_t ultima_actualización;
-    time_t ultima_caricia;*/
-    bool dormido;
-    bool vivo;
+    Tamagotchi mascota;         // Tamagotchi en juego
+    List mochila;               // Mochila de Items almacenados
+    time_t ultima_actualización;// Hora de última actualización
+    List caricias_ultima_hora;  // Lista con las horas de las últimas caricias
 } Juego;
 
-#endif
+#endif // Structs
