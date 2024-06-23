@@ -36,13 +36,17 @@ typedef struct Efecto {
     int alteracion_comida;
     int alteracion_descanso;
     int alteracion_animo;
+    int coste;     // Valor del objeto (sin coste en interacciones)
+    char tipo[10]; // Tipo objeto / interacción
 } Efecto;
 
 // Estructura para almacenar variables de juego
 typedef struct Juego {
     Tamagotchi mascota;         // Tamagotchi en juego
+    int dinero;                 // Dinero de juego
     List mochila;               // Mochila de Items almacenados
     time_t ultima_actualización;// Hora de última actualización
+    time_t ultima_palmadita;    // Hora de última palmadita
     List caricias_ultima_hora;  // Lista con las horas de las últimas caricias
 } Juego;
 
