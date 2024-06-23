@@ -56,11 +56,14 @@ void guardar_estado(Juego* juego, const char* filename) {
     // Guardar los ítems en la mochila
     guardar_lista_en_archivo(file, &juego->mochila, "string");
 
-    // Guardar la última actualización
+    // Guardar la hora de la última actualización
     fprintf(file, "%ld\n", juego->ultima_actualizacion);
 
-    // Guardar la última palmadita
+    // Guardar la hora de la última palmadita
     fprintf(file, "%ld\n", juego->ultima_palmadita);
+
+    // Guardar la hora del último pago
+    fprintf(file, "%ld\n", juego->ultimo_pago);
 
     // Guardar las horas de las últimas caricias
     guardar_lista_en_archivo(file, &juego->caricias_ultima_hora, "time_t");
@@ -119,6 +122,7 @@ void cargar_estado(Juego* juego, const char* filename) {
         juego->dinero = 0;
         juego->ultima_actualizacion = time(NULL);
         juego->ultima_palmadita = time(NULL);
+        juego->ultimo_pago = time(NULL);
 
         // Inicializamos las listas vacías
         juego->mochila = *list_create();
@@ -140,14 +144,56 @@ void cargar_estado(Juego* juego, const char* filename) {
     // Leer los ítems de la mochila
     leer_lista_de_archivo(file, &juego->mochila, "string");
 
-    // Leer la última actualización
+    // Leer la hora de la última actualización
     fscanf(file, "%ld\n", &juego->ultima_actualizacion);
 
-    // Leer la última palmadita
+    // Leer la hora de la última palmadita
     fscanf(file, "%ld\n", &juego->ultima_palmadita);
+
+    // Leer la hora del último pago
+    fscanf(file, "%ld\n", &juego->ultimo_pago);
 
     // Leer las horas de las últimas caricias
     leer_lista_de_archivo(file, &juego->caricias_ultima_hora, "time_t");
 
     fclose(file); // Se cierra el archivo
+}
+
+// Función para actualizar estadísticas del Tamagotchu en función del tiempo
+// Transcurrido desde la última actualización
+void actualizar_estado(Juego* juego) {
+
+    time_t ahora = time(NULL); // Definir la hora actual
+    // Calcular diferencia en segundos desde últimas actualizaciones y la hora actual
+    double segundos_transcurridos = difftime(ahora, juego->ultima_actualizacion);
+    double segundos_ultimo_pago = difftime(ahora, juego->ultimo_pago);
+
+    // Calcular las variaciones por segundo en función de los máximos de horas
+    float comida_por_segundo = 100.0f / (MAX_HORAS_COMIDA * 3600.0f);
+    float descanso_por_segundo = 100.0f / (MAX_HORAS_DESCANSO * 3600.0f);
+    float animo_por_segundo = 100.0f / (MAX_HORAS_ANIMO * 3600.0f);
+
+    // Actualizar las estadísticas en función de su variación por segundo
+    juego->mascota.comida -= segundos_transcurridos * comida_por_segundo;
+    juego->mascota.animo -= segundos_transcurridos * animo_por_segundo;
+
+    if (juego->mascota.dormido) {   // Si está dormido, aumenta descanso
+        juego->mascota.descanso += segundos_transcurridos * descanso_por_segundo;
+    } else {                        // Si no lo está, disminuye descanso
+        juego->mascota.descanso -= segundos_transcurridos * descanso_por_segundo;
+    }
+
+    // Dar pagos correspondientes cada 12 horas
+    int pagos_realizados = (int)(segundos_ultimo_pago / (12 * 3600));
+    juego->dinero += DINERO_12_HORAS * pagos_realizados;
+
+    // Asegurar que las estadísticas no caigan por debajo de 0 o superen 100
+    if (juego->mascota.comida < 0.0f) juego->mascota.comida = 0.0f;
+    if (juego->mascota.descanso < 0.0f) juego->mascota.descanso = 0.0f;
+    if (juego->mascota.descanso > 100.0f) juego->mascota.descanso = 100.0f;
+    if (juego->mascota.animo < 0.0f) juego->mascota.animo = 0.0f;
+
+    // Actualizar la última hora de actualización
+    juego->ultima_actualizacion = ahora;
+    if (pagos_realizados > 0) juego->ultimo_pago = ahora;
 }

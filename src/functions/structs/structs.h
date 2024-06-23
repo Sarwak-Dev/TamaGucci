@@ -13,8 +13,11 @@
 
 // Constantes de horas para estadística máxima
 #define MAX_HORAS_COMIDA 50
-#define MAX_HORAS_ANIMO 72
+#define MAX_HORAS_ANIMO 70
 #define MAX_HORAS_DESCANSO 8
+
+// Constante de pago cada 12 horas
+#define DINERO_12_HORAS 40
 
 
 // Estructura para representar el Tamagotchi
@@ -48,6 +51,7 @@ typedef struct Juego {
     List mochila;               // Mochila de Items almacenados
     time_t ultima_actualizacion;// Hora de última actualización
     time_t ultima_palmadita;    // Hora de última palmadita
+    time_t ultimo_pago;         // Hora del último pago de dinero
     List caricias_ultima_hora;  // Lista con las horas de las últimas caricias
 } Juego;
 

@@ -17,4 +17,8 @@ void leer_lista_de_archivo(FILE* file, List* lista, const char* tipo);
 // Función para cargar el estado desde un archivo para actualizar estadísticas
 void cargar_estado(Juego* juego, const char* filename);
 
+// Función para actualizar estadísticas del Tamagotchu en función del tiempo
+// Transcurrido desde la última actualización
+void actualizar_estado(Juego* juego);
+
 #endif
