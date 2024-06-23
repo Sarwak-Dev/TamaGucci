@@ -4,6 +4,7 @@
 // Inclusión de bibliotecas para definiciones
 #include "../TDAs/list.h"
 #include <time.h>
+#include <stdbool.h>
 
 
 // Constantes de cambio de nivel de estado
