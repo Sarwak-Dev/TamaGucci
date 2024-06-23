@@ -3,34 +3,46 @@
 #include "../TDAs/hashmap.h"
 #include "../structs/structs.h"
 #include "effect.h"
+// Comida Descanso Animo Precio Tipo
 
 // Incializa mapa de acciones y efectos en estadísticas
 HashMap inicializar_mapa_acciones(HashMap mapa_acciones) {
 
     // Inicializar acción jugar y añadirla al mapa
-    Efecto efecto_jugar = {0, -10, 20};
+    Efecto efecto_jugar = {0, -20, 35, 0, "Interaccion"};
     insert_map(&mapa_acciones, "Jugar", &efecto_jugar);
 
     // Inicializar acción acariciar y añadirla al mapa
-    Efecto efecto_acariciar = {0, 0, 15};
+    Efecto efecto_acariciar = {0, 0, 15, 0, "Interaccion"};
     insert_map(&mapa_acciones, "Acariciar", &efecto_acariciar);
 
+    // Inicializar acción palmaditas y añadirla al mapa
+    Efecto efecto_palmaditas = {0, 10, -5, 0, "Interaccion"};
+    insert_map(&mapa_acciones, "Palmadita", &efecto_palmaditas);
+
     // Inicializar acción comer pescado y añadirla al mapa
-    Efecto efecto_pescado = {30, -10, 10};
+    Efecto efecto_pescado = {20, -5, 10, 20, "Objeto"};
     insert_map(&mapa_acciones, "Pescado", &efecto_pescado);
 
     // Inicializar acción comere hamburguesa y añadirla al mapa
-    Efecto efecto_hamburguesa = {30, -20, 20};
+    Efecto efecto_hamburguesa = {30, -10, 15, 20, "Objeto"};
     insert_map(&mapa_acciones, "Hamburguesa", &efecto_hamburguesa);
 
+    // Inicializar acción comere sushi y añadirla al mapa
+    Efecto efecto_sushi = {30, 0, 20, 100, "Objeto"};
+    insert_map(&mapa_acciones, "Sushi", &efecto_sushi);
+
+    // Inicializar acción cajaArena y añadirla al mapa
+    Efecto efecto_cajaArena = {-10, -20, -30, 25, "Objeto"};
+    insert_map(&mapa_acciones, "Caja de Arena", &efecto_cajaArena);
+
+    // Inicializar acción acariciar y añadirla al mapa
+    Efecto efecto_proteina = {35, 0, 15, 0, "Interaccion"};
+    insert_map(&mapa_acciones, "Acariciar", &efecto_acariciar);
 
     // Retornamos mapa con sus pares acción-efecto inicializadas
     return mapa_acciones;
 }
-/* Estos son solo ejemplos de objetos y acciones que se pueden introducir. Podemos optar 
-por inicializar los objetos en el mismo código como hago aquí, o bien agregar y editar 
-los efectos de los objetos en un .txt que esta función se encargue de leer para 
-// poblar el mapa con esos datos*/
 
 
 
