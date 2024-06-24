@@ -25,20 +25,28 @@ HashMap inicializar_mapa_acciones(HashMap mapa_acciones) {
     insert_map(&mapa_acciones, "Pescado", &efecto_pescado);
 
     // Inicializar acción comere hamburguesa y añadirla al mapa
-    Efecto efecto_hamburguesa = {30, -10, 15, 20, "Objeto"};
+    Efecto efecto_hamburguesa = {20, -10, 15, 20, "Objeto"};
     insert_map(&mapa_acciones, "Hamburguesa", &efecto_hamburguesa);
 
     // Inicializar acción comere sushi y añadirla al mapa
-    Efecto efecto_sushi = {30, 0, 20, 100, "Objeto"};
+    Efecto efecto_sushi = {30, 0, 20, 60, "Objeto"};
     insert_map(&mapa_acciones, "Sushi", &efecto_sushi);
 
     // Inicializar acción cajaArena y añadirla al mapa
     Efecto efecto_cajaArena = {-10, -20, -30, 25, "Objeto"};
     insert_map(&mapa_acciones, "Caja de Arena", &efecto_cajaArena);
 
-    // Inicializar acción acariciar y añadirla al mapa
-    Efecto efecto_proteina = {35, 0, 15, 0, "Interaccion"};
-    insert_map(&mapa_acciones, "Acariciar", &efecto_acariciar);
+    // Inicializar acción proteina y añadirla al mapa
+    Efecto efecto_proteina = {35, -10, -10, 40, "Objeto"};
+    insert_map(&mapa_acciones, "Proteina", &efecto_proteina);
+
+    // Inicializar acción redbull y añadirla al mapa
+    Efecto efecto_redbull = {-10, 35, -10, 40, "Objeto"};
+    insert_map(&mapa_acciones, "Redbull", &efecto_redbull);
+
+    // Inicializar acción gata y añadirla al mapa
+    Efecto efecto_gata = {-10, -10, 35, 40, "Objeto"};
+    insert_map(&mapa_acciones, "Gata a domicilio", &efecto_gata);
 
     // Retornamos mapa con sus pares acción-efecto inicializadas
     return mapa_acciones;
