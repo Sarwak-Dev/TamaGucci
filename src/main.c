@@ -11,22 +11,27 @@
 #include "functions/effect/effect.h"
 #include "functions/structs/structs.h"
 
-// Definición de Colores
-#define GREEN printf("\033[0;32m");
-#define WHITE printf("\033[0m");
-#define CYAN printf("\033[0;36m");
-#define REDC printf("\033[0;91m");
-#define YELLOW printf("\033[0;93m");
-
 void menuPrincipal(struct Tamagotchi mascota);
 void menuInferior();
 void menuInventario();
+void menuAcciones();
+void menuIluminacion();
+void menuTienda();
 void esperarInput();
 void limpiarPantalla();
 void printItem(char *item, int restantes, int comida, int descanso, int animo, struct Tamagotchi mascota);
 
+void setConsoleColor(const char* color) {
+    char command[10];
+    snprintf(command, sizeof(command), "color %s", color);
+    system(command);
+}
 
 int main() {
+    printf("\033[0;97;30m");
+    setConsoleColor("F0");
+    printf("\033[H\033[J");
+    system("chcp 65001");
     // Crear un Tamagotchi
     struct Tamagotchi mascota;
     mascota.comida = 100;
@@ -49,12 +54,11 @@ int main() {
     int opcion;
 
     while (true) {
+        
         limpiarPantalla();
         menuPrincipal(mascota);
         menuInferior();
-        YELLOW
-        printf("\nSelecciona una opcion: \n");
-        WHITE
+        printf("\n  Selecciona una opcion: \n");
         
         // Prueba para conocer si TamaGucci.exe ejecuta el .exe actualizado (No lo hace)
         //printf("\nActualizado\n");
@@ -62,14 +66,71 @@ int main() {
         scanf("%d", &opcion);
         while (getchar() != '\n');
 
-        switch(opcion) {
+            switch(opcion) {
                 case 1:
+                    //Acciones
+                    limpiarPantalla();
+                    menuAcciones();
+                    printf("\n  Selecciona una opcion: \n");
+
+                    scanf("%d", &opcion);
+                    while (getchar() != '\n');
+
+                    switch(opcion) {
+                        case 1:
+                            //Jugar
+                            limpiarPantalla();
+                            printf("    Has ganado el piedra-papel o tijeras\n");
+                            esperarInput();
+                            break;
+                        case 2:
+                            //Acariciar
+                            limpiarPantalla();
+                            printf("    Has acariciado a tu mascota\n");
+                            esperarInput();
+                            break;
+                        case 3:
+                            //Palmaditas
+                            limpiarPantalla();
+                            printf("    Le has dado palmaditas a tu mascota\n");
+                            esperarInput();
+                            break;
+                        case 4:
+                            limpiarPantalla();
+                            menuIluminacion();
+
+                            scanf("%d", &opcion);
+                            while (getchar() != '\n');
+
+                            switch(opcion) {
+                                case 1:
+                                    //Oscuro
+                                    printf("\033[0;40;37m");
+                                    setConsoleColor("0F");
+                                    break;
+                                case 2:
+                                    //Claro
+                                    printf("\033[0;97;30m");
+                                    setConsoleColor("F0");
+                                    break;
+                                default:
+                                    // Opción no válida
+                                    printf("\n  Opcion no valida. Por favor, selecciona una opcion valida.\n");
+                        }
+                            break;
+                        case 5:
+                            //Salir
+                            break;
+                        default:
+                            // Opción no válida
+                            printf("\n  Opcion no valida. Por favor, selecciona una opcion valida.\n");
+                        }
+                    break;
+                case 2:
                     //Inventario
                     limpiarPantalla();
                     menuInventario();
-                    YELLOW
-                    printf("\nSelecciona una opcion: \n");
-                    WHITE
+                    printf("\n  Selecciona una opcion: \n");
                     scanf("%d", &opcion);
                     while (getchar() != '\n');
 
@@ -120,25 +181,55 @@ int main() {
                             break;
                         default:
                             // Opción no válida
-                            REDC
                             printf("\nOpcion no valida. Por favor, selecciona una opcion valida.\n");
                         }
                     break;
-                case 2:
-                    //Jugar
-                    limpiarPantalla();
-                    printf("    El gato\n\n");
-                    printf("    |X|O|O|\n");
-                    printf("    |O|X|X|\n");
-                    printf("    |O|X|X|\n");
-                    REDC
-                    printf("\n\nNota: Si ganas en este juego puedes obtener mas puntos de energia.\n");
-                    WHITE
-                    esperarInput();
-                    break;
                 case 3:
+                    //Tienda
+                    limpiarPantalla();
+                    menuTienda();
+
+                    printf("\n  Selecciona una opcion: \n");
+                    scanf("%d", &opcion);
+                    while (getchar() != '\n');
+
+                    switch(opcion) {
+                        case 1:
+                            //Manzana
+                            limpiarPantalla();
+                            printf("Has comprado una Manzana");
+                            esperarInput();
+                            break;
+                        case 2:
+                            //Agua
+                            limpiarPantalla();
+                            printf("Has comprado un Agua");
+                            esperarInput();
+                            break;
+                        case 3:
+                            //Super8
+                            limpiarPantalla();
+                            printf("Has comprado un Super 8");
+                            esperarInput();
+                            break;
+                            
+                        case 4:
+                            //Coca-Cola
+                            limpiarPantalla();
+                            printf("Has comprado una Coca-Cola");
+                            esperarInput();
+                            break;
+                        case 5:
+                            //Salir
+                            break;
+                                default:
+                                    // Opción no válida
+                                    printf("\n  Opcion no valida. Por favor, selecciona una opcion valida.\n");
+                        }
+                        
+                    break;
+                case 4:
                     // Salir
-                    REDC
                     printf("\nEmpezando a dormir en ");
                     for (int i = 3; i > 0; i--) {
                         printf("%d ", i);
@@ -150,9 +241,7 @@ int main() {
                     break;
                 default:
                     // Opción no válida
-                    REDC
                     printf("\nOpcion no valida. Por favor, selecciona una opcion valida.\n");
-                    WHITE
             }
     }
 
@@ -160,75 +249,90 @@ int main() {
 }
 
 void menuPrincipal(struct Tamagotchi mascota) {
-    YELLOW
-    printf("\nEstado actual del Tamagotchi:\n\n");
-    CYAN
-    printf(" /\\_/\\   \n");
-    printf("( o o )  \n");
-    printf(" > ^ <   \n\n");
-    WHITE
+    printf("\n  Estado actual del Tamagotchi:\n\n");
 
-    printf("Comida: ");
-    GREEN
-    printf("%d\n", mascota.comida);
-    WHITE
+     printf("    Comida: 100");
 
-    printf("Descanso: ");
-    GREEN
-    printf("%d\n", mascota.descanso);
-    WHITE
+    printf("    Descanso: 100");
 
-    printf("Animo: ");
-    GREEN
-    printf("%d\n", mascota.animo);
-    WHITE
+    printf("    Animo: 100\n\n");
+
+    printf("      ██    ██\n");
+    printf("     █  ████  █\n");
+    printf("     █        █\n");
+    printf("    █          █\n");
+    printf("    █          █\n");
+    printf("    █  █    █  █\n");
+    printf("    █   ▄  ▄   █\n");
+    printf("     █   ▀▀   █\n");
+    printf("      ████████\n");
+    printf("     █ █    █ █\n");
+    printf("     ██      ██\n");
+    printf("      ████████ \n");
+    printf("       ██  ██  \n\n");
 }
 
 void menuInferior() {
-    CYAN
-    printf("\n\n1) Abrir Inventario\n");
-    printf("2) Jugar\n");
-    printf("3) Dormir\n");
-    WHITE
+    printf("\n  ==================\n\n");
+    printf("    1) Acciones\n");
+    printf("    2) Abrir Inventario\n");
+    printf("    3) Abrir Tienda\n");
+    printf("    4) Dormir\n");
 }
 
 void menuInventario() {
-    REDC
-    printf("==================\n");
-    printf("    INVENTARIO:\n");
-    printf("==================\n\n");
-    CYAN
-    printf("1) Manzana x6\n");
-    printf("2) Agua x3\n");
-    printf("3) Super 8 x8\n");
-    printf("4) Coca-Cola x8\n");
-    printf("5) Salir\n");
-    WHITE
+    printf("    ==================\n");
+    printf("        INVENTARIO:\n");
+    printf("    ==================\n\n");
+    printf("    1) Manzana x6\n");
+    printf("    2) Agua x3\n");
+    printf("    3) Super 8 x8\n");
+    printf("    4) Coca-Cola x8\n");
+    printf("    5) Salir\n");
+}
+
+void menuAcciones() {
+    printf("    1) Jugar\n");
+    printf("    2) Acariciar\n");
+    printf("    3) Palmaditas\n");
+    printf("    4) Iluminacion\n");
+    printf("    5) Salir\n");
+}
+
+void menuIluminacion() {
+    printf("    1) Oscuro\n");
+    printf("    2) Claro\n");
+}
+
+void menuTienda() {
+    printf("    ==================\n");
+    printf("          Tienda:\n");
+    printf("    ==================\n\n");
+    printf("    1) Comprar Manzana | $50\n");
+    printf("    2) comprar Agua | $50\n");
+    printf("    3) Comprar Super 8 | $50\n");
+    printf("    4) Comprar Coca-Cola | $50\n");
+    printf("    5) Salir\n");
 }
 
 void esperarInput() {
-    YELLOW
-    printf("\nPresiona Enter para continuar...");
-    WHITE
+    printf("\n  Presiona Enter para continuar...");
     while (getchar() != '\n'); // Esperar la entrada del usuario
 }
 
 void limpiarPantalla() { system("cls"); }
 
+
 void printItem(char *item, int restantes, int comida, int descanso, int animo, struct Tamagotchi mascota) {
     limpiarPantalla();
-    YELLOW
-    printf("Has comido una ");
+    printf("    Has comido una ");
     for (int i = 0; item[i] != '\0'; i++) {
         printf("%c", item[i]); // Imprime cada carácter de la cadena
     }
-    REDC
     printf(" (%d restantes)\n", restantes);
-    GREEN
     printf("    %d Comida\n", comida);
     printf("    %d Descanso\n", descanso);
     printf("    %d Animo\n", animo);
-    WHITE
     esperarInput();
     limpiarPantalla();
     menuPrincipal(mascota);
