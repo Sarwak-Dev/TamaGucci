@@ -7,7 +7,7 @@
 #include "functions/effect/effect.h"
 
 
-void menuPrincipal(HashMap mapa_principal);
+void menuPrincipal(HashMap mapa_principal);// mapa_principal == mapa acciones. Revisar functions.effect para mas informacion.
 void menuInferior();
 void menuInventario();
 void menuAcciones();
