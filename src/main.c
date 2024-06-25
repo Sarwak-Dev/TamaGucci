@@ -311,4 +311,4 @@ void printItem(char *item, int restantes, int comida, int descanso, int animo, s
     menuPrincipal(mapa_principal);
     menuInferior();
 }
-//ME GUSTA EL PENEEEEEEE
+//ME GUSTA EL PENEEEEEEEe
