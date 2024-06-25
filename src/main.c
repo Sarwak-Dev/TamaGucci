@@ -1,17 +1,13 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-#include <stdbool.h>
-#include <time.h>
 #include <unistd.h>
 
 // Librerias creadas
+#include "functions/TDAs/list.h"
+#include "functions/structs/structs.h"
 #include "functions/TDAs/hashmap.h"
 #include "functions/effect/effect.h"
-#include "functions/structs/structs.h"
 
-void menuPrincipal(struct Tamagotchi mascota);
+
+void menuPrincipal(HashMap mapa_principal);
 void menuInferior();
 void menuInventario();
 void menuAcciones();
@@ -19,7 +15,7 @@ void menuIluminacion();
 void menuTienda();
 void esperarInput();
 void limpiarPantalla();
-void printItem(char *item, int restantes, int comida, int descanso, int animo, struct Tamagotchi mascota);
+void printItem(char *item, int restantes, int comida, int descanso, int animo, struct Tamagotchi mascota, HashMap mapa_principal);
 
 void setConsoleColor(const char* color) {
     char command[10];
@@ -28,40 +24,25 @@ void setConsoleColor(const char* color) {
 }
 
 int main() {
+    //Comandos de inicio de la consola
     printf("\033[0;97;30m");
     setConsoleColor("F0");
     printf("\033[H\033[J");
     system("chcp 65001");
-    // Crear un Tamagotchi
-    struct Tamagotchi mascota;
-    mascota.comida = 100;
-    mascota.descanso = 100;
-    mascota.animo = 100;
 
-    // Crear un item
-    struct Item manzana;
-    strcpy(manzana.nombre, "Manzana");
-
-    struct Item agua;
-    strcpy(agua.nombre, "Agua");
-
-    char item[20];
-    int restantes;
-    int comida;
-    int descanso;
-    int animo;
+    //Declara la variable mapa_principal con tipo HashMap
+    HashMap mapa_principal;
+    //HashMap *mapa_principal = create_map(20);
+    //inicializar_mapa_acciones(*mapa_principal);
 
     int opcion;
 
     while (true) {
         
         limpiarPantalla();
-        menuPrincipal(mascota);
+        menuPrincipal(mapa_principal);
         menuInferior();
         printf("\n  Selecciona una opcion: \n");
-        
-        // Prueba para conocer si TamaGucci.exe ejecuta el .exe actualizado (No lo hace)
-        //printf("\nActualizado\n");
         
         scanf("%d", &opcion);
         while (getchar() != '\n');
@@ -137,44 +118,16 @@ int main() {
                     switch(opcion) {
                         case 1:
                             //Manzana
-                            strcpy(item, "Manzana");
-                            restantes = 5;
-                            comida = 20;
-                            descanso = -10;
-                            animo = 10;
-
-                            printItem(item, restantes, comida, descanso, animo, mascota);
                             break;
                         case 2:
                             //Agua
-                            strcpy(item, "Agua");
-                            restantes = 2;
-                            comida = 7;
-                            descanso = -3;
-                            animo = 8;
-
-                            printItem(item, restantes, comida, descanso, animo, mascota);
                             break;
                         case 3:
                             //Super8
-                            strcpy(item, "Super 8");
-                            restantes = 7;
-                            comida = 60;
-                            descanso = 40;
-                            animo = 50;
-
-                            printItem(item, restantes, comida, descanso, animo, mascota);
                             break;
                             
                         case 4:
                             //Coca-Cola
-                            strcpy(item, "Coca-Cola");
-                            restantes = 7;
-                            comida = -10;
-                            descanso = 80;
-                            animo = 20;
-
-                            printItem(item, restantes, comida, descanso, animo, mascota);
                             break;
                         case 5:
                             //Salir
@@ -248,14 +201,30 @@ int main() {
     return 0;
 }
 
-void menuPrincipal(struct Tamagotchi mascota) {
+void menuPrincipal(HashMap mapa_principal) {
     printf("\n  Estado actual del Tamagotchi:\n\n");
 
-     printf("    Comida: 100");
+     printf("    Comida: ");
 
-    printf("    Descanso: 100");
+    printf("    Descanso: ");
 
-    printf("    Animo: 100\n\n");
+    printf("    Animo: ");
+    //char * clave_buscar = "Jugar"; // Por ejemplo, buscar el efecto de la acción "Jugar"
+
+// Buscar el par clave-valor en el mapa
+    //Pair * par = search_map(&mapa_principal, clave_buscar);
+    //if (par != NULL) {
+    // Acceder al valor (que es un puntero a Efecto)
+    //Efecto * efecto = par->value;
+    
+    // Acceder al campo alteracion_animo
+    //int alteracion_animo = efecto->alteracion_animo;
+    
+    // Imprimir el valor de alteracion_animo
+    //printf("Alteracion de animo para %s: %d\n", clave_buscar, alteracion_animo);
+    //}   else {
+    //printf("No se encontró la acción %s en el mapa.\n", clave_buscar);
+    //}
 
     printf("      ██    ██\n");
     printf("     █  ████  █\n");
@@ -323,7 +292,7 @@ void esperarInput() {
 void limpiarPantalla() { system("cls"); }
 
 
-void printItem(char *item, int restantes, int comida, int descanso, int animo, struct Tamagotchi mascota) {
+void printItem(char *item, int restantes, int comida, int descanso, int animo, struct Tamagotchi mascota, HashMap mapa_principal) {
     limpiarPantalla();
     printf("    Has comido una ");
     for (int i = 0; item[i] != '\0'; i++) {
@@ -335,7 +304,7 @@ void printItem(char *item, int restantes, int comida, int descanso, int animo, s
     printf("    %d Animo\n", animo);
     esperarInput();
     limpiarPantalla();
-    menuPrincipal(mascota);
+    menuPrincipal(mapa_principal);
     menuInferior();
 }
 //ME GUSTA EL PENEEEEEEE

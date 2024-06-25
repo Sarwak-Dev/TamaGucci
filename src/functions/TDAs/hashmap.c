@@ -1,13 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-#include <ctype.h>
-
-#include "../effect/effect.h"
 #include "hashmap.h"
-#include <stdbool.h>
-#include <assert.h>
+
 
 // Crear par clave-valor
 Pair * create_pair( char * key,  Efecto * value) {

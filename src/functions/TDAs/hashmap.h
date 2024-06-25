@@ -1,8 +1,14 @@
-#ifndef HashMap_h
-#define HashMap_h
+#ifndef HASHMAP_H
+#define HASHMAP_H
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <ctype.h>
+#include <assert.h>
 
 #include "../structs/structs.h"
-
 // Estructura para los pares clave-valor del mapa
 typedef struct Pair {
      char * key;

@@ -2,10 +2,10 @@
 #define STRUCTS_H
 
 // Inclusión de bibliotecas para definiciones
-#include "../TDAs/list.h"
 #include <time.h>
 #include <stdbool.h>
 
+#include "../TDAs/list.h"
 
 // Constantes de cambio de nivel de estado
 #define LIMIT_LVL2 60

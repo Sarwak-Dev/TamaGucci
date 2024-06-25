@@ -1,7 +1,4 @@
 #include "list.h"
-#include <stdio.h>
-#include <stdlib.h>
-
 
 List *list_create() {
   List *newList = (List *)malloc(sizeof(List));

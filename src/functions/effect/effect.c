@@ -1,7 +1,3 @@
-#include <string.h>
-#include <stdbool.h>
-#include "../TDAs/hashmap.h"
-#include "../structs/structs.h"
 #include "effect.h"
 // Comida Descanso Animo Precio Tipo
 

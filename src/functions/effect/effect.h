@@ -2,7 +2,7 @@
 #define EFFECT_H
 
 #include "../structs/structs.h"
-#include <stdbool.h>
+#include "../TDAs/hashmap.h"
 
 struct HashMap;
 
