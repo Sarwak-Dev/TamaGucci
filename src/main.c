@@ -5,6 +5,7 @@
 #include "functions/structs/structs.h"
 #include "functions/TDAs/hashmap.h"
 #include "functions/effect/effect.h"
+#include "functions/saves/save.h"
 
 
 void menuPrincipal(HashMap mapa_principal);// mapa_principal == mapa acciones. Revisar functions.effect para mas informacion.
@@ -34,11 +35,18 @@ int main() {
     HashMap *mapa_principal = create_map(20);
     inicializar_mapa_acciones(*mapa_principal);
 
+    const char* filename = "save.txt";
+    Juego* juego;
+    Tamagotchi* mascota;
+
+    cargar_estado(juego, filename);
+
     int opcion;
 
     while (true) {
         
         limpiarPantalla();
+        printf("asddas");
         menuPrincipal(*mapa_principal);
         menuInferior();
         printf("\n  Selecciona una opcion: \n");
@@ -214,20 +222,13 @@ void menuPrincipal(HashMap mapa_principal) {
 
     //char * clave_buscar = "Jugar"; // Por ejemplo, buscar el efecto de la acción "Jugar"
 
-// Buscar el par clave-valor en el mapa
+ //Buscar el par clave-valor en el mapa
     //Pair * par = search_map(&mapa_principal, clave_buscar);
-    //if (par != NULL) {
      //Acceder al valor (que es un puntero a Efecto)
-    //Efecto * efecto = par->value;
-    
-     //Acceder al campo alteracion_animo
-    //int alteracion_animo = efecto->alteracion_animo;
+    //Juego * juego;
     
      //Imprimir el valor de alteracion_animo
-    //printf("Alteracion de animo para %s: %d\n", clave_buscar, alteracion_animo);
-    //}   else {
-    //printf("No se encontró la acción %s en el mapa.\n", clave_buscar);
-    //}
+    //printf("animo: %f\n", juego->mascota.animo);
 
     printf("      ██    ██\n");
     printf("     █  ████  █\n");

@@ -1,7 +1,13 @@
 #ifndef SAVE_H
 #define SAVE_H
 
+#include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <time.h>
 #include <stdio.h>
+
 #include "../TDAs/list.h"
 #include "../structs/structs.h"
 
