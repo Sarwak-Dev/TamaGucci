@@ -1,6 +1,5 @@
 #include "hashmap.h"
 
-
 // Crear par clave-valor
 Pair * create_pair( char * key,  Efecto * value) {
     Pair * new = (Pair *)malloc(sizeof(Pair));
@@ -34,7 +33,7 @@ bool aviable(Pair **buckets, long pos) {
 
 // Función que recibe un par y una posición específica para insertarse
 void insert_pair(Pair **buckets, char * key, Efecto * value, long pos) {
-  if (buckets[pos] == NULL) buckets[pos] = createPair(key, value);
+  if (buckets[pos] == NULL) buckets[pos] = create_pair(key, value);
   buckets[pos]->key = key;
   buckets[pos]->value = value;
 }
@@ -49,7 +48,7 @@ void insert_map(HashMap * map, char * key, Efecto * value) {
   
     do {
       if (aviable(map->buckets, i)) {
-        insertPair(map->buckets, key, value, i);
+        insert_pair(map->buckets, key, value, i);
         map->size++;
         map->current = i;
         return;
@@ -69,7 +68,7 @@ void enlarge(HashMap * map) {
   map->buckets = new_buckets;
   
   for (long i = 0 ; i < old_capacity ; i++) {
-    if (old_buckets[i] != NULL) insertMap(map, old_buckets[i]->key, old_buckets[i]->value);
+    if (old_buckets[i] != NULL) insert_map(map, old_buckets[i]->key, old_buckets[i]->value);
   }
   free(old_buckets);
 }
@@ -88,7 +87,7 @@ HashMap * create_map(long capacity) {
 
 // Función que elimina un par del mapa
 void erase_map(HashMap * map,  char * key) {    
-  Pair *deleted = searchMap(map, key);
+  Pair *deleted = search_map(map, key);
   if (deleted != NULL) {
     deleted->key = NULL;
     map->size -= 1;

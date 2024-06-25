@@ -31,9 +31,8 @@ int main() {
     system("chcp 65001");
 
     //Declara la variable mapa_principal con tipo HashMap
-    //HashMap mapa_principal;
     HashMap *mapa_principal = create_map(20);
-    //inicializar_mapa_acciones(*mapa_principal);
+    inicializar_mapa_acciones(*mapa_principal);
 
     int opcion;
 
@@ -218,13 +217,13 @@ void menuPrincipal(HashMap mapa_principal) {
 // Buscar el par clave-valor en el mapa
     //Pair * par = search_map(&mapa_principal, clave_buscar);
     //if (par != NULL) {
-    // Acceder al valor (que es un puntero a Efecto)
+     //Acceder al valor (que es un puntero a Efecto)
     //Efecto * efecto = par->value;
     
-    // Acceder al campo alteracion_animo
+     //Acceder al campo alteracion_animo
     //int alteracion_animo = efecto->alteracion_animo;
     
-    // Imprimir el valor de alteracion_animo
+     //Imprimir el valor de alteracion_animo
     //printf("Alteracion de animo para %s: %d\n", clave_buscar, alteracion_animo);
     //}   else {
     //printf("No se encontró la acción %s en el mapa.\n", clave_buscar);

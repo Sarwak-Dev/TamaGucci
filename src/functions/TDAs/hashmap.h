@@ -24,25 +24,25 @@ typedef struct HashMap {
 } HashMap;
 
 // Función para crear un nuevo par
-Pair * create_pair(char * key,  Efecto * value);
+Pair * create_pair( char * key,  Efecto * value);
 
 // Función para crear e inicializar un mapa
 HashMap * create_map(long capacity);
 
 // Función para insertar un par clave-valor al mapa
-void insert_map(HashMap * table, char * key, Efecto * value);
+void insert_map(HashMap * map, char * key, Efecto * value);
 
 // Función para eliminar un par clave-valor del mapa
-void erase_map(HashMap * table, char * key);
+void erase_map(HashMap * map,  char * key);
 
 // Función para buscar un par por su clave dentro del mapa
-Pair * search_map(HashMap * table, char * key);
+Pair * search_map(HashMap * map,  char * key);
 
 // Función para retornar el primer par de un mapa
-Pair * first_map(HashMap * table);
+Pair * first_map(HashMap * map);
 
 // Función para recorrer el siguiente elemento del mapa
-Pair * next_map(HashMap * table);
+Pair * next_map(HashMap * map);
 
 // Función para redimensionar tamaño de una tabla
 void enlarge(HashMap * map);

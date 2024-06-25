@@ -10,6 +10,6 @@ struct HashMap;
 HashMap inicializar_mapa_acciones(HashMap mapa_acciones);
 
 // Definir acciones para los items
-bool aplicar_efecto(char * accion, struct Tamagotchi *mascota, HashMap *mapa_acciones);
+bool aplicar_efecto(char * nombre_accion, struct Tamagotchi *mascota, HashMap *mapa_acciones);
 
 #endif

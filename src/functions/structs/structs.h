@@ -31,7 +31,7 @@ typedef struct Tamagotchi {
 
 // Estructura para representar los items almacenados
 typedef struct Item {
-    char nombre[20];
+    char nombre[30];
     int restantes;
 } Item;
 
@@ -41,7 +41,7 @@ typedef struct Efecto {
     int alteracion_descanso;
     int alteracion_animo;
     int coste;     // Valor del objeto, sin coste en interacciones
-    char tipo[10]; // Tipo objeto / interacción
+    char tipo[30]; // Tipo objeto / interacción
 } Efecto;
 
 // Estructura para almacenar variables de juego
