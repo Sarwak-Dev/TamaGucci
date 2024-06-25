@@ -31,8 +31,8 @@ int main() {
     system("chcp 65001");
 
     //Declara la variable mapa_principal con tipo HashMap
-    HashMap mapa_principal;
-    //HashMap *mapa_principal = create_map(20);
+    //HashMap mapa_principal;
+    HashMap *mapa_principal = create_map(20);
     //inicializar_mapa_acciones(*mapa_principal);
 
     int opcion;
@@ -40,7 +40,7 @@ int main() {
     while (true) {
         
         limpiarPantalla();
-        menuPrincipal(mapa_principal);
+        menuPrincipal(*mapa_principal);
         menuInferior();
         printf("\n  Selecciona una opcion: \n");
         
@@ -204,11 +204,15 @@ int main() {
 void menuPrincipal(HashMap mapa_principal) {
     printf("\n  Estado actual del Tamagotchi:\n\n");
 
-     printf("    Comida: ");
+    printf("    Comida: ");
+    printf("███████");
 
     printf("    Descanso: ");
+    printf("███████████");
 
     printf("    Animo: ");
+    printf("████\n\n\n");
+
     //char * clave_buscar = "Jugar"; // Por ejemplo, buscar el efecto de la acción "Jugar"
 
 // Buscar el par clave-valor en el mapa
