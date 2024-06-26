@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 
 // Librerias creadas
@@ -6,7 +8,8 @@
 #include "functions/TDAs/hashmap.h"
 #include "functions/effect/effect.h"
 #include "functions/saves/save.h"
-
+#include "img/design.h"
+//#include "interaction/games.h"
 
 void menuPrincipal(HashMap mapa_principal);// mapa_principal == mapa acciones. Revisar functions.effect para mas informacion.
 void menuInferior();
@@ -36,10 +39,24 @@ int main() {
     inicializar_mapa_acciones(*mapa_principal);
 
     const char* filename = "save.txt";
-    Juego* juego;
-    Tamagotchi* mascota;
+
+    // Inicializar juego y mascota
+    Juego* juego = (Juego*)malloc(sizeof(Juego));
+    if (juego == NULL) {
+        perror("Error al asignar memoria para el juego");
+        return 1;
+    }
+
+    Tamagotchi* mascota = (Tamagotchi*)malloc(sizeof(Tamagotchi));
+    if (mascota == NULL) {
+        perror("Error al asignar memoria para la mascota");
+        free(juego);
+        return 1;
+    }
 
     cargar_estado(juego, filename);
+    actualizar_estado(juego);
+    guardar_estado(juego, filename);
 
     int opcion;
 
@@ -197,6 +214,8 @@ int main() {
                         sleep(1); // Esperar un segundo
                     }
                     printf("\n");
+                    free(juego); // Liberar la memoria asignada
+                    free(mascota); // Liberar la memoria asignada
                     exit(0);
                     break;
                 default:
@@ -293,6 +312,7 @@ void esperarInput() {
     while (getchar() != '\n'); // Esperar la entrada del usuario
 }
 
+// Función que se encarga de eliminar todo lo impreso en pantalla
 void limpiarPantalla() { system("cls"); }
 
 
@@ -311,4 +331,4 @@ void printItem(char *item, int restantes, int comida, int descanso, int animo, s
     menuPrincipal(mapa_principal);
     menuInferior();
 }
-//ME GUSTA EL PENEEEEEEEe
+//soi wekito ola

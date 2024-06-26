@@ -98,41 +98,54 @@ void leer_lista_de_archivo(FILE* file, List* lista, const char* tipo) {
 
 // Función para cargar el estado desde un archivo para actualizar estadísticas
 void cargar_estado(Juego* juego, const char* filename) {
-
-    // Se abre archivo con el nombre indicado en modo lectura
     FILE* file = fopen(filename, "r");
-
     if (file == NULL) {
-        // El archivo no existe, se puede crear
-        printf("El archivo no existe. Creando %s...\n", filename);
-        
-        // Abrir el archivo en modo escritura para crearlo
-        file = fopen(filename, "w");
-        if (file == NULL) {
-            fprintf(stderr, "Error al crear el archivo %s.\n", filename);
-            return;
-        }
-        
-        // Escribir el texto inicial con el número de comida en la mascota
-        fprintf(file, "%.2f %.2f %.2f %d %d\n",
-            juego->mascota.comida,
-            juego->mascota.descanso,
-            juego->mascota.animo,
-            juego->mascota.dormido,
-            juego->mascota.vivo);
-
-        // Cerrar el archivo después de escribir
-        fclose(file);
-    } else {
-        // El archivo ya existe, no hacemos nada
-        printf("El archivo %s ya existe. No se crea otro.\n", filename);
-
-        // Cerrar el archivo que se intentó abrir en modo lectura
-        fclose(file);
+        // El archivo no existe, inicializamos el estado inicial
+        juego->mascota.comida = 100.0f;
+        juego->mascota.descanso = 100.0f;
+        juego->mascota.animo = 100.0f;
+        juego->mascota.dormido = false;
+        juego->mascota.vivo = true;
+        juego->dinero = 0;
+        juego->ultima_actualizacion = time(NULL);
+        juego->ultima_palmadita = time(NULL);
+        juego->ultimo_pago = time(NULL);
+        // Inicializamos las listas vacías
+        juego->mochila = *list_create();
+        juego->caricias_ultima_hora = *list_create();
+        return;
     }
+
+    // Leer las estadísticas del Tamagotchi y sus estados
+    fscanf(file, "%f %f %f %d %d\n",
+           &juego->mascota.comida,
+           &juego->mascota.descanso,
+           &juego->mascota.animo,
+           (int*)&juego->mascota.dormido,
+           (int*)&juego->mascota.vivo);
+
+    // Leer el dinero del juego
+    fscanf(file, "%d\n", &juego->dinero);
+
+    // Leer los ítems de la mochila
+    leer_lista_de_archivo(file, &juego->mochila, "string");
+
+    // Leer la última actualización
+    fscanf(file, "%ld\n", &juego->ultima_actualizacion);
+
+    // Leer la última palmadita
+    fscanf(file, "%ld\n", &juego->ultima_palmadita);
+
+    // Leer el último pago
+    fscanf(file, "%ld\n", &juego->ultimo_pago);
+
+    // Leer las horas de las últimas caricias
+    leer_lista_de_archivo(file, &juego->caricias_ultima_hora, "time_t");
+
+    fclose(file);
 }
 
-// Función para actualizar estadísticas del Tamagotchu en función del tiempo
+// Función para actualizar estadísticas del Tamagotchi en función del tiempo
 // Transcurrido desde la última actualización
 void actualizar_estado(Juego* juego) {
 
