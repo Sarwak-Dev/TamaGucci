@@ -17,6 +17,7 @@ void menuInventario();
 void menuInteracciones();
 void menuIluminacion();
 void menuTienda();
+void dejarDormir();
 void esperarInput();
 void limpiarPantalla();
 //void printItem(char *item, int restantes, int comida, int descanso, int animo, struct Tamagotchi mascota, HashMap mapa_accion_efecto);
@@ -84,145 +85,20 @@ int main() {
                     // Interacciones
                     limpiarPantalla();
                     menuInteracciones();
-                    printf("\n  Selecciona una opcion: \n");
-
-                    scanf("%d", &opcion);
-                    while (getchar() != '\n');
-
-                    switch(opcion) {
-                        case 1:
-                            // Jugar
-                            limpiarPantalla();
-                            printf("    Has ganado el piedra-papel o tijeras\n");
-                            esperarInput();
-                            break;
-                        case 2:
-                            // Acariciar
-                            limpiarPantalla();
-                            printf("    Has acariciado a tu mascota\n");
-                            esperarInput();
-                            break;
-                        case 3:
-                            // Palmaditas
-                            limpiarPantalla();
-                            printf("    Le has dado palmaditas a tu mascota\n");
-                            esperarInput();
-                            break;
-                        case 4:
-                            // Cambiar iluminación
-                            limpiarPantalla();
-                            menuIluminacion();
-
-                            scanf("%d", &opcion);
-                            while (getchar() != '\n');
-
-                            switch(opcion) {
-                                case 1:
-                                    //Oscuro
-                                    printf("\033[0;40;37m");
-                                    setConsoleColor("0F");
-                                    break;
-                                case 2:
-                                    //Claro
-                                    printf("\033[0;97;30m");
-                                    setConsoleColor("F0");
-                                    break;
-                                default:
-                                    // Opción no válida
-                                    printf("\n  Opcion no valida. Por favor, selecciona una opcion valida.\n");
-                        }
-                            break;
-                        case 5:
-                            //Salir
-                            break;
-                        default:
-                            // Opción no válida
-                            printf("\n  Opcion no valida. Por favor, selecciona una opcion valida.\n");
-                        }
                     break;
                 case 2:
                     //Inventario
                     limpiarPantalla();
                     menuInventario();
-                    printf("\n  Selecciona una opcion: \n");
-                    scanf("%d", &opcion);
-                    while (getchar() != '\n');
-
-                    switch(opcion) {
-                        case 1:
-                            //Manzana
-                            break;
-                        case 2:
-                            //Agua
-                            break;
-                        case 3:
-                            //Super8
-                            break;
-                            
-                        case 4:
-                            //Coca-Cola
-                            break;
-                        case 5:
-                            //Salir
-                            break;
-                        default:
-                            // Opción no válida
-                            printf("\nOpcion no valida. Por favor, selecciona una opcion valida.\n");
-                        }
                     break;
                 case 3:
                     //Tienda
                     limpiarPantalla();
                     menuTienda();
-
-                    printf("\n  Selecciona una opcion: \n");
-                    scanf("%d", &opcion);
-                    while (getchar() != '\n');
-
-                    switch(opcion) {
-                        case 1:
-                            //Manzana
-                            limpiarPantalla();
-                            printf("Has comprado una Manzana");
-                            esperarInput();
-                            break;
-                        case 2:
-                            //Agua
-                            limpiarPantalla();
-                            printf("Has comprado un Agua");
-                            esperarInput();
-                            break;
-                        case 3:
-                            //Super8
-                            limpiarPantalla();
-                            printf("Has comprado un Super 8");
-                            esperarInput();
-                            break;
-                            
-                        case 4:
-                            //Coca-Cola
-                            limpiarPantalla();
-                            printf("Has comprado una Coca-Cola");
-                            esperarInput();
-                            break;
-                        case 5:
-                            //Salir
-                            break;
-                                default:
-                                    // Opción no válida
-                                    printf("\n  Opcion no valida. Por favor, selecciona una opcion valida.\n");
-                        }
-                        
                     break;
                 case 4:
                     // Salir
-                    printf("\nEmpezando a dormir en ");
-                    for (int i = 3; i > 0; i--) {
-                        printf("%d ", i);
-                        fflush(stdout); // Limpiar el buffer de salida para asegurarse de que se imprima de inmediato
-                        sleep(1); // Esperar un segundo
-                    }
-                    printf("\n");
+                    dejarDormir();
                     free(juego); // Liberar la memoria asignada
                     free(mascota); // Liberar la memoria asignada
                     exit(0);
@@ -231,6 +107,8 @@ int main() {
                     // Opción no válida
                     printf("\nOpcion no valida. Por favor, selecciona una opcion valida.\n");
             }
+        actualizar_estado(juego);
+        guardar_estado(juego, filename);
     }
 
     return 0;
@@ -284,6 +162,8 @@ void menuInferior() {
 }
 
 void menuInventario() {
+    int opcion;
+    
     printf("    ==================\n");
     printf("        INVENTARIO:\n");
     printf("    ==================\n\n");
@@ -292,22 +172,109 @@ void menuInventario() {
     printf("    3) Super 8 x8\n");
     printf("    4) Coca-Cola x8\n");
     printf("    5) Salir\n");
+
+    printf("\n  Selecciona una opcion: \n");
+    scanf("%d", &opcion);
+    while (getchar() != '\n');
+
+    switch(opcion) {
+        case 1:
+            //Manzana
+            break;
+        case 2:
+            //Agua
+            break;
+        case 3:
+            //Super8
+            break;
+                            
+        case 4:
+            //Coca-Cola
+            break;
+        case 5:
+            //Salir
+            break;
+        default:
+            // Opción no válida
+            printf("\nOpcion no valida. Por favor, selecciona una opcion valida.\n");
+        }
 }
 
 void menuInteracciones() {
+    int opcion;
+
     printf("    1) Jugar\n");
     printf("    2) Acariciar\n");
     printf("    3) Palmaditas\n");
     printf("    4) Iluminacion\n");
     printf("    5) Salir\n");
+
+    printf("\n  Selecciona una opcion: \n");
+    scanf("%d", &opcion);
+    while (getchar() != '\n');
+
+    switch(opcion) {
+        case 1:
+            // Jugar
+            limpiarPantalla();
+            printf("    Has ganado el piedra-papel o tijeras\n");
+            esperarInput();
+            break;
+        case 2:
+            // Acariciar
+            limpiarPantalla();
+            printf("    Has acariciado a tu mascota\n");
+            esperarInput();
+            break;
+        case 3:
+            // Palmaditas
+            limpiarPantalla();
+            printf("    Le has dado palmaditas a tu mascota\n");
+            esperarInput();
+            break;
+        case 4:
+            // Cambiar iluminación
+            limpiarPantalla();
+            menuIluminacion();
+            break;
+        case 5:
+            //Salir
+            break;
+        default:
+            // Opción no válida
+            printf("\n  Opcion no valida. Por favor, selecciona una opcion valida.\n");
+        }
 }
 
 void menuIluminacion() {
+    int opcion;
+
     printf("    1) Oscuro\n");
     printf("    2) Claro\n");
+
+    scanf("%d", &opcion);
+    while (getchar() != '\n');
+
+    switch(opcion) {
+        case 1:
+            //Oscuro
+             printf("\033[0;40;37m");
+            setConsoleColor("0F");
+            break;
+        case 2:
+            //Claro
+            printf("\033[0;97;30m");
+            setConsoleColor("F0");
+            break;
+        default:
+            // Opción no válida
+            printf("\n  Opcion no valida. Por favor, selecciona una opcion valida.\n");
+        }
 }
 
 void menuTienda() {
+    int opcion;
+
     printf("    ==================\n");
     printf("          Tienda:\n");
     printf("    ==================\n\n");
@@ -316,6 +283,54 @@ void menuTienda() {
     printf("    3) Comprar Super 8 | $50\n");
     printf("    4) Comprar Coca-Cola | $50\n");
     printf("    5) Salir\n");
+
+    printf("\n  Selecciona una opcion: \n");
+    scanf("%d", &opcion);
+    while (getchar() != '\n');
+
+    switch(opcion) {
+        case 1:
+            //Manzana
+            limpiarPantalla();
+            printf("Has comprado una Manzana");
+            esperarInput();
+            break;
+        case 2:
+            //Agua
+            limpiarPantalla();
+            printf("Has comprado un Agua");
+            esperarInput();
+            break;
+        case 3:
+            //Super8
+            limpiarPantalla();
+            printf("Has comprado un Super 8");
+            esperarInput();
+            break;
+                            
+        case 4:
+            //Coca-Cola
+            limpiarPantalla();
+            printf("Has comprado una Coca-Cola");
+            esperarInput();
+            break;
+        case 5:
+            //Salir
+            break;
+        default:
+            // Opción no válida
+            printf("\n  Opcion no valida. Por favor, selecciona una opcion valida.\n");
+        }
+}
+
+void dejarDormir() {
+    printf("\nEmpezando a dormir en ");
+    for (int i = 3; i > 0; i--) {
+        printf("%d ", i);
+        fflush(stdout); // Limpiar el buffer de salida para asegurarse de que se imprima de inmediato
+        sleep(1); // Esperar un segundo
+    }
+    printf("\n");
 }
 
 void esperarInput() {
