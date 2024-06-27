@@ -101,6 +101,9 @@ void cargar_estado(Juego* juego, const char* filename) {
     FILE* file = fopen(filename, "r");
     if (file == NULL) {
         // El archivo no existe, inicializamos el estado inicial
+
+        printf("Inicializando variables de Juego\n"); // Debug print
+
         juego->mascota.comida = 100.0f;
         juego->mascota.descanso = 100.0f;
         juego->mascota.animo = 100.0f;
@@ -117,6 +120,9 @@ void cargar_estado(Juego* juego, const char* filename) {
     }
 
     // Leer las estadísticas del Tamagotchi y sus estados
+
+    printf("Leyendo datos del save.txt\n"); // Debug print
+
     fscanf(file, "%f %f %f %d %d\n",
            &juego->mascota.comida,
            &juego->mascota.descanso,

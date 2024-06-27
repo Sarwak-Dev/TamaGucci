@@ -11,15 +11,15 @@
 #include "img/design.h"
 //#include "interaction/games.h"
 
-void menuPrincipal(HashMap mapa_principal);// mapa_principal == mapa acciones. Revisar functions.effect para mas informacion.
+void menuPrincipal(HashMap * mapa_accion_efecto, Juego * juego);
 void menuInferior();
 void menuInventario();
-void menuAcciones();
+void menuInteracciones();
 void menuIluminacion();
 void menuTienda();
 void esperarInput();
 void limpiarPantalla();
-void printItem(char *item, int restantes, int comida, int descanso, int animo, struct Tamagotchi mascota, HashMap mapa_principal);
+//void printItem(char *item, int restantes, int comida, int descanso, int animo, struct Tamagotchi mascota, HashMap mapa_accion_efecto);
 
 void setConsoleColor(const char* color) {
     char command[10];
@@ -34,9 +34,10 @@ int main() {
     printf("\033[H\033[J");
     system("chcp 65001");
 
-    //Declara la variable mapa_principal con tipo HashMap
-    HashMap *mapa_principal = create_map(20);
-    inicializar_mapa_acciones(*mapa_principal);
+    //Declara la variable mapa_accion_efecto con tipo HashMap
+    HashMap *mapa_accion_efecto = create_map(20); // Revisar functions.effect para mas informacion.
+    inicializar_mapa_acciones(mapa_accion_efecto);
+    printf("Mapa inicializado\n"); // Debug print
 
     const char* filename = "save.txt";
 
@@ -46,6 +47,8 @@ int main() {
         perror("Error al asignar memoria para el juego");
         return 1;
     }
+    printf("Juego inicializado\n"); // Debug print
+
 
     Tamagotchi* mascota = (Tamagotchi*)malloc(sizeof(Tamagotchi));
     if (mascota == NULL) {
@@ -53,18 +56,23 @@ int main() {
         free(juego);
         return 1;
     }
+    printf("Mascota inicializada\n"); // Debug print
 
     cargar_estado(juego, filename);
+    printf("Carga finalizada\n"); // Debug print
+
     actualizar_estado(juego);
+    printf("Actualización realizada\n"); // Debug print
+
     guardar_estado(juego, filename);
+    printf("Guardado realizado\n"); // Debug print
 
     int opcion;
 
     while (true) {
         
         limpiarPantalla();
-        printf("asddas");
-        menuPrincipal(*mapa_principal);
+        menuPrincipal(mapa_accion_efecto, juego);
         menuInferior();
         printf("\n  Selecciona una opcion: \n");
         
@@ -73,9 +81,9 @@ int main() {
 
             switch(opcion) {
                 case 1:
-                    //Acciones
+                    // Interacciones
                     limpiarPantalla();
-                    menuAcciones();
+                    menuInteracciones();
                     printf("\n  Selecciona una opcion: \n");
 
                     scanf("%d", &opcion);
@@ -83,24 +91,25 @@ int main() {
 
                     switch(opcion) {
                         case 1:
-                            //Jugar
+                            // Jugar
                             limpiarPantalla();
                             printf("    Has ganado el piedra-papel o tijeras\n");
                             esperarInput();
                             break;
                         case 2:
-                            //Acariciar
+                            // Acariciar
                             limpiarPantalla();
                             printf("    Has acariciado a tu mascota\n");
                             esperarInput();
                             break;
                         case 3:
-                            //Palmaditas
+                            // Palmaditas
                             limpiarPantalla();
                             printf("    Le has dado palmaditas a tu mascota\n");
                             esperarInput();
                             break;
                         case 4:
+                            // Cambiar iluminación
                             limpiarPantalla();
                             menuIluminacion();
 
@@ -227,7 +236,7 @@ int main() {
     return 0;
 }
 
-void menuPrincipal(HashMap mapa_principal) {
+void menuPrincipal(HashMap * mapa_accion_efecto, Juego * juego) {
     printf("\n  Estado actual del Tamagotchi:\n\n");
 
     printf("    Comida: ");
@@ -242,12 +251,14 @@ void menuPrincipal(HashMap mapa_principal) {
     //char * clave_buscar = "Jugar"; // Por ejemplo, buscar el efecto de la acción "Jugar"
 
  //Buscar el par clave-valor en el mapa
-    //Pair * par = search_map(&mapa_principal, clave_buscar);
+    //Pair * par = search_map(mapa_accion_efecto, clave_buscar);
      //Acceder al valor (que es un puntero a Efecto)
     //Juego * juego;
     
      //Imprimir el valor de alteracion_animo
     //printf("animo: %f\n", juego->mascota.animo);
+
+    //mostrar_mascota(&juego->mascota);
 
     printf("      ██    ██\n");
     printf("     █  ████  █\n");
@@ -283,7 +294,7 @@ void menuInventario() {
     printf("    5) Salir\n");
 }
 
-void menuAcciones() {
+void menuInteracciones() {
     printf("    1) Jugar\n");
     printf("    2) Acariciar\n");
     printf("    3) Palmaditas\n");
@@ -316,7 +327,7 @@ void esperarInput() {
 void limpiarPantalla() { system("cls"); }
 
 
-void printItem(char *item, int restantes, int comida, int descanso, int animo, struct Tamagotchi mascota, HashMap mapa_principal) {
+/*void printItem(char *item, int restantes, int comida, int descanso, int animo, struct Tamagotchi mascota, HashMap mapa_accion_efecto) {
     limpiarPantalla();
     printf("    Has comido una ");
     for (int i = 0; item[i] != '\0'; i++) {
@@ -328,7 +339,7 @@ void printItem(char *item, int restantes, int comida, int descanso, int animo, s
     printf("    %d Animo\n", animo);
     esperarInput();
     limpiarPantalla();
-    menuPrincipal(mapa_principal);
+    menuPrincipal(mapa_accion_efecto;
     menuInferior();
-}
+}*/
 //soi wekito ola
