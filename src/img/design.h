@@ -36,6 +36,16 @@ void cuerpo_hambre();
 // Muestra el cuerpo normal
 void cuerpo_normal();
 
+
+
+void muertePor_tristeza();
+
+void muertePor_agotamiento();
+
+void muertePor_hambre();
+
+
+
 // Función para mostrar el gato en función del estado de sus estadísticas
 void mostrar_mascota(Tamagotchi * mascota);
 
