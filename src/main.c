@@ -118,13 +118,13 @@ void menuPrincipal(HashMap * mapa_accion_efecto, Juego * juego) {
     printf("\n  Estado actual del Tamagotchi:\n\n");
 
     printf("    Comida: ");
-    printf("███████");
+    printf(" %f    ", juego->mascota.comida);
 
     printf("    Descanso: ");
-    printf("███████████");
+    printf(" %f    ", juego->mascota.descanso);
 
     printf("    Animo: ");
-    printf("████\n\n\n");
+    printf(" %f    \n \n \n ", juego->mascota.animo);
 
     //char * clave_buscar = "Jugar"; // Por ejemplo, buscar el efecto de la acción "Jugar"
 
@@ -215,9 +215,9 @@ void menuInteracciones() {
 
     switch(opcion) {
         case 1:
-            // Jugar
+            //Jugar
             limpiarPantalla();
-            printf("    Has ganado el piedra-papel o tijeras\n");
+            jugarRonda();
             esperarInput();
             break;
         case 2:
