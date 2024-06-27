@@ -3,10 +3,7 @@
 #include <time.h>
 
 #include "design.h"
-#include "../structs/structs.h"
-
-// Función que se encarga de eliminar todo lo impreso en pantalla
-void limpiarPantalla() { system("clear"); }
+#include "../functions/structs/structs.h"
 
 // Función que imprime la hora actual en formato H:M:S
 void imprimir_hora(time_t hora) {
