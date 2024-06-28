@@ -182,6 +182,7 @@ return;
 
 
 void acaricia(){
+  limpiarPantalla();
   for(int i=0; i<3; i++){
     printf("                                 \n");
     printf("              ▄▄▄                 \n");
@@ -275,6 +276,7 @@ void acaricia(){
 }
 
 void palmada(){
+  limpiarPantalla();
   for(int i=0; i<7; i++){
 
     printf("               ▄▄▄                 \n");
