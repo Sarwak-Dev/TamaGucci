@@ -44,6 +44,11 @@ void muertePor_hambre();
 
 
 
+void cariño();
+
+void palmada();
+
+
 // Función para mostrar el gato en función del estado de sus estadísticas
 void mostrar_mascota(Tamagotchi * mascota);
 
