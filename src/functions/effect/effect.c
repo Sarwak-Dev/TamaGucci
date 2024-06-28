@@ -58,6 +58,7 @@ bool aplicar_efecto(char * nombre_accion, struct Tamagotchi *mascota, HashMap *m
     if (par_accion == NULL) return false; // Indicar que no se pudo aplicar
 
     // Aplicar variación de estadísticas por el efecto
+    printf("\n\n\n\n         FUNCIONO WEONNNNN\n\n\n");
     mascota->comida     +=  par_accion->value->alteracion_comida;
     mascota->descanso   +=  par_accion->value->alteracion_descanso;
     mascota->animo      +=  par_accion->value->alteracion_animo;

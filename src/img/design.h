@@ -44,7 +44,7 @@ void muertePor_hambre();
 
 
 
-void cariño();
+void acaricia();
 
 void palmada();
 

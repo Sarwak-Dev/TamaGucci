@@ -9,7 +9,7 @@
 #include "functions/effect/effect.h"
 #include "functions/saves/save.h"
 #include "img/design.h"
-//#include "interaction/games.h"
+#include "interaction/games.h"
 
 void menuPrincipal(HashMap * mapa_accion_efecto, Juego * juego);
 void menuInferior();
@@ -20,7 +20,7 @@ void menuTienda();
 void dejarDormir();
 void esperarInput();
 void limpiarPantalla();
-//void printItem(char *item, int restantes, int comida, int descanso, int animo, struct Tamagotchi mascota, HashMap mapa_accion_efecto);
+void printItem(char *item, int restantes, int comida, int descanso, int animo, struct Tamagotchi mascota, HashMap mapa_accion_efecto);
 
 void setConsoleColor(const char* color) {
     char command[10];
@@ -49,7 +49,6 @@ int main() {
         return 1;
     }
     printf("Juego inicializado\n"); // Debug print
-
 
     Tamagotchi* mascota = (Tamagotchi*)malloc(sizeof(Tamagotchi));
     if (mascota == NULL) {
@@ -223,7 +222,9 @@ void menuInteracciones() {
         case 2:
             // Acariciar
             limpiarPantalla();
-            printf("    Has acariciado a tu mascota\n");
+            printf("\n    Has acariciado a tu mascota\n");
+            //acaricia();
+            //aplicar_efecto("Acariciar", mascota, mapa_accion_efecto);
             esperarInput();
             break;
         case 3:
