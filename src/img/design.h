@@ -34,14 +34,11 @@ void cuerpo_hambre();
 // Muestra el cuerpo normal
 void cuerpo_normal();
 
-
-
 void muertePor_tristeza();
 
 void muertePor_agotamiento();
 
 void muertePor_hambre();
-
 
 
 void acaricia();

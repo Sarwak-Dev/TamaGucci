@@ -8,6 +8,8 @@
 #include "design.h"
 #include "../functions/structs/structs.h"
 
+void limpiarPantalla3() { system("cls"); }
+
 // Función que imprime la hora actual en formato H:M:S
 void imprimir_hora(time_t hora) {
     
@@ -182,7 +184,8 @@ return;
 
 
 void acaricia(){
-  limpiarPantalla();
+
+  limpiarPantalla3();
   for(int i=0; i<3; i++){
     printf("                                 \n");
     printf("              ▄▄▄                 \n");
@@ -200,7 +203,7 @@ void acaricia(){
 
 
     sleep(1);
-    limpiarPantalla();
+    limpiarPantalla3();
 
 
     printf("                                  \n");
@@ -218,7 +221,7 @@ void acaricia(){
     printf("  ████████\n");
 
     sleep(1);
-    limpiarPantalla();
+    limpiarPantalla3();
   }
 
   printf("                                 \n");
@@ -235,8 +238,9 @@ void acaricia(){
   printf(" █   ▀▀   █\n");
   printf("  ████████\n");
 
-  usleep(300000);
-  limpiarPantalla();
+  //usleep(300000);
+  sleep(1);
+  limpiarPantalla3();
   
   printf("                                 \n");
   printf("              ▄▄▄                 \n");
@@ -252,8 +256,10 @@ void acaricia(){
   printf(" █   ▀▀   █\n");
   printf("  ████████\n");
 
-  usleep(300000);
-  limpiarPantalla();
+  //usleep(300000);
+  sleep(1);
+
+  limpiarPantalla3();
   
   printf("                                 \n");
   printf("              ▄▄▄                 \n");
@@ -270,13 +276,13 @@ void acaricia(){
   printf("  ████████\n");
   
   sleep(1);
-  limpiarPantalla();
+  limpiarPantalla3();
   
   return;
 }
 
 void palmada(){
-  limpiarPantalla();
+  limpiarPantalla3();
   for(int i=0; i<7; i++){
 
     printf("               ▄▄▄                 \n");
@@ -297,8 +303,9 @@ void palmada(){
     printf("  ████████\n");
 
 
-    usleep(300000);
-    limpiarPantalla();
+    //usleep(300000);
+    sleep(1);
+    limpiarPantalla3();
 
     printf("                                  \n");
     printf("                                  \n");
@@ -317,8 +324,9 @@ void palmada(){
     printf(" █        █\n");
     printf("  ████████\n");
 
-    usleep(300000);
-    limpiarPantalla();
+    //usleep(300000);
+    sleep(1);
+    limpiarPantalla3();
   }
   
   printf("               ▄▄▄                 \n");
@@ -338,8 +346,9 @@ void palmada(){
   printf(" █        █\n");
   printf("  ████████\n");
   
-  usleep(700000);
-  limpiarPantalla();
+  //usleep(700000);
+  sleep(1);
+  limpiarPantalla3();
   
   printf("               ▄▄▄                 \n");
   printf("          ▄▄▄▀▀   ▀▄                \n");
@@ -359,8 +368,9 @@ void palmada(){
   printf("  ████████\n");
 
 
-  usleep(1000000);
-  limpiarPantalla();
+  //usleep(1000000);
+  sleep(1);
+  limpiarPantalla3();
   
   printf("               ▄▄▄                 \n");
   printf("          ▄▄▄▀▀   ▀▄                \n");
@@ -379,8 +389,9 @@ void palmada(){
   printf(" █        █\n");
   printf("  ████████\n");
 
-  usleep(1000000);
-  limpiarPantalla();
+  //usleep(1000000);
+  sleep(1);
+  limpiarPantalla3();
   
   printf("               ▄▄▄                 \n");
   printf("          ▄▄▄▀▀   ▀▄                \n");
@@ -400,7 +411,7 @@ void palmada(){
   printf("  ████████\n");
 
   sleep(1);
-  limpiarPantalla();
+  limpiarPantalla3();
 }
 
 

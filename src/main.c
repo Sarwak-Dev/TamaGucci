@@ -28,6 +28,7 @@ void setConsoleColor(const char* color) {
     system(command);
 }
 
+
 int main() {
     //Comandos de inicio de la consola
     printf("\033[0;97;30m");
@@ -92,8 +93,9 @@ int main() {
                     break;
                 case 3:
                     //Tienda
-                    limpiarPantalla();
-                    menuTienda();
+                    //limpiarPantalla();
+                    //menuTienda();
+                    palmada();
                     break;
                 case 4:
                     // Salir
@@ -226,14 +228,16 @@ void menuInteracciones(HashMap * mapa_accion_efecto, Juego * juego) {
             // Acariciar
             limpiarPantalla();
             printf("\n    Has acariciado a tu mascota\n");
-            acaricia;
+            acaricia();
             aplicar_efecto("Acariciar", &juego->mascota, mapa_accion_efecto);
             esperarInput();
             break;
         case 3:
             // Palmaditas
             limpiarPantalla();
-            printf("    Le has dado palmaditas a tu mascota\n");
+            printf("\n    Le has dado palmaditas a tu mascota\n");
+            aplicar_efecto("Palmadita", &juego->mascota, mapa_accion_efecto);
+            palmada;
             esperarInput();
             break;
         case 4:
