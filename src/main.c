@@ -123,7 +123,10 @@ void menuPrincipal(HashMap * mapa_accion_efecto, Juego * juego) {
     printf(" %f    ", juego->mascota.descanso);
 
     printf("    Animo: ");
-    printf(" %f    \n \n \n ", juego->mascota.animo);
+    printf(" %f    \n \n \n", juego->mascota.animo);
+
+    printf("    dinero: ");
+    printf(" %f    \n \n \n", juego->dinero);
 
     //char * clave_buscar = "Jugar"; // Por ejemplo, buscar el efecto de la acción "Jugar"
 
@@ -137,7 +140,7 @@ void menuPrincipal(HashMap * mapa_accion_efecto, Juego * juego) {
 
     //mostrar_mascota(&juego->mascota);
 
-    printf("      ██    ██\n");
+    printf("      ██    ██ \n");
     printf("     █  ████  █\n");
     printf("     █        █\n");
     printf("    █          █\n");
