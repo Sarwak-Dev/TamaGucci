@@ -232,7 +232,7 @@ este menu de interacciones tiene varias opciones a nuestra disposicion, las expl
 
 (2)INVENTARIO: 
 
-==================
+
     INVENTARIO:
 ==================
  1) Manzana x6
