@@ -6,11 +6,10 @@
 #include "../../functions/TDAs/list.h"
 #include "shop.h"
 
-// Función que crea un arreglo con todos los objetos presentes en el mapa acción-efecto
-/*Item * inicializar_arreglo_objetos(HashMap * mapa_accion_efecto) {
 
-    Item objetos[10]; // Creamos arreglo de objetos
-    int i = 0; // Inicializamos índice
+// Función que crea un arreglo con todos los objetos presentes en el mapa acción-efecto
+void inicializar_lista_objetos(List *lista_objetos, HashMap * mapa_accion_efecto) {
+
     Pair * current = first_map(mapa_accion_efecto); // Iteador para el mapa
 
     // Recorremos mapa acción-efecto para encontar los efectos asociados a objetos
@@ -18,19 +17,19 @@
 
         // Si el par actual tiene un efecto del tipo efecto
         if (strcmp(current->value->tipo,"Objeto") == 0) {
-
+            
             // Creamos un objeto con el nombre y el coste correspondiente al objeto
-            Item objeto = {current->key, current->value->coste, 0};
+            Item * objeto;
+            strcpy(objeto->nombre, current->key);
+            objeto->coste = current->value->coste;
+            objeto->restantes = 0;
 
-            // Agregamos el objeto al arreglo y actualizamos el índice
-            objetos[i] = objeto;
-            i++;
+            // Añadimos el nuevo objeto a la lista
+            list_pushBack(lista_objetos, objeto);
         }
-        current = next_map(mapa_accion_efecto); // Recorremos el siguiente par
     }
-    // Retornamos el arreglo con todos los objetos del mapa
-    return objetos;
-}*/
+}
+
 
 Item* list_get(List *list, int index) {
     if (list == NULL || index < 0 || index >= list->size) {

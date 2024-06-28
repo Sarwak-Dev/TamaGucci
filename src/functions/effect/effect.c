@@ -48,45 +48,6 @@ HashMap * inicializar_mapa_acciones(HashMap * mapa_acciones) {
     return mapa_acciones;
 }
 
-List inicializar_lista_objetos(List *lista_objetos){
-    Item * pescado;
-    strcpy(pescado->nombre, "Pescado");
-    pescado->restantes = 5;
-    list_pushBack(lista_objetos, pescado);
-
-    Item * hamburguesa;
-    strcpy(hamburguesa->nombre, "Hamburguesa");
-    hamburguesa->restantes = 1;
-    list_pushBack(lista_objetos, hamburguesa);
-
-    Item * sushi;
-    strcpy(sushi->nombre, "Sushi");
-    sushi->restantes = 1;
-    list_pushBack(lista_objetos, sushi);
-
-    Item * cajaArena;
-    strcpy(cajaArena->nombre, "Caja de Arena");
-    cajaArena->restantes = 0;
-    list_pushBack(lista_objetos, cajaArena);
-
-    Item * proteina;
-    strcpy(proteina->nombre, "Proteina");
-    proteina->restantes = 0;
-    list_pushBack(lista_objetos, proteina);
-
-    Item * redbull;
-    strcpy(redbull->nombre, "Redbull");
-    redbull->restantes = 0;
-    list_pushBack(lista_objetos, redbull);
-
-    Item * gata;
-    strcpy(gata->nombre, "Gata a domicilio");
-    gata->restantes = 0;
-    list_pushBack(lista_objetos, gata);
-
-    return *lista_objetos;
-}
-
 
 // Definir acciones para los items
 bool aplicar_efecto(char * nombre_accion, struct Tamagotchi *mascota, HashMap *mapa_acciones) {

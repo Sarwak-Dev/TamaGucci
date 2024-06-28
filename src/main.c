@@ -31,15 +31,15 @@ void setConsoleColor(const char* color) {
 
 int main() {
     //Comandos de inicio de la consola
-
     system("chcp 65001");
     limpiarPantalla();
 
     //Declara la variable mapa_accion_efecto con tipo HashMap
     HashMap *mapa_accion_efecto = create_map(20); // Revisar functions.effect para mas informacion.
     List *lista_objetos = list_create(50); 
+
     inicializar_mapa_acciones(mapa_accion_efecto);
-    //inicializar_lista_objetos(lista_objetos);
+    //inicializar_lista_objetos(lista_objetos, mapa_accion_efecto);
     printf("Mapa inicializado\n"); // Debug print
 
     //menuTienda(lista_objetos);
@@ -62,14 +62,14 @@ int main() {
     }
     printf("Mascota inicializada\n"); // Debug print
 
-    cargar_estado(juego, filename);
+    /**/cargar_estado(juego, filename);
     printf("Carga finalizada\n"); // Debug print
 
     actualizar_estado(juego);
     printf("Actualización realizada\n"); // Debug print
 
     guardar_estado(juego, filename);
-    printf("Guardado realizado\n"); // Debug print
+    printf("Guardado realizado\n"); // Debug print/**/
 
     printf("\033[0;97;30m");
     setConsoleColor("F0");
@@ -84,7 +84,7 @@ int main() {
         printf("\n  Selecciona una opcion: \n");
         
         scanf("%d", &opcion);
-        while (getchar() != '\n');
+        /*while (getchar() != '\n');
 
             switch(opcion) {
                 case 1:
@@ -112,9 +112,9 @@ int main() {
                 default:
                     // Opción no válida
                     printf("\nOpcion no valida. Por favor, selecciona una opcion valida.\n");
-            }
-        actualizar_estado(juego);
-        guardar_estado(juego, filename);
+            }/**/ 
+        /**/actualizar_estado(juego);
+        guardar_estado(juego, filename);/**/
     }
 
     return 0;

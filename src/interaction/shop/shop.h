@@ -5,6 +5,8 @@
 
 Item* list_get(List *list, int index);
 
+void inicializar_lista_objetos(List *lista_objetos, HashMap * mapa_accion_efecto);
+
 List menuTienda (List * lista);
 
 #endif // TIENDA_H
