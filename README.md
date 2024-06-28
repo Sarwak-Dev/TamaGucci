@@ -228,6 +228,7 @@ este menu de interacciones tiene varias opciones a nuestra disposicion, las expl
 
 (1.4). Salir: te devuelve al menu principal.
 
+------------------------------------------------------------------------------------------------------------------------------------
 
 (2)INVENTARIO: 
 
@@ -273,5 +274,6 @@ El menu de inventario tiene 4 opciones con un mismo funcionamiento y una quinta 
 
 (2.5). Salir:te devuelve al menu principal.
 
+------------------------------------------------------------------------------------------------------------------------------------
 
 (3) TIENDA: 
