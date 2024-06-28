@@ -10,13 +10,13 @@
 #include "functions/saves/save.h"
 #include "img/design.h"
 #include "interaction/games.h"
+#include "functions/tienda/tienda.h"
 
 void menuPrincipal(HashMap * mapa_accion_efecto, Juego * juego);
 void menuInferior();
 void menuInventario();
 void menuInteracciones();
 void menuIluminacion();
-void menuTienda();
 void dejarDormir();
 void esperarInput();
 void limpiarPantalla();
@@ -38,7 +38,9 @@ int main() {
 
     //Declara la variable mapa_accion_efecto con tipo HashMap
     HashMap *mapa_accion_efecto = create_map(20); // Revisar functions.effect para mas informacion.
+    List *lista_objetos = list_create(50); 
     inicializar_mapa_acciones(mapa_accion_efecto);
+    inicializar_lista_objetos(lista_objetos);
     printf("Mapa inicializado\n"); // Debug print
 
     const char* filename = "save.txt";
@@ -93,9 +95,8 @@ int main() {
                     break;
                 case 3:
                     //Tienda
-                    //limpiarPantalla();
-                    //menuTienda();
-                    palmada();
+                    limpiarPantalla();
+                    menuTienda(lista_objetos);
                     break;
                 case 4:
                     // Salir
@@ -273,57 +274,6 @@ void menuIluminacion() {
             //Claro
             printf("\033[0;97;30m");
             setConsoleColor("F0");
-            break;
-        default:
-            // Opción no válida
-            printf("\n  Opcion no valida. Por favor, selecciona una opcion valida.\n");
-        }
-}
-
-void menuTienda() {
-    int opcion;
-
-    printf("    ==================\n");
-    printf("          Tienda:\n");
-    printf("    ==================\n\n");
-    printf("    1) Comprar Manzana | $50\n");
-    printf("    2) comprar Agua | $50\n");
-    printf("    3) Comprar Super 8 | $50\n");
-    printf("    4) Comprar Coca-Cola | $50\n");
-    printf("    5) Salir\n");
-
-    printf("\n  Selecciona una opcion: \n");
-    scanf("%d", &opcion);
-    while (getchar() != '\n');
-
-    switch(opcion) {
-        case 1:
-            //Manzana
-            limpiarPantalla();
-            printf("Has comprado una Manzana");
-            esperarInput();
-            break;
-        case 2:
-            //Agua
-            limpiarPantalla();
-            printf("Has comprado un Agua");
-            esperarInput();
-            break;
-        case 3:
-            //Super8
-            limpiarPantalla();
-            printf("Has comprado un Super 8");
-            esperarInput();
-            break;
-                            
-        case 4:
-            //Coca-Cola
-            limpiarPantalla();
-            printf("Has comprado una Coca-Cola");
-            esperarInput();
-            break;
-        case 5:
-            //Salir
             break;
         default:
             // Opción no válida
