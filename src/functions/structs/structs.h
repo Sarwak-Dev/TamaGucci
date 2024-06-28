@@ -32,6 +32,7 @@ typedef struct Tamagotchi {
 // Estructura para representar los items almacenados
 typedef struct Item {
     char nombre[30];
+    int coste;
     int restantes;
 } Item;
 

@@ -40,8 +40,8 @@ int main() {
     //Declara la variable mapa_accion_efecto con tipo HashMap
     HashMap *mapa_accion_efecto = create_map(20); // Revisar functions.effect para mas informacion.
     List *lista_objetos = list_create(50); 
-    //inicializar_mapa_acciones(mapa_accion_efecto);
-    //inicializar_lista_objetos(lista_objetos);
+    inicializar_mapa_acciones(mapa_accion_efecto);
+    inicializar_lista_objetos(lista_objetos);
     printf("Mapa inicializado\n"); // Debug print
 
     //menuTienda(lista_objetos);
