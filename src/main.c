@@ -83,7 +83,7 @@ int main() {
                 case 1:
                     // Interacciones
                     limpiarPantalla();
-                    menuInteracciones();
+                    menuInteracciones(mapa_accion_efecto, juego);
                     break;
                 case 2:
                     //Inventario
@@ -199,7 +199,7 @@ void menuInventario() {
         }
 }
 
-void menuInteracciones() {
+void menuInteracciones(HashMap * mapa_accion_efecto, Juego * juego) {
     int opcion;
 
     printf("    1) Jugar\n");
@@ -223,8 +223,8 @@ void menuInteracciones() {
             // Acariciar
             limpiarPantalla();
             printf("\n    Has acariciado a tu mascota\n");
-            //acaricia();
-            //aplicar_efecto("Acariciar", mascota, mapa_accion_efecto);
+            acaricia;
+            aplicar_efecto("Acariciar", &juego->mascota, mapa_accion_efecto);
             esperarInput();
             break;
         case 3:
