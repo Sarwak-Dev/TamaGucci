@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../structs/structs.h"
-#include "../TDAs/hashmap.h"
+#include "../../functions/structs/structs.h"
+#include "../../functions/TDAs/hashmap.h"
+#include "../../functions/TDAs/list.h"
 #include "shop.h"
 
 // Función que crea un arreglo con todos los objetos presentes en el mapa acción-efecto

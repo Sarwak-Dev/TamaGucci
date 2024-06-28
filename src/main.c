@@ -9,8 +9,8 @@
 #include "functions/effect/effect.h"
 #include "functions/saves/save.h"
 #include "img/design.h"
-#include "interaction/games.h"
-#include "functions/shop/shop.h"
+#include "interaction/games/games.h"
+//#include "interaction/shop/shop.h"
 
 void menuPrincipal(HashMap * mapa_accion_efecto, Juego * juego);
 void menuInferior();
@@ -100,7 +100,7 @@ int main() {
                 case 3:
                     //Tienda
                     limpiarPantalla();
-                    menuTienda(lista_objetos);
+                    //menuTienda(lista_objetos);
                     break;
                 case 4:
                     // Salir
