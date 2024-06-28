@@ -10,7 +10,7 @@
 #include "functions/saves/save.h"
 #include "img/design.h"
 #include "interaction/games.h"
-#include "functions/tienda/tienda.h"
+#include "functions/shop/shop.h"
 
 void menuPrincipal(HashMap * mapa_accion_efecto, Juego * juego);
 void menuInferior();
@@ -35,15 +35,18 @@ int main() {
     setConsoleColor("F0");
     printf("\033[H\033[J");
     system("chcp 65001");
+    limpiarPantalla();
 
     //Declara la variable mapa_accion_efecto con tipo HashMap
     HashMap *mapa_accion_efecto = create_map(20); // Revisar functions.effect para mas informacion.
     List *lista_objetos = list_create(50); 
-    inicializar_mapa_acciones(mapa_accion_efecto);
-    inicializar_lista_objetos(lista_objetos);
+    //inicializar_mapa_acciones(mapa_accion_efecto);
+    //inicializar_lista_objetos(lista_objetos);
     printf("Mapa inicializado\n"); // Debug print
 
-    const char* filename = "save.txt";
+    //menuTienda(lista_objetos);
+
+    const char* filename = "cache/save.txt";
 
     // Inicializar juego y mascota
     Juego* juego = (Juego*)malloc(sizeof(Juego));

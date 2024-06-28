@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "tienda.h"
+#include "shop.h"
 
 Item* list_get(List *list, int index) {
     if (list == NULL || index < 0 || index >= list->size) {
@@ -16,7 +16,6 @@ Item* list_get(List *list, int index) {
         current = list_next(list);
         count++;
     }
-
 }
 
 List menuTienda(List *lista) {
@@ -34,7 +33,7 @@ List menuTienda(List *lista) {
         current = list_next(lista);
     }
     printf("   %d) Salir\n", i);
-    
+
     printf("   Selecciona una opción: \n");
     scanf("%d", &opcion);
     while (getchar() != '\n');
