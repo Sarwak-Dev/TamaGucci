@@ -4,6 +4,7 @@
 #include <ctype.h>
 #include <stdbool.h>
 #include <unistd.h>
+#include <windows.h>
 
 #include "design.h"
 #include "../functions/structs/structs.h"
@@ -238,8 +239,8 @@ void acaricia(){
   printf("   █   ▀▀   █\n");
   printf("    ████████\n");
 
-  //usleep(300000);
-  sleep(1);
+  Sleep(300);
+  //sleep(1);
   limpiarPantalla3();
   
   printf("                                     \n");
@@ -256,8 +257,8 @@ void acaricia(){
   printf("   █   ▀▀   █\n");
   printf("    ████████\n");
 
-  //usleep(300000);
-  sleep(1);
+  Sleep(300);
+  //sleep(1);
 
   limpiarPantalla3();
   
@@ -303,8 +304,8 @@ void palmada(){
     printf("    ████████\n");
 
 
-    //usleep(300000);
-    sleep(1);
+    Sleep(300);
+    //sleep(1);
     limpiarPantalla3();
 
     printf("                                    \n");
@@ -324,8 +325,8 @@ void palmada(){
     printf("   █        █\n");
     printf("    ████████\n");
 
-    //usleep(300000);
-    sleep(1);
+    Sleep(300);
+    //sleep(1);
     limpiarPantalla3();
   }
   
@@ -346,8 +347,8 @@ void palmada(){
   printf("   █        █\n");
   printf("    ████████\n");
   
-  //usleep(700000);
-  sleep(1);
+  Sleep(700);
+  //sleep(1);
   limpiarPantalla3();
   
   printf("                 ▄▄▄                 \n");
@@ -368,7 +369,7 @@ void palmada(){
   printf("    ████████\n");
 
 
-  //usleep(1000000);
+  //Sleep(1000000);
   sleep(1);
   limpiarPantalla3();
   
