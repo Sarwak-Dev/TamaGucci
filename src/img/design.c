@@ -35,84 +35,84 @@ void imprimir_hora(time_t hora) {
 
 // Muestra superior de la cabeza normal
 void cabeza_normalSuperior(){
-  printf("  ██    ██\n");
-  printf(" █  ████  █\n");
-  printf(" █        █\n");
-  printf("█          █\n");
-  printf("█          █\n");
-  printf("█  █    █  █\n");
+  printf("    ██    ██\n");
+  printf("   █  ████  █\n");
+  printf("   █        █\n");
+  printf("  █          █\n");
+  printf("  █          █\n");
+  printf("  █  █    █  █\n");
   return;
 }
 
 // Muestra superior de la cabeza cansada
 void cabeza_cansadaSuperior(){
-  printf("  ██    ██\n");
-  printf(" █  ████  █\n");
-  printf(" █        █\n");
-  printf("█          █\n");
-  printf("█ ▄██  ██▄ █\n");
-  printf("█  █    █  █\n");
+  printf("    ██    ██\n");
+  printf("   █  ████  █\n");
+  printf("   █        █\n");
+  printf("  █          █\n");
+  printf("  █ ▄██  ██▄ █\n");
+  printf("  █  █    █  █\n");
   return;
 }
 
 // Muestra superior de la cabeza agotada
 void cabeza_agotadaSuperior(){
-  printf("  ██    ██\n");
-  printf(" █  ████  █\n");
-  printf(" █        █\n");
-  printf("█          █\n");
-  printf("█  ▄▄  ▄▄  █\n");
-  printf("█ ▀▀    ▀▀ █\n");
+  printf("    ██    ██\n");
+  printf("   █  ████  █\n");
+  printf("   █        █\n");
+  printf("  █          █\n");
+  printf("  █  ▄▄  ▄▄  █\n");
+  printf("  █ ▀▀    ▀▀ █\n");
   return;
 }
 
 // Muestra inferior de la cabeza normal
 void cabeza_normalInferior(){
-  printf("█   ▄  ▄   █\n");
-  printf(" █   ▀▀   █\n");
-  printf("  ████████\n");
+  printf("  █   ▄  ▄   █\n");
+  printf("   █   ▀▀   █\n");
+  printf("    ████████\n");
   return;
 }
 
 // Muestra inferior de la cabeza seria
 void cabeza_seriaInferior(){
-  printf("█   ▄▄▄▄   █\n");
-  printf(" █        █\n");
-  printf("  ████████\n");
+  printf("  █   ▄▄▄▄   █\n");
+  printf("   █        █\n");
+  printf("    ████████\n");
   return;
 }
 
 // Muestra inferior de la cabeza triste
 void cabeza_tristeInferior(){
-  printf("█    ▄▄    █\n");
-  printf(" █  ▀  ▀  █\n");
-  printf("  ████████\n");
+  printf("  █    ▄▄    █\n");
+  printf("   █  ▀  ▀  █\n");
+  printf("    ████████\n");
   return;
 }
 
 // Muestra el cuerpo normal
 void cuerpo_normal(){
-  printf(" █ █    █ █\n");
-  printf(" ██      ██\n");
-  printf("  ████████ \n");
-  printf("   ██  ██  \n");
+  printf("   █ █    █ █\n");
+  printf("   ██      ██\n");
+  printf("    ████████ \n");
+  printf("     ██  ██  \n");
 }
 
 // Muestra el cuerpo hambriento
 void cuerpo_hambre(){
-  printf(" █ ██  ██ █\n");
-  printf(" ██ █  █ ██\n");
-  printf("    ████   \n");
-  printf("    █  █   \n");
+  printf("   █ ██  ██ █\n");
+  printf("   ██ █  █ ██\n");
+  printf("      ████   \n");
+  printf("      █  █   \n");
   return;
 }
 
 // Muestra el cuerpo desnutrido
 void cuerpo_desnutrido(){
-  printf(" █  █  █  █\n");
-  printf(" █   ██   █\n");
-  printf("    ████    \n");
-  printf("    █  █   \n");  
+  printf("   █  █  █  █\n");
+  printf("   █   ██   █\n");
+  printf("      ████    \n");
+  printf("      █  █   \n");  
   return;
 }
 
@@ -121,63 +121,63 @@ void cuerpo_desnutrido(){
 
 
 void muertePor_tristeza(){
-  printf("     ██      \n");
-  printf("     ██      \n");
-  printf("  ██ ██ ██   \n");
-  printf(" █  ████  █  \n");
-  printf(" █        █  \n");
-  printf("█          █ \n");
-  printf("█ ▀▄▀  ▀▄▀ █ \n");
-  printf("█ ▀ ▀  ▀ ▀ █ \n");
-  printf("█    ▄▄    █ \n");
-  printf(" █  ▀  ▀  █  \n");
-  printf("  ████████   \n");
-  printf(" █ █    █ █  \n");
-  printf(" ██      ██  \n");
-  printf("  ████████   \n");
-  printf("   ██  ██    \n");
-  printf("             \n");
-  printf("             \n");
-  printf("             \n");
-  printf("▄▄▄▄▄▄▄▄▄▄▄▄ \n");  
+  printf("       ██      \n");
+  printf("       ██      \n");
+  printf("    ██ ██ ██   \n");
+  printf("   █  ████  █  \n");
+  printf("   █        █  \n");
+  printf("  █          █ \n");
+  printf("  █ ▀▄▀  ▀▄▀ █ \n");
+  printf("  █ ▀ ▀  ▀ ▀ █ \n");
+  printf("  █    ▄▄    █ \n");
+  printf("   █  ▀  ▀  █  \n");
+  printf("    ████████   \n");
+  printf("   █ █    █ █  \n");
+  printf("   ██      ██  \n");
+  printf("    ████████   \n");
+  printf("     ██  ██    \n");
+  printf("               \n");
+  printf("               \n");
+  printf("               \n");
+  printf("  ▄▄▄▄▄▄▄▄▄▄▄▄ \n");  
   return;
 }
 
 void muertePor_agotamiento(){
-  printf("    ▄                \n");
-  printf("       ▄▀            \n"),
-  printf("      ▄       ▀      \n");
-  printf("    ▄▀ ▀▄    ▄       \n");
-  printf("  ▄▀     ▀▄▄▀ ▀▄     \n");
-  printf(" █     ▄▄▄▄     █    \n");
-  printf("█   ▄▀▀████▀▀▄   ▀▄  \n");
-  printf("▀▄  █▄▄████▄▄█    █  \n");
-  printf(" █   ██▀██▀██    ▄▀  \n");
-  printf("  ▀▄   ▄▄▄▄    ▄▀    \n");
-  printf("     ▄▄▄▄▄▄▄▄        \n");
-  printf("    █ █    █ █       \n");
-  printf("    ██      ██       \n");
-  printf("     ████████        \n");
-  printf("      ██  ██         \n");
+  printf("      ▄                \n");
+  printf("         ▄▀            \n"),
+  printf("        ▄       ▀      \n");
+  printf("      ▄▀ ▀▄    ▄       \n");
+  printf("    ▄▀     ▀▄▄▀ ▀▄     \n");
+  printf("   █     ▄▄▄▄     █    \n");
+  printf("  █   ▄▀▀████▀▀▄   ▀▄  \n");
+  printf("  ▀▄  █▄▄████▄▄█    █  \n");
+  printf("   █   ██▀██▀██    ▄▀  \n");
+  printf("    ▀▄   ▄▄▄▄    ▄▀    \n");
+  printf("       ▄▄▄▄▄▄▄▄        \n");
+  printf("      █ █    █ █       \n");
+  printf("      ██      ██       \n");
+  printf("       ████████        \n");
+  printf("        ██  ██         \n");
   return;
 }
 
 void muertePor_hambre(){
-  printf("              \n");
-  printf("              \n");
-  printf("   ██   ██    \n");
-  printf("  █  ███  █   \n");
-  printf("  █       █   \n");
-  printf(" █         █  \n");
-  printf("█ ▀▄▀   ▀▄▀ █ \n");
-  printf("█ ▀ ▀   ▀ ▀ █ \n");
-  printf(" █  ▄▀▀▀▄  █  \n");
-  printf("  █ ▀▄▄▄▀ █   \n");
-  printf("   ███████    \n");
-  printf("  █   █   █   \n");
-  printf("  █   █   █   \n");
-  printf("     ███      \n");
-  printf("    █   █     \n");
+  printf("                \n");
+  printf("                \n");
+  printf("     ██   ██    \n");
+  printf("    █  ███  █   \n");
+  printf("    █       █   \n");
+  printf("   █         █  \n");
+  printf("  █ ▀▄▀   ▀▄▀ █ \n");
+  printf("  █ ▀ ▀   ▀ ▀ █ \n");
+  printf("   █  ▄▀▀▀▄  █  \n");
+  printf("    █ ▀▄▄▄▀ █   \n");
+  printf("     ███████    \n");
+  printf("    █   █   █   \n");
+  printf("    █   █   █   \n");
+  printf("       ███      \n");
+  printf("      █   █     \n");
 return;
 }
 
@@ -187,93 +187,93 @@ void acaricia(){
 
   limpiarPantalla3();
   for(int i=0; i<3; i++){
-    printf("                                 \n");
-    printf("              ▄▄▄                 \n");
-    printf("         ▄▄▄▀▀   ▀▄                \n");
-    printf("  ▄▄▄▀▀▀▀         █                \n");
-    printf("  ▀▄▄▄▄▄▄▄▄  ▄▄▀▀▀                     \n");
-    printf(" █▀▀▄▄▄▄▀▀█▄▀                       \n");
-    printf(" █        █                       \n");
-    printf("█          █                      \n");
-    printf("█          █                      \n");
-    printf("█▀▄▄▀  ▀▄▄▀█                      \n");
-    printf("█   ▄  ▄   █\n");
-    printf(" █   ▀▀   █\n");
-    printf("  ████████\n");
+    printf("                                   \n");
+    printf("                ▄▄▄                 \n");
+    printf("           ▄▄▄▀▀   ▀▄                \n");
+    printf("    ▄▄▄▀▀▀▀         █                \n");
+    printf("    ▀▄▄▄▄▄▄▄▄  ▄▄▀▀▀                     \n");
+    printf("   █▀▀▄▄▄▄▀▀█▄▀                       \n");
+    printf("   █        █                       \n");
+    printf("  █          █                      \n");
+    printf("  █          █                      \n");
+    printf("  █▀▄▄▀  ▀▄▄▀█                      \n");
+    printf("  █   ▄  ▄   █\n");
+    printf("   █   ▀▀   █\n");
+    printf("    ████████\n");
 
 
     sleep(1);
     limpiarPantalla3();
 
 
-    printf("                                  \n");
-    printf("               ▄▄▄                 \n");
-    printf("          ▄▄▄▀▀   ▀▄                \n");
-    printf("   ▄▄▄▀▀▀▀         █                \n");
-    printf("   ▀▄▄▄▄▄▄▄▄  ▄▄▀▀▀                     \n");
-    printf(" █▀▀▄▄▄▄▀▀█▀▄▀                       \n");
-    printf(" █        █                       \n");
-    printf("█          █                      \n");
-    printf("█          █                      \n");
-    printf("█▀▄▄▀  ▀▄▄▀█                      \n");
-    printf("█   ▄  ▄   █\n");
-    printf(" █   ▀▀   █\n");
-    printf("  ████████\n");
+    printf("                                    \n");
+    printf("                 ▄▄▄                 \n");
+    printf("            ▄▄▄▀▀   ▀▄                \n");
+    printf("     ▄▄▄▀▀▀▀         █                \n");
+    printf("     ▀▄▄▄▄▄▄▄▄  ▄▄▀▀▀                     \n");
+    printf("   █▀▀▄▄▄▄▀▀█▀▄▀                       \n");
+    printf("   █        █                       \n");
+    printf("  █          █                      \n");
+    printf("  █          █                      \n");
+    printf("  █▀▄▄▀  ▀▄▄▀█                      \n");
+    printf("  █   ▄  ▄   █\n");
+    printf("   █   ▀▀   █\n");
+    printf("    ████████\n");
 
     sleep(1);
     limpiarPantalla3();
   }
 
-  printf("                                 \n");
-  printf("              ▄▄▄                 \n");
-  printf("         ▄▄▄▀▀   ▀▄                \n");
-  printf("  ▄▄▄▀▀▀▀         █                \n");
-  printf("  ▀▄▄▄▄▄▄▄▄  ▄▄▀▀▀                     \n");
-  printf(" █▀▀▄▄▄▄▀▀█▄▀                    \n");
-  printf(" █        █                   \n");
-  printf("█          █                       \n");
-  printf("█          █ ▄                      \n");
-  printf("█▀▄▄▀  ▀▄▄▀█                      \n");
-  printf("█   ▄  ▄   █\n");
-  printf(" █   ▀▀   █\n");
-  printf("  ████████\n");
+  printf("                                   \n");
+  printf("                ▄▄▄                 \n");
+  printf("           ▄▄▄▀▀   ▀▄                \n");
+  printf("    ▄▄▄▀▀▀▀         █                \n");
+  printf("    ▀▄▄▄▄▄▄▄▄  ▄▄▀▀▀                     \n");
+  printf("   █▀▀▄▄▄▄▀▀█▄▀                    \n");
+  printf("   █        █                   \n");
+  printf("  █          █                       \n");
+  printf("  █          █ ▄                      \n");
+  printf("  █▀▄▄▀  ▀▄▄▀█                      \n");
+  printf("  █   ▄  ▄   █\n");
+  printf("   █   ▀▀   █\n");
+  printf("    ████████\n");
 
   //usleep(300000);
   sleep(1);
   limpiarPantalla3();
   
-  printf("                                 \n");
-  printf("              ▄▄▄                 \n");
-  printf("         ▄▄▄▀▀   ▀▄                \n");
-  printf("  ▄▄▄▀▀▀▀         █                \n");
-  printf("  ▀▄▄▄▄▄▄▄▄  ▄▄▀▀▀                     \n");
-  printf(" █▀▀▄▄▄▄▀▀█▄▀                    \n");
-  printf(" █        █                   \n");
-  printf("█          █                       \n");
-  printf("█          █ ▄▀                      \n");
-  printf("█▀▄▄▀  ▀▄▄▀█                      \n");
-  printf("█   ▄  ▄   █\n");
-  printf(" █   ▀▀   █\n");
-  printf("  ████████\n");
+  printf("                                     \n");
+  printf("                ▄▄▄                 \n");
+  printf("           ▄▄▄▀▀   ▀▄                \n");
+  printf("    ▄▄▄▀▀▀▀         █                \n");
+  printf("    ▀▄▄▄▄▄▄▄▄  ▄▄▀▀▀                     \n");
+  printf("   █▀▀▄▄▄▄▀▀█▄▀                    \n");
+  printf("   █        █                   \n");
+  printf("  █          █                       \n");
+  printf("  █          █ ▄▀                      \n");
+  printf("  █▀▄▄▀  ▀▄▄▀█                      \n");
+  printf("  █   ▄  ▄   █\n");
+  printf("   █   ▀▀   █\n");
+  printf("    ████████\n");
 
   //usleep(300000);
   sleep(1);
 
   limpiarPantalla3();
   
-  printf("                                 \n");
-  printf("              ▄▄▄                 \n");
-  printf("         ▄▄▄▀▀   ▀▄                \n");
-  printf("  ▄▄▄▀▀▀▀         █                \n");
-  printf("  ▀▄▄▄▄▄▄▄▄  ▄▄▀▀▀                     \n");
-  printf(" █▀▀▄▄▄▄▀▀█▄▀    ▄ ▄                 \n");
-  printf(" █        █     █ ▀ █              \n");
-  printf("█          █     ▀▄▀                  \n");
-  printf("█          █ ▄▀                      \n");
-  printf("█▀▄▄▀  ▀▄▄▀█                      \n");
-  printf("█   ▄  ▄   █\n");
-  printf(" █   ▀▀   █\n");
-  printf("  ████████\n");
+  printf("                                   \n");
+  printf("                ▄▄▄                 \n");
+  printf("           ▄▄▄▀▀   ▀▄                \n");
+  printf("    ▄▄▄▀▀▀▀         █                \n");
+  printf("    ▀▄▄▄▄▄▄▄▄  ▄▄▀▀▀                     \n");
+  printf("   █▀▀▄▄▄▄▀▀█▄▀    ▄ ▄                 \n");
+  printf("   █        █     █ ▀ █              \n");
+  printf("  █          █     ▀▄▀                  \n");
+  printf("  █          █ ▄▀                      \n");
+  printf("  █▀▄▄▀  ▀▄▄▀█                      \n");
+  printf("  █   ▄  ▄   █\n");
+  printf("   █   ▀▀   █\n");
+  printf("    ████████\n");
   
   sleep(1);
   limpiarPantalla3();
@@ -285,130 +285,130 @@ void palmada(){
   limpiarPantalla3();
   for(int i=0; i<7; i++){
 
-    printf("               ▄▄▄                 \n");
-    printf("          ▄▄▄▀▀   ▀▄                \n");
-    printf("   ▄▄▄▀▀▀▀         █                \n");
-    printf("   ▀▄▄▄▄▄▄▄▄  ▄▄▀▀▀                   \n");
-    printf("           ▀▄▀                       \n");
-    printf("                                  \n");
-    printf("                                  \n");
-    printf("  ██    ██\n");
-    printf(" █  ████  █\n");
-    printf(" █        █\n");
-    printf("█          █\n");
-    printf("█ ███  ███ █\n");
-    printf("█  █    █  █\n");
-    printf("█   ▄▄▄▄   █\n");
-    printf(" █        █\n");
-    printf("  ████████\n");
+    printf("                 ▄▄▄                 \n");
+    printf("            ▄▄▄▀▀   ▀▄                \n");
+    printf("     ▄▄▄▀▀▀▀         █                \n");
+    printf("     ▀▄▄▄▄▄▄▄▄  ▄▄▀▀▀                   \n");
+    printf("             ▀▄▀                       \n");
+    printf("                                    \n");
+    printf("                                    \n");
+    printf("    ██    ██\n");
+    printf("   █  ████  █\n");
+    printf("   █        █\n");
+    printf("  █          █\n");
+    printf("  █ ███  ███ █\n");
+    printf("  █  █    █  █\n");
+    printf("  █   ▄▄▄▄   █\n");
+    printf("   █        █\n");
+    printf("    ████████\n");
 
 
     //usleep(300000);
     sleep(1);
     limpiarPantalla3();
 
-    printf("                                  \n");
-    printf("                                  \n");
-    printf("                                  \n");
-    printf("                                  \n");
-    printf("               ▄▄▄                 \n");
-    printf("          ▄▄▄▀▀   ▀▄                \n");
-    printf("   ▄▄▄▀▀▀▀         █                \n");
-    printf("   ▀▄▄▄▄▄▄▄▄  ▄▄▀▀▀                   \n");
-    printf(" █▀▀▄▄▄▄▀▀█▀▄▀                       \n");
-    printf(" █        █                       \n");
-    printf("█          █                      \n");
-    printf("█ ███  ███ █\n");
-    printf("█  █    █  █\n");
-    printf("█   ▄▄▄▄   █\n");
-    printf(" █        █\n");
-    printf("  ████████\n");
+    printf("                                    \n");
+    printf("                                    \n");
+    printf("                                    \n");
+    printf("                                    \n");
+    printf("                 ▄▄▄                 \n");
+    printf("            ▄▄▄▀▀   ▀▄                \n");
+    printf("     ▄▄▄▀▀▀▀         █                \n");
+    printf("     ▀▄▄▄▄▄▄▄▄  ▄▄▀▀▀                   \n");
+    printf("   █▀▀▄▄▄▄▀▀█▀▄▀                       \n");
+    printf("   █        █                       \n");
+    printf("  █          █                      \n");
+    printf("  █ ███  ███ █\n");
+    printf("  █  █    █  █\n");
+    printf("  █   ▄▄▄▄   █\n");
+    printf("   █        █\n");
+    printf("    ████████\n");
 
     //usleep(300000);
     sleep(1);
     limpiarPantalla3();
   }
   
-  printf("               ▄▄▄                 \n");
-  printf("          ▄▄▄▀▀   ▀▄                \n");
-  printf("   ▄▄▄▀▀▀▀         █                \n");
-  printf("   ▀▄▄▄▄▄▄▄▄  ▄▄▀▀▀                   \n");
-  printf("           ▀▄▀                       \n");
-  printf("                                  \n");
-  printf("                                  \n");
-  printf("  ██    ██\n");
-  printf(" █  ████  █\n");
-  printf(" █        █\n");
-  printf("█          █\n");
-  printf("█ ███  ███ █\n");
-  printf("█  █    █  █\n");
-  printf("█   ▄▄▄▄   █\n");
-  printf(" █        █\n");
-  printf("  ████████\n");
+  printf("                 ▄▄▄                 \n");
+  printf("            ▄▄▄▀▀   ▀▄                \n");
+  printf("     ▄▄▄▀▀▀▀         █                \n");
+  printf("     ▀▄▄▄▄▄▄▄▄  ▄▄▀▀▀                   \n");
+  printf("             ▀▄▀                       \n");
+  printf("                                    \n");
+  printf("                                    \n");
+  printf("    ██    ██\n");
+  printf("   █  ████  █\n");
+  printf("   █        █\n");
+  printf("  █          █\n");
+  printf("  █ ███  ███ █\n");
+  printf("  █  █    █  █\n");
+  printf("  █   ▄▄▄▄   █\n");
+  printf("   █        █\n");
+  printf("    ████████\n");
   
   //usleep(700000);
   sleep(1);
   limpiarPantalla3();
   
-  printf("               ▄▄▄                 \n");
-  printf("          ▄▄▄▀▀   ▀▄                \n");
-  printf("   ▄▄▄▀▀▀▀         █                \n");
-  printf("   ▀▄▄▄▄▄▄▄▄  ▄▄▀▀▀                   \n");
-  printf("           ▀▄▀                       \n");
-  printf("                                  \n");
-  printf("                                  \n");
-  printf("  ██    ██\n");
-  printf(" █  ████  █\n");
-  printf(" █        █  █\n");
-  printf("█          █\n");
-  printf("█ ███  ███ █\n");
-  printf("█  █    █  █ \n");
-  printf("█   ▄▄▄▄   █\n");
-  printf(" █        █\n");
-  printf("  ████████\n");
+  printf("                 ▄▄▄                 \n");
+  printf("            ▄▄▄▀▀   ▀▄                \n");
+  printf("     ▄▄▄▀▀▀▀         █                \n");
+  printf("     ▀▄▄▄▄▄▄▄▄  ▄▄▀▀▀                   \n");
+  printf("             ▀▄▀                       \n");
+  printf("                                    \n");
+  printf("                                    \n");
+  printf("    ██    ██\n");
+  printf("   █  ████  █\n");
+  printf("   █        █  █\n");
+  printf("  █          █\n");
+  printf("  █ ███  ███ █\n");
+  printf("  █  █    █  █ \n");
+  printf("  █   ▄▄▄▄   █\n");
+  printf("   █        █\n");
+  printf("    ████████\n");
 
 
   //usleep(1000000);
   sleep(1);
   limpiarPantalla3();
   
-  printf("               ▄▄▄                 \n");
-  printf("          ▄▄▄▀▀   ▀▄                \n");
-  printf("   ▄▄▄▀▀▀▀         █                \n");
-  printf("   ▀▄▄▄▄▄▄▄▄  ▄▄▀▀▀                   \n");
-  printf("           ▀▄▀                       \n");
-  printf("                                  \n");
-  printf("                                  \n");
-  printf("  ██    ██\n");
-  printf(" █  ████  █\n");
-  printf(" █        █  █ █\n");
-  printf("█          █\n");
-  printf("█ ███  ███ █\n");
-  printf("█  █    █  █ \n");
-  printf("█   ▄▄▄▄   █\n");
-  printf(" █        █\n");
-  printf("  ████████\n");
+  printf("                 ▄▄▄                 \n");
+  printf("            ▄▄▄▀▀   ▀▄                \n");
+  printf("     ▄▄▄▀▀▀▀         █                \n");
+  printf("     ▀▄▄▄▄▄▄▄▄  ▄▄▀▀▀                   \n");
+  printf("             ▀▄▀                       \n");
+  printf("                                    \n");
+  printf("                                    \n");
+  printf("    ██    ██\n");
+  printf("   █  ████  █\n");
+  printf("   █        █  █ █\n");
+  printf("  █          █\n");
+  printf("  █ ███  ███ █\n");
+  printf("  █  █    █  █ \n");
+  printf("  █   ▄▄▄▄   █\n");
+  printf("   █        █\n");
+  printf("    ████████\n");
 
   //usleep(1000000);
   sleep(1);
   limpiarPantalla3();
   
-  printf("               ▄▄▄                 \n");
-  printf("          ▄▄▄▀▀   ▀▄                \n");
-  printf("   ▄▄▄▀▀▀▀         █                \n");
-  printf("   ▀▄▄▄▄▄▄▄▄  ▄▄▀▀▀                   \n");
-  printf("           ▀▄▀                       \n");
+  printf("                 ▄▄▄                 \n");
+  printf("            ▄▄▄▀▀   ▀▄                \n");
+  printf("     ▄▄▄▀▀▀▀         █                \n");
+  printf("     ▀▄▄▄▄▄▄▄▄  ▄▄▀▀▀                   \n");
+  printf("             ▀▄▀                       \n");
+  printf("                                   \n");
   printf("                                  \n");
-  printf("                                  \n");
-  printf("  ██    ██\n");
-  printf(" █  ████  █\n");
-  printf(" █        █  █ █ █\n");
-  printf("█          █\n");
-  printf("█ ███  ███ █\n");
-  printf("█  █    █  █ \n");
-  printf("█   ▄▄▄▄   █\n");
-  printf(" █        █\n");
-  printf("  ████████\n");
+  printf("    ██    ██\n");
+  printf("   █  ████  █\n");
+  printf("   █        █  █ █ █\n");
+  printf("  █          █\n");
+  printf("  █ ███  ███ █\n");
+  printf("  █  █    █  █ \n");
+  printf("  █   ▄▄▄▄   █\n");
+  printf("   █        █\n");
+  printf("    ████████\n");
 
   sleep(1);
   limpiarPantalla3();

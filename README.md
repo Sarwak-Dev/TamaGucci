@@ -7,7 +7,7 @@ gcc -o TamaGucci.exe src/main.c src/functions/TDAs/hashmap.c src/functions/effec
 
 para ejecutar el codigo hay que ejecutar este comando:
 
-gcc -o TamaGucci.exe src/main.c src/functions/TDAs/hashmap.c src/functions/effect/effect.c src/functions/saves/save.c src/functions/TDAs/list.c src/functions/structs/structs.h resources/icon/icon.res src/interaction/games.c src/img/design.c src/functions/shop/shop.c
+gcc -o TamaGucci.exe src/main.c src/functions/TDAs/hashmap.c src/functions/effect/effect.c src/functions/saves/save.c src/functions/TDAs/list.c src/functions/structs/structs.h resources/icon/icon.res src/interaction/games/games.c src/img/design.c src/interaction/shop/shop.c
 
 luego acceder a la carpeta y abrir TamaGucci.exe.
 

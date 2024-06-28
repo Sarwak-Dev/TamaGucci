@@ -9,8 +9,8 @@
 #include "functions/effect/effect.h"
 #include "functions/saves/save.h"
 #include "img/design.h"
-#include "interaction/games.h"
-#include "functions/shop/shop.h"
+#include "interaction/games/games.h"
+#include "interaction/shop/shop.h"
 
 void menuPrincipal(HashMap * mapa_accion_efecto, Juego * juego);
 void menuInferior();
@@ -38,7 +38,7 @@ int main() {
     //Declara la variable mapa_accion_efecto con tipo HashMap
     HashMap *mapa_accion_efecto = create_map(20); // Revisar functions.effect para mas informacion.
     List *lista_objetos = list_create(50); 
-    //inicializar_mapa_acciones(mapa_accion_efecto);
+    inicializar_mapa_acciones(mapa_accion_efecto);
     //inicializar_lista_objetos(lista_objetos);
     printf("Mapa inicializado\n"); // Debug print
 
@@ -121,6 +121,8 @@ int main() {
 }
 
 void menuPrincipal(HashMap * mapa_accion_efecto, Juego * juego) {
+    Tamagotchi * mascota;
+
     printf("\n  Estado actual del Tamagotchi:\n\n");
 
     printf("    Comida: ");
@@ -135,31 +137,8 @@ void menuPrincipal(HashMap * mapa_accion_efecto, Juego * juego) {
     printf("    dinero: ");
     printf(" %f    \n \n \n", juego->dinero);
 
-    //char * clave_buscar = "Jugar"; // Por ejemplo, buscar el efecto de la acción "Jugar"
-
- //Buscar el par clave-valor en el mapa
-    //Pair * par = search_map(mapa_accion_efecto, clave_buscar);
-     //Acceder al valor (que es un puntero a Efecto)
-    //Juego * juego;
-    
-     //Imprimir el valor de alteracion_animo
-    //printf("animo: %f\n", juego->mascota.animo);
-
-    //mostrar_mascota(&juego->mascota);
-
-    printf("      ██    ██ \n");
-    printf("     █  ████  █\n");
-    printf("     █        █\n");
-    printf("    █          █\n");
-    printf("    █          █\n");
-    printf("    █  █    █  █\n");
-    printf("    █   ▄  ▄   █\n");
-    printf("     █   ▀▀   █\n");
-    printf("      ████████\n");
-    printf("     █ █    █ █\n");
-    printf("     ██      ██\n");
-    printf("      ████████ \n");
-    printf("       ██  ██  \n\n");
+//Gato
+    mostrar_mascota(mascota);
 }
 
 void menuInferior() {
