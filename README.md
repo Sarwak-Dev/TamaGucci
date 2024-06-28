@@ -153,7 +153,7 @@ El programa te llevara a un menu donde podras elegir la opcion que te interesa:
  2) Abrir Inventario
  3) Abrir Tienda
  4) Dormir
-==================
+
 
 El funcionamiento de este menu resulta sencillo, espera que ingreses uno de las 4 opciones y presciones enter.
 ```c
@@ -232,15 +232,11 @@ este menu de interacciones tiene varias opciones a nuestra disposicion, las expl
 
 (2)INVENTARIO: 
 
-
-    INVENTARIO:
-==================
  1) Manzana x6
  2) Agua x3
  3) Super 8 x8
  4) Coca-Cola x8
  5) Salir
-
 ```c
 void menuInventario() {
   
