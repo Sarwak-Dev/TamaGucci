@@ -31,9 +31,7 @@ void setConsoleColor(const char* color) {
 
 int main() {
     //Comandos de inicio de la consola
-    printf("\033[0;97;30m");
-    setConsoleColor("F0");
-    printf("\033[H\033[J");
+
     system("chcp 65001");
     limpiarPantalla();
 
@@ -73,10 +71,13 @@ int main() {
     guardar_estado(juego, filename);
     printf("Guardado realizado\n"); // Debug print
 
+    printf("\033[0;97;30m");
+    setConsoleColor("F0");
+    printf("\033[H\033[J");
+
     int opcion;
 
     while (true) {
-        
         limpiarPantalla();
         menuPrincipal(mapa_accion_efecto, juego);
         menuInferior();
