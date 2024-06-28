@@ -48,7 +48,7 @@ Item* list_get(List *list, int index) {
     }
 }
 
-List menuTienda(Item * objetos[10]) {
+List menuTienda(List *lista) {
     int opcion;
     printf("   ===================================================\n");
     printf("   ¡ Bienvenido a la tienda !\n");
