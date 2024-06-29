@@ -3,6 +3,7 @@
 // Función para escribir los elementos de una lista en un archivo separados por comas
 void guardar_lista_en_archivo(FILE* file, List* lista, const char* tipo) {
     printf("Comenzamos el guardado\n");
+    
     // Se maneja excepción si lista está vacía
     if (lista->head == NULL || lista->tail == NULL) {
         fprintf(file, ";\n");
