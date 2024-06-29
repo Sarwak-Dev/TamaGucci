@@ -81,6 +81,9 @@ int main() {
         return 1;
     }
     printf("Juego inicializado\n"); // Debug print
+    juego->mochila = list_create();
+    juego->caricias_ultima_hora = list_create();
+    printf("Listas inicializadas\n");
 
     Tamagotchi* mascota = (Tamagotchi*)malloc(sizeof(Tamagotchi));
     if (mascota == NULL) {
@@ -93,8 +96,14 @@ int main() {
     /* */cargar_estado(juego, filename);
     printf("Carga finalizada\n"); // Debug print
 
+    printf("%f %f %f\n", juego->mascota.comida, juego->mascota.descanso, juego->mascota.animo);
+    if (juego->mochila->head == NULL) printf("Lista mochila vacía");
+
     actualizar_estado(juego);
     printf("Actualización realizada\n"); // Debug print
+
+    printf("%f %f %f\n", juego->mascota.comida, juego->mascota.descanso, juego->mascota.animo);
+    if (juego->mochila->head == NULL) printf("Lista mochila vacía");
 
     guardar_estado(juego, filename);
     printf("Guardado realizado\n"); // Debug print
@@ -165,7 +174,7 @@ void menuPrincipal(HashMap * mapa_accion_efecto, Juego * juego) {
     printf("    dinero: ");
     printf(" %f    \n \n \n", juego->dinero);
 
-//Gato
+    //Gato
     mostrar_mascota(mascota);
 }
 

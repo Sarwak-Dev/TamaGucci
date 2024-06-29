@@ -84,6 +84,17 @@ bool aplicar_efecto(char * nombre_accion, struct Tamagotchi *mascota, HashMap *m
     mascota->descanso   +=  par_accion->value->alteracion_descanso;
     mascota->animo      +=  par_accion->value->alteracion_animo;
 
+    // Nivelar si estadísticas sobrepasan los límites
+    if (mascota->comida > 100) mascota->comida = 100;
+    if (mascota->comida < 0) mascota->comida = 0;
+
+    if (mascota->descanso > 100) mascota->descanso = 100;
+    if (mascota->descanso < 0) mascota->descanso = 0;
+
+    if (mascota->animo > 100) mascota->animo = 100;
+    if (mascota->animo < 0) mascota->animo = 0;
+
+
     // Confirmar que el efecto pudo aplicarse
     return true;
 }

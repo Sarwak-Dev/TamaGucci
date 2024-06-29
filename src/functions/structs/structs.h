@@ -48,11 +48,11 @@ typedef struct Efecto {
 typedef struct Juego {
     Tamagotchi mascota;         // Tamagotchi en juego
     int dinero;                 // Dinero de juego
-    List mochila;               // Mochila de Items almacenados
+    List * mochila;             // Mochila de Items almacenados
     time_t ultima_actualizacion;// Hora de última actualización
     time_t ultima_palmadita;    // Hora de última palmadita
     time_t ultimo_pago;         // Hora del último pago de dinero
-    List caricias_ultima_hora;  // Lista con las horas de las últimas caricias
+    List * caricias_ultima_hora;// Lista con las horas de las últimas caricias
 } Juego;
 
 #endif // Structs
