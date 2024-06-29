@@ -327,3 +327,4 @@ void limpiarPantalla() { system("cls"); }
     menuInferior();
 }*/
 //soi wekito ola
+// oooooooh que rico oojooooo (sebyta)
