@@ -3,8 +3,7 @@
 #include "../../functions/structs/structs.h"
 #include "../../functions/TDAs/list.h"
 
-void menuTienda(Item lista[7]);
-void menuInventario2(Item lista[7]);
-
+void menuTienda(Item lista[7], Juego * juego);
+void menuInventario(Item lista[7], Juego * juego);
 
 #endif // TIENDA_H

@@ -42,12 +42,12 @@ void muertePor_agotamiento();
 void muertePor_hambre();
 
 
-void acaricia(Tamagotchi * mascota);
+void acaricia(Tamagotchi * mascota, Juego * juego);
 
-void palmada(Tamagotchi * mascota);
+void palmada(Tamagotchi * mascota, Juego * juego);
 
 
-void mostrar_cuerpo(Tamagotchi * mascota);
+void mostrar_cuerpo(Tamagotchi * mascota, Juego * juego);
 
 // Función para mostrar el gato en función del estado de sus estadísticas
 void mostrar_mascota(Tamagotchi * mascota, Juego * juego);

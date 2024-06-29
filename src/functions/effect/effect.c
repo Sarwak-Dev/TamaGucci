@@ -49,26 +49,40 @@ HashMap * inicializar_mapa_acciones(HashMap * mapa_acciones) {
 }
 
 void inicializar_lista_objetos(Item lista_objetos[7]) {
+    // Inicializar el primer objeto
     strcpy(lista_objetos[0].nombre, "Pescado");
     lista_objetos[0].restantes = 5;
+    lista_objetos[0].coste = 1;
 
+    // Inicializar el segundo objeto
     strcpy(lista_objetos[1].nombre, "Hamburguesa");
     lista_objetos[1].restantes = 1;
+    lista_objetos[1].coste = 2;
 
+    // Inicializar el tercer objeto
     strcpy(lista_objetos[2].nombre, "Sushi");
     lista_objetos[2].restantes = 1;
+    lista_objetos[2].coste = 3;
 
+    // Inicializar el cuarto objeto
     strcpy(lista_objetos[3].nombre, "Caja de Arena");
     lista_objetos[3].restantes = 0;
+    lista_objetos[3].coste = 4;
 
+    // Inicializar el quinto objeto
     strcpy(lista_objetos[4].nombre, "Proteina");
     lista_objetos[4].restantes = 0;
+    lista_objetos[4].coste = 5;
 
+    // Inicializar el sexto objeto
     strcpy(lista_objetos[5].nombre, "Redbull");
     lista_objetos[5].restantes = 0;
+    lista_objetos[5].coste = 6;
 
+    // Inicializar el séptimo objeto
     strcpy(lista_objetos[6].nombre, "Gata a domicilio");
     lista_objetos[6].restantes = 0;
+    lista_objetos[6].coste = 7;
 }
 
 // Definir acciones para los items

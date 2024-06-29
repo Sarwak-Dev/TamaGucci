@@ -13,14 +13,16 @@
 #include "interaction/shop/shop.h"
 
 void menuPrincipal(HashMap * mapa_accion_efecto, Juego * juego);
+void imprimir_barras(float valor);
 void menuInferior();
-void menuInventario();
-void menuInteracciones();
+void menuInteracciones(HashMap * mapa_accion_efecto, Juego * juego, Tamagotchi * mascota);
 void menuIluminacion();
 void dejarDormir();
 void esperarInput();
 void limpiarPantalla();
 void printItem(char *item, int restantes, int comida, int descanso, int animo, struct Tamagotchi mascota, HashMap mapa_accion_efecto);
+
+bool ilum = true;
 
 void setConsoleColor(const char* color) {
     char command[10];
@@ -38,36 +40,8 @@ int main() {
     HashMap *mapa_accion_efecto = create_map(20); // Revisar functions.effect para mas informacion.
     Item lista_objetos[7];
 
-    strcpy(lista_objetos[0].nombre, "Pescado");
-    lista_objetos[0].coste = 20;
-    lista_objetos[0].restantes = 5;
-
-    strcpy(lista_objetos[1].nombre, "Hamburguesa");
-    lista_objetos[1].coste = 30;
-    lista_objetos[1].restantes = 1;
-
-    strcpy(lista_objetos[2].nombre, "Sushi");
-    lista_objetos[2].coste = 40;
-    lista_objetos[2].restantes = 1;
-
-    strcpy(lista_objetos[3].nombre, "Caja de Arena");
-    lista_objetos[3].coste = 20;
-    lista_objetos[3].restantes = 0;
-
-    strcpy(lista_objetos[4].nombre, "Proteina");
-    lista_objetos[4].coste = 35;
-    lista_objetos[4].restantes = 0;
-
-    strcpy(lista_objetos[5].nombre, "Redbull");
-    lista_objetos[5].coste = 35;
-    lista_objetos[5].restantes = 0;
-
-    strcpy(lista_objetos[6].nombre, "Gata a domicilio");
-    lista_objetos[6].coste = 35;
-    lista_objetos[6].restantes = 0;
-
     inicializar_mapa_acciones(mapa_accion_efecto);
-    //inicializar_lista_objetos(lista_objetos[7]);
+    inicializar_lista_objetos(lista_objetos);
     printf("Mapa inicializado\n"); // Debug print
 
     //menuTienda(lista_objetos);
@@ -108,7 +82,7 @@ int main() {
     guardar_estado(juego, filename);
     printf("Guardado realizado\n"); // Debug print
 
-    printf("\033[0;97;30m");
+    //printf("\033[0;97;107m");
     setConsoleColor("F0");
     printf("\033[H\033[J");
 
@@ -127,17 +101,17 @@ int main() {
                 case 1:
                     // Interacciones
                     limpiarPantalla();
-                    menuInteracciones(mapa_accion_efecto, juego);
+                    menuInteracciones(mapa_accion_efecto, juego, mascota);
                     break;
                 case 2:
                     //Inventario
                     limpiarPantalla();
-                    menuInventario2(lista_objetos);
+                    menuInventario(lista_objetos, juego);
                     break;
                 case 3:
                     //Tienda
                     limpiarPantalla();
-                    menuTienda(lista_objetos);
+                    menuTienda(lista_objetos, juego);
                     break;
                 case 4:
                     // Salir
@@ -149,9 +123,9 @@ int main() {
                 default:
                     // Opción no válida
                     printf("\nOpcion no valida. Por favor, selecciona una opcion valida.\n");
-            }/**/ 
-        /**/actualizar_estado(juego);
-        guardar_estado(juego, filename);/**/
+            } 
+        actualizar_estado(juego);
+        guardar_estado(juego, filename);
     }
 
     return 0;
@@ -162,70 +136,116 @@ void menuPrincipal(HashMap * mapa_accion_efecto, Juego * juego) {
 
     printf("\n  Estado actual del Tamagotchi:\n\n");
 
-    printf("    Comida: ");
-    printf(" %f    ", juego->mascota.comida);
-
+    printf("    Comida:");
+    imprimir_barras(juego->mascota.comida);
+    //printf(" %.0f%%    ", juego->mascota.comida);
+    
     printf("    Descanso: ");
-    printf(" %f    ", juego->mascota.descanso);
+    imprimir_barras(juego->mascota.descanso);
+    //printf(" %.0f%%    ", juego->mascota.descanso);
 
-    printf("    Animo: ");
-    printf(" %f    \n \n \n", juego->mascota.animo);
+    printf("    Animo:");
+    imprimir_barras(juego->mascota.animo);
+    //printf(" %.0f%%    \n \n \n", juego->mascota.animo);
 
-    printf("    dinero: ");
-    printf(" %f    \n \n \n", juego->dinero);
+    printf("    Dinero: ");
+    printf("%d$\n\n\n", juego->dinero);
+    printf("   ━━━∙ʚ●ɞ∙━━━\n\n\n");
+
+    //printf("\033[0;40;37m");
 
 //Gato
     mostrar_mascota(mascota, juego);
 }
 
+void imprimir_barras(float valor) {
+    int num_barras = valor / 10; // Número de barras completas
+    float resto = valor - num_barras * 10; // Resto para determinar la barra más delgada
+    
+    if (ilum == true) {
+        if (valor <= 0) {
+            printf(" ");
+        } else if (valor < 10) {
+            printf("\033[0;31;107m▌"); // Rojo con fondo blanco
+        } else {
+            // Imprimir barras completas
+            for (int i = 0; i < num_barras; ++i) {
+                if (i == 0 && resto > 0 && resto < 10) {
+                    if (valor > 60) {
+                        printf("\033[0;32;107m▐"); // Verde con fondo blanco, primera barra más delgada
+                    } else if (valor > 30) {
+                        printf("\033[0;33;107m▐"); // Amarillo con fondo blanco, primera barra más delgada
+                    } else {
+                        printf("\033[0;31;107m▐"); // Rojo con fondo blanco, primera barra más delgada
+                    }
+                } else if (i == 0 && resto >= 10) {
+                    if (valor > 60) {
+                        printf("\033[0;32;107m█"); // Verde con fondo blanco, primera barra completa
+                    } else if (valor > 30) {
+                        printf("\033[0;33;107m█"); // Amarillo con fondo blanco, primera barra completa
+                    } else {
+                        printf("\033[0;31;107m█"); // Rojo con fondo blanco, primera barra completa
+                    }
+                } else {
+                    if (valor > 60) {
+                        printf("\033[0;32;107m█"); // Verde con fondo blanco, barras completas
+                    } else if (valor > 30) {
+                        printf("\033[0;33;107m█"); // Amarillo con fondo blanco, barras completas
+                    } else {
+                        printf("\033[0;31;107m█"); // Rojo con fondo blanco, barras completas
+                    }
+                }
+            }
+        }
+        printf("\033[0;30;107m"); // Restaurar colores por defecto al final
+    } else {
+        if (valor <= 0) {
+            printf(" ");
+        } else if (valor < 10) {
+            printf("\033[0;31;40m▌"); // Rojo con fondo negro
+        } else {
+            // Imprimir barras completas
+            for (int i = 0; i < num_barras; ++i) {
+                if (i == 0 && resto > 0 && resto < 10) {
+                    if (valor > 60) {
+                        printf("\033[0;32;40m▐"); // Verde con fondo negro, primera barra más delgada
+                    } else if (valor > 30) {
+                        printf("\033[0;33;40m▐"); // Amarillo con fondo negro, primera barra más delgada
+                    } else {
+                        printf("\033[0;31;40m▐"); // Rojo con fondo negro, primera barra más delgada
+                    }
+                } else if (i == 0 && resto >= 10) {
+                    if (valor > 60) {
+                        printf("\033[0;32;40m█"); // Verde con fondo negro, primera barra completa
+                    } else if (valor > 30) {
+                        printf("\033[0;33;40m█"); // Amarillo con fondo negro, primera barra completa
+                    } else {
+                        printf("\033[0;31;40m█"); // Rojo con fondo negro, primera barra completa
+                    }
+                } else {
+                    if (valor > 60) {
+                        printf("\033[0;32;40m█"); // Verde con fondo negro, barras completas
+                    } else if (valor > 30) {
+                        printf("\033[0;33;40m█"); // Amarillo con fondo negro, barras completas
+                    } else {
+                        printf("\033[0;31;40m█"); // Rojo con fondo negro, barras completas
+                    }
+                }
+            }
+        }
+        printf("\033[0;97;40m"); // Restaurar colores por defecto al final
+    }
+}
+
 void menuInferior() {
-    printf("\n  ==================\n\n");
+    printf("\n   ━━━∙ʚ●ɞ∙━━━\n\n");
     printf("    1) Acciones\n");
     printf("    2) Abrir Inventario\n");
     printf("    3) Abrir Tienda\n");
     printf("    4) Dormir\n");
 }
 
-void menuInventario() {
-    int opcion;
-    
-    printf("    ==================\n");
-    printf("        INVENTARIO:\n");
-    printf("    ==================\n\n");
-    printf("    1) Manzana x6\n");
-    printf("    2) Agua x3\n");
-    printf("    3) Super 8 x8\n");
-    printf("    4) Coca-Cola x8\n");
-    printf("    5) Salir\n");
-
-    printf("\n  Selecciona una opcion: \n");
-    scanf("%d", &opcion);
-    while (getchar() != '\n');
-
-    switch(opcion) {
-        case 1:
-            //Manzana
-            break;
-        case 2:
-            //Agua
-            break;
-        case 3:
-            //Super8
-            break;
-                            
-        case 4:
-            //Coca-Cola
-            break;
-        case 5:
-            //Salir
-            break;
-        default:
-            // Opción no válida
-            printf("\nOpcion no valida. Por favor, selecciona una opcion valida.\n");
-        }
-}
-
-void menuInteracciones(HashMap * mapa_accion_efecto, Juego * juego) {
+void menuInteracciones(HashMap * mapa_accion_efecto, Juego * juego, Tamagotchi * mascota) {
     int opcion;
 
     printf("    1) Jugar\n");
@@ -248,7 +268,7 @@ void menuInteracciones(HashMap * mapa_accion_efecto, Juego * juego) {
         case 2:
             // Acariciar
             limpiarPantalla();
-            acaricia(&juego->mascota);
+            acaricia(mascota, juego);
             aplicar_efecto("Acariciar", &juego->mascota, mapa_accion_efecto);
             printf("\n\n  Has acariciado a tu mascota\n\n");
             esperarInput();
@@ -256,7 +276,7 @@ void menuInteracciones(HashMap * mapa_accion_efecto, Juego * juego) {
         case 3:
             // Palmaditas
             limpiarPantalla();
-            palmada(&juego->mascota);
+            palmada(mascota, juego);
             aplicar_efecto("Palmadita", &juego->mascota, mapa_accion_efecto);
             printf("\n\n  Le has dado palmaditas a tu mascota\n\n");
             esperarInput();
@@ -287,13 +307,13 @@ void menuIluminacion() {
     switch(opcion) {
         case 1:
             //Oscuro
-             printf("\033[0;40;37m");
             setConsoleColor("0F");
+            ilum = false;
             break;
         case 2:
             //Claro
-            printf("\033[0;97;30m");
             setConsoleColor("F0");
+            ilum = true;
             break;
         default:
             // Opción no válida
@@ -318,22 +338,3 @@ void esperarInput() {
 
 // Función que se encarga de eliminar todo lo impreso en pantalla
 void limpiarPantalla() { system("cls"); }
-
-
-/*void printItem(char *item, int restantes, int comida, int descanso, int animo, struct Tamagotchi mascota, HashMap mapa_accion_efecto) {
-    limpiarPantalla();
-    printf("    Has comido una ");
-    for (int i = 0; item[i] != '\0'; i++) {
-        printf("%c", item[i]); // Imprime cada carácter de la cadena
-    }
-    printf(" (%d restantes)\n", restantes);
-    printf("    %d Comida\n", comida);
-    printf("    %d Descanso\n", descanso);
-    printf("    %d Animo\n", animo);
-    esperarInput();
-    limpiarPantalla();
-    menuPrincipal(mapa_accion_efecto;
-    menuInferior();
-}*/
-//soi wekito ola
-// oooooooh que rico oojooooo (sebyta)

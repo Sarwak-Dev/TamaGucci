@@ -122,7 +122,7 @@ void cargar_estado(Juego* juego, const char* filename) {
         juego->mascota.animo = 100.0f;
         juego->mascota.dormido = false;
         juego->mascota.vivo = true;
-        juego->dinero = 0;
+        juego->dinero = 500;
         juego->ultima_actualizacion = time(NULL);
         juego->ultima_palmadita = time(NULL);
         juego->ultimo_pago = time(NULL);
