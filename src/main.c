@@ -239,17 +239,17 @@ void menuInteracciones(HashMap * mapa_accion_efecto, Juego * juego) {
         case 2:
             // Acariciar
             limpiarPantalla();
-            printf("\n    Has acariciado a tu mascota\n");
             acaricia();
             aplicar_efecto("Acariciar", &juego->mascota, mapa_accion_efecto);
+            printf("\n\n  Has acariciado a tu mascota\n\n");
             esperarInput();
             break;
         case 3:
             // Palmaditas
             limpiarPantalla();
-            printf("\n    Le has dado palmaditas a tu mascota\n");
+            palmada();
             aplicar_efecto("Palmadita", &juego->mascota, mapa_accion_efecto);
-            palmada;
+            printf("\n\n  Le has dado palmaditas a tu mascota\n\n");
             esperarInput();
             break;
         case 4:
