@@ -50,6 +50,6 @@ void palmada(Tamagotchi * mascota);
 void mostrar_cuerpo(Tamagotchi * mascota);
 
 // Función para mostrar el gato en función del estado de sus estadísticas
-void mostrar_mascota(Tamagotchi * mascota);
+void mostrar_mascota(Tamagotchi * mascota, Juego * juego);
 
 #endif
