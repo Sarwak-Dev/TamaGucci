@@ -41,7 +41,6 @@ typedef struct Efecto {
     int alteracion_comida;
     int alteracion_descanso;
     int alteracion_animo;
-    char tipo[30]; // Tipo objeto / interacción
 } Efecto;
 
 // Estructura para almacenar variables de juego

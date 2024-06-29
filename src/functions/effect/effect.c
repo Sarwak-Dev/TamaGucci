@@ -5,43 +5,43 @@
 HashMap * inicializar_mapa_acciones(HashMap * mapa_acciones) {
 
     // Inicializar acción jugar y añadirla al mapa
-    Efecto efecto_jugar = {0, -20, 35, "Interaccion"};
+    Efecto efecto_jugar = {0, -20, 35};
     insert_map(mapa_acciones, "Jugar", &efecto_jugar);
 
     // Inicializar acción acariciar y añadirla al mapa
-    Efecto efecto_acariciar = {0, 0, 15, "Interaccion"};
+    Efecto efecto_acariciar = {0, 0, 15};
     insert_map(mapa_acciones, "Acariciar", &efecto_acariciar);
 
     // Inicializar acción palmaditas y añadirla al mapa
-    Efecto efecto_palmaditas = {0, 10, -5, "Interaccion"};
+    Efecto efecto_palmaditas = {0, 10, -5};
     insert_map(mapa_acciones, "Palmadita", &efecto_palmaditas);
 
     // Inicializar acción comer pescado y añadirla al mapa
-    Efecto efecto_pescado = {20, -5, 10, "Objeto"};
+    Efecto efecto_pescado = {20, -5, 10};
     insert_map(mapa_acciones, "Pescado", &efecto_pescado);
 
     // Inicializar acción comere hamburguesa y añadirla al mapa
-    Efecto efecto_hamburguesa = {20, -10, 15, "Objeto"};
+    Efecto efecto_hamburguesa = {20, -10, 15};
     insert_map(mapa_acciones, "Hamburguesa", &efecto_hamburguesa);
 
     // Inicializar acción comere sushi y añadirla al mapa
-    Efecto efecto_sushi = {30, 0, 20, "Objeto"};
+    Efecto efecto_sushi = {30, 0, 20};
     insert_map(mapa_acciones, "Sushi", &efecto_sushi);
 
     // Inicializar acción cajaArena y añadirla al mapa
-    Efecto efecto_cajaArena = {-10, -20, -30, "Objeto"};
+    Efecto efecto_cajaArena = {-10, -20, -30};
     insert_map(mapa_acciones, "Caja de Arena", &efecto_cajaArena);
 
     // Inicializar acción proteina y añadirla al mapa
-    Efecto efecto_proteina = {35, -10, -10, "Objeto"};
+    Efecto efecto_proteina = {35, -10, -10};
     insert_map(mapa_acciones, "Proteina", &efecto_proteina);
 
     // Inicializar acción redbull y añadirla al mapa
-    Efecto efecto_redbull = {-10, 35, -10, "Objeto"};
+    Efecto efecto_redbull = {-10, 35, -10};
     insert_map(mapa_acciones, "Redbull", &efecto_redbull);
 
     // Inicializar acción gata y añadirla al mapa
-    Efecto efecto_gata = {-10, -10, 35, "Objeto"};
+    Efecto efecto_gata = {-10, -10, 35};
     insert_map(mapa_acciones, "Gata a domicilio", &efecto_gata);
 
     // Retornamos mapa con sus pares acción-efecto inicializadas

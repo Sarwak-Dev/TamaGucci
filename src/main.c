@@ -106,7 +106,7 @@ int main() {
                 case 2:
                     //Inventario
                     limpiarPantalla();
-                    menuInventario(lista_objetos, juego);
+                    menuInventario(lista_objetos, juego, mapa_accion_efecto, mascota);
                     break;
                 case 3:
                     //Tienda
@@ -248,11 +248,14 @@ void menuInferior() {
 void menuInteracciones(HashMap * mapa_accion_efecto, Juego * juego, Tamagotchi * mascota) {
     int opcion;
 
+    printf("\n   ━━━∙ʚ●ɞ∙━━━\n\n");
     printf("    1) Jugar\n");
     printf("    2) Acariciar\n");
     printf("    3) Palmaditas\n");
     printf("    4) Iluminacion\n");
     printf("    5) Salir\n");
+    printf("\n   ━━━∙ʚ●ɞ∙━━━\n\n");
+
 
     printf("\n  Selecciona una opcion: \n");
     scanf("%d", &opcion);

@@ -58,7 +58,7 @@ void menuTienda(Item lista[ARR_SIZE], Juego * juego) {
     printf("\n");
 }
 
-void menuInventario(Item lista[ARR_SIZE], Juego * juego) {
+void menuInventario(Item lista[ARR_SIZE], Juego * juego, HashMap * mapa_acciones, Tamagotchi * mascota) {
     // Mostrar el encabezado y la lista de objetos en el inventario
     printf("\n   ╔════════════════════════════════════════════════╗\n");
     printf("   ║                   INVENTARIO                   ║\n");
@@ -102,6 +102,7 @@ void menuInventario(Item lista[ARR_SIZE], Juego * juego) {
     if (opcion >= 1 && opcion <= numObjetos) {
         listaTemp[opcion - 1].restantes -= 1;
         printf("\n   Has consumido un(a) %s.\n", listaTemp[opcion - 1].nombre);
+        aplicar_efecto(listaTemp[opcion - 1].nombre, &juego->mascota, mapa_acciones);
         esperarInput2();
 
         // Actualizar el inventario original
