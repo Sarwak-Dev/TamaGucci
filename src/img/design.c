@@ -417,21 +417,21 @@ void palmada(){
 
 
 // Función para mostrar el gato en función del estado de sus estadísticas
-void mostrar_mascota(Tamagotchi * mascota){
+void mostrar_mascota(Tamagotchi * mascota, Juego * juego){
 
   // Mostrar zona superior de la cabeza
-  if (mascota->descanso < LIMIT_LVL3) cabeza_agotadaSuperior();
-  else if (mascota->descanso < LIMIT_LVL2) cabeza_cansadaSuperior();
+  if (juego->mascota.descanso < LIMIT_LVL3) cabeza_agotadaSuperior();
+  else if (juego->mascota.descanso < LIMIT_LVL2) cabeza_cansadaSuperior();
   else cabeza_normalSuperior();
 
   // Mostrar zona inferior de la cabeza
-  if (mascota->animo < LIMIT_LVL3) cabeza_tristeInferior();
-  else if (mascota->animo < LIMIT_LVL2) cabeza_seriaInferior();
+  if (juego->mascota.animo < LIMIT_LVL3) cabeza_tristeInferior();
+  else if (juego->mascota.animo < LIMIT_LVL2) cabeza_seriaInferior();
   else cabeza_normalInferior();
 
   // Mostrar cuerpo
-  if (mascota->comida < LIMIT_LVL3) cuerpo_desnutrido();
-  else if (mascota->comida < LIMIT_LVL2) cuerpo_hambre();
+  if (juego->mascota.comida < LIMIT_LVL3) cuerpo_desnutrido();
+  else if (juego->mascota.comida < LIMIT_LVL2) cuerpo_hambre();
   else cuerpo_normal();
 }
 

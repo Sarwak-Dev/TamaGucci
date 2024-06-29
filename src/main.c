@@ -166,7 +166,7 @@ void menuPrincipal(HashMap * mapa_accion_efecto, Juego * juego) {
     printf(" %f    \n \n \n", juego->dinero);
 
 //Gato
-    mostrar_mascota(mascota);
+    mostrar_mascota(mascota, juego);
 }
 
 void menuInferior() {
