@@ -184,7 +184,7 @@ return;
 
 
 
-void acaricia(){
+void acaricia(Tamagotchi * mascota){
 
   limpiarPantalla3();
   for(int i=0; i<3; i++){
@@ -201,6 +201,7 @@ void acaricia(){
     printf("  █   ▄  ▄   █\n");
     printf("   █   ▀▀   █\n");
     printf("    ████████\n");
+  mostrar_cuerpo(mascota);
 
 
     sleep(1);
@@ -220,6 +221,7 @@ void acaricia(){
     printf("  █   ▄  ▄   █\n");
     printf("   █   ▀▀   █\n");
     printf("    ████████\n");
+    mostrar_cuerpo(mascota);
 
     sleep(1);
     limpiarPantalla3();
@@ -238,7 +240,7 @@ void acaricia(){
   printf("  █   ▄  ▄   █\n");
   printf("   █   ▀▀   █\n");
   printf("    ████████\n");
-
+  mostrar_cuerpo(mascota);
   Sleep(300);
   //sleep(1);
   limpiarPantalla3();
@@ -256,7 +258,7 @@ void acaricia(){
   printf("  █   ▄  ▄   █\n");
   printf("   █   ▀▀   █\n");
   printf("    ████████\n");
-
+  mostrar_cuerpo(mascota);
   Sleep(300);
   //sleep(1);
 
@@ -275,14 +277,15 @@ void acaricia(){
   printf("  █   ▄  ▄   █\n");
   printf("   █   ▀▀   █\n");
   printf("    ████████\n");
-  
+  mostrar_cuerpo(mascota);
+
   sleep(1);
   limpiarPantalla3();
   
   return;
 }
 
-void palmada(){
+void palmada(Tamagotchi * mascota){
   limpiarPantalla3();
   for(int i=0; i<7; i++){
 
@@ -302,9 +305,9 @@ void palmada(){
     printf("  █   ▄▄▄▄   █\n");
     printf("   █        █\n");
     printf("    ████████\n");
+    mostrar_cuerpo(mascota);
 
-
-    Sleep(300);
+    Sleep(200);
     //sleep(1);
     limpiarPantalla3();
 
@@ -324,8 +327,8 @@ void palmada(){
     printf("  █   ▄▄▄▄   █\n");
     printf("   █        █\n");
     printf("    ████████\n");
-
-    Sleep(300);
+    mostrar_cuerpo(mascota);
+    Sleep(200);
     //sleep(1);
     limpiarPantalla3();
   }
@@ -346,7 +349,7 @@ void palmada(){
   printf("  █   ▄▄▄▄   █\n");
   printf("   █        █\n");
   printf("    ████████\n");
-  
+  mostrar_cuerpo(mascota);
   Sleep(700);
   //sleep(1);
   limpiarPantalla3();
@@ -367,7 +370,7 @@ void palmada(){
   printf("  █   ▄▄▄▄   █\n");
   printf("   █        █\n");
   printf("    ████████\n");
-
+  mostrar_cuerpo(mascota);
 
   //Sleep(1000000);
   sleep(1);
@@ -389,6 +392,7 @@ void palmada(){
   printf("  █   ▄▄▄▄   █\n");
   printf("   █        █\n");
   printf("    ████████\n");
+  mostrar_cuerpo(mascota);
 
   //usleep(1000000);
   sleep(1);
@@ -410,11 +414,17 @@ void palmada(){
   printf("  █   ▄▄▄▄   █\n");
   printf("   █        █\n");
   printf("    ████████\n");
-
+  mostrar_cuerpo(mascota);
   sleep(1);
   limpiarPantalla3();
 }
 
+// Mostrar cuerpo
+void mostrar_cuerpo(Tamagotchi * mascota){
+  if (mascota->comida < LIMIT_LVL3) cuerpo_desnutrido();
+  else if (mascota->comida < LIMIT_LVL2) cuerpo_hambre();
+  else cuerpo_normal();
+}
 
 // Función para mostrar el gato en función del estado de sus estadísticas
 void mostrar_mascota(Tamagotchi * mascota){
@@ -429,9 +439,7 @@ void mostrar_mascota(Tamagotchi * mascota){
   else if (mascota->animo < LIMIT_LVL2) cabeza_seriaInferior();
   else cabeza_normalInferior();
 
-  // Mostrar cuerpo
-  if (mascota->comida < LIMIT_LVL3) cuerpo_desnutrido();
-  else if (mascota->comida < LIMIT_LVL2) cuerpo_hambre();
-  else cuerpo_normal();
+  mostrar_cuerpo(mascota);
+
 }
 

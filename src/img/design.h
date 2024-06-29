@@ -4,6 +4,7 @@
 #include <time.h>
 #include "../functions/structs/structs.h"
 
+
 // Función que imprime la hora actual en formato H:M:S
 void imprimir_hora(time_t hora);
 
@@ -41,10 +42,12 @@ void muertePor_agotamiento();
 void muertePor_hambre();
 
 
-void acaricia();
+void acaricia(Tamagotchi * mascota);
 
-void palmada();
+void palmada(Tamagotchi * mascota);
 
+
+void mostrar_cuerpo(Tamagotchi * mascota);
 
 // Función para mostrar el gato en función del estado de sus estadísticas
 void mostrar_mascota(Tamagotchi * mascota);
