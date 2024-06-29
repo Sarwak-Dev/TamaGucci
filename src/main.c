@@ -36,10 +36,38 @@ int main() {
 
     //Declara la variable mapa_accion_efecto con tipo HashMap
     HashMap *mapa_accion_efecto = create_map(20); // Revisar functions.effect para mas informacion.
-    List *lista_objetos = list_create(50); 
+    Item lista_objetos[7];
+
+    strcpy(lista_objetos[0].nombre, "Pescado");
+    lista_objetos[0].coste = 20;
+    lista_objetos[0].restantes = 5;
+
+    strcpy(lista_objetos[1].nombre, "Hamburguesa");
+    lista_objetos[1].coste = 30;
+    lista_objetos[1].restantes = 1;
+
+    strcpy(lista_objetos[2].nombre, "Sushi");
+    lista_objetos[2].coste = 40;
+    lista_objetos[2].restantes = 1;
+
+    strcpy(lista_objetos[3].nombre, "Caja de Arena");
+    lista_objetos[3].coste = 20;
+    lista_objetos[3].restantes = 0;
+
+    strcpy(lista_objetos[4].nombre, "Proteina");
+    lista_objetos[4].coste = 35;
+    lista_objetos[4].restantes = 0;
+
+    strcpy(lista_objetos[5].nombre, "Redbull");
+    lista_objetos[5].coste = 35;
+    lista_objetos[5].restantes = 0;
+
+    strcpy(lista_objetos[6].nombre, "Gata a domicilio");
+    lista_objetos[6].coste = 35;
+    lista_objetos[6].restantes = 0;
 
     inicializar_mapa_acciones(mapa_accion_efecto);
-    //inicializar_lista_objetos(lista_objetos, mapa_accion_efecto);
+    //inicializar_lista_objetos(lista_objetos[7]);
     printf("Mapa inicializado\n"); // Debug print
 
     //menuTienda(lista_objetos);
@@ -62,14 +90,14 @@ int main() {
     }
     printf("Mascota inicializada\n"); // Debug print
 
-    /**/cargar_estado(juego, filename);
+    /* */cargar_estado(juego, filename);
     printf("Carga finalizada\n"); // Debug print
 
     actualizar_estado(juego);
     printf("Actualización realizada\n"); // Debug print
 
     guardar_estado(juego, filename);
-    printf("Guardado realizado\n"); // Debug print/**/
+    printf("Guardado realizado\n"); // Debug print
 
     printf("\033[0;97;30m");
     setConsoleColor("F0");
@@ -84,7 +112,7 @@ int main() {
         printf("\n  Selecciona una opcion: \n");
         
         scanf("%d", &opcion);
-        /*while (getchar() != '\n');
+        while (getchar() != '\n');
 
             switch(opcion) {
                 case 1:
@@ -95,7 +123,7 @@ int main() {
                 case 2:
                     //Inventario
                     limpiarPantalla();
-                    menuInventario();
+                    menuInventario2(lista_objetos);
                     break;
                 case 3:
                     //Tienda

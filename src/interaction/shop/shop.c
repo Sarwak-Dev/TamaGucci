@@ -1,129 +1,88 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 #include "../../functions/structs/structs.h"
 #include "../../functions/TDAs/hashmap.h"
 #include "../../functions/TDAs/list.h"
 #include "shop.h"
 
-
-// Función que crea un arreglo con todos los objetos presentes en el mapa acción-efecto
-void inicializar_lista_objetos(List *lista_objetos, HashMap * mapa_accion_efecto) {
-
-    Pair * current = first_map(mapa_accion_efecto); // Iteador para el mapa
-
-    // Recorremos mapa acción-efecto para encontar los efectos asociados a objetos
-    while (current != NULL) {
-
-        // Si el par actual tiene un efecto del tipo efecto
-        if (strcmp(current->value->tipo,"Objeto") == 0) {
-            
-            // Creamos un objeto con el nombre y el coste correspondiente al objeto
-            Item * objeto;
-            strcpy(objeto->nombre, current->key);
-            objeto->coste = current->value->coste;
-            objeto->restantes = 0;
-
-            // Añadimos el nuevo objeto a la lista
-            list_pushBack(lista_objetos, objeto);
-        }
-    }
+void esperarInput2() {
+    printf("\n  Presiona Enter para continuar...");
+    while (getchar() != '\n'); // Esperar la entrada del usuario
 }
 
-
-Item* list_get(List *list, int index) {
-    if (list == NULL || index < 0 || index >= list->size) {
-        return NULL; // Índice fuera de rango o lista no inicializada
-    }
-
-    Item *current = list_first(list);
-    int count = 0;
-    while (current != NULL) {
-        if (count == index) {
-            return current;
-        }
-        current = list_next(list);
-        count++;
-    }
-}
-
-List menuTienda(List *lista) {
+void menuTienda(Item lista[7]) {
     int opcion;
     printf("   ===================================================\n");
-    printf("   ¡ Bienvenido a la tienda !\n");
+    printf("   ¡Bienvenido a la tienda!\n");
     printf("   Objetos a disposición:\n\n");
     
-    Item *current = list_first(lista);
-    int i = 1;
-
-    while (current != NULL) {
-        printf("   %d) Nombre: %s, Precio: 0\n", i, current->nombre);
-        i++;
-        current = list_next(lista);
+    for (int i = 0; i < 7; i++) {
+        printf("   %d) Nombre: %s, Precio: %d\n", i + 1, lista[i].nombre, lista[i].coste);
     }
-    printf("   %d) Salir\n", i);
+    printf("   8) Salir\n");
 
     printf("   Selecciona una opción: \n");
     scanf("%d", &opcion);
     while (getchar() != '\n');
 
-    Item *item = NULL;
-
-switch(opcion) {
-    case 1:
-        item = list_first(lista); // Obtener el primer elemento de la lista
-        item->restantes += 1;
-        printf("\n   Has adquirido un Pescado\n");
-        break;
-
-    case 2:
-        item = (Item*)list_get(lista, 1); // Obtener el segundo elemento de la lista
-        item->restantes += 1;
-        printf("\n   Has adquirido una Hamburguesa\n");
-        break;
-
-    case 3:
-        item = (Item*)list_get(lista, 2); // Obtener el tercer elemento de la lista
-        item->restantes += 1;
-        printf("\n   Has adquirido un Sushi\n");
-        break;
-
-    case 4:
-        item = (Item*)list_get(lista, 3); // Obtener el cuarto elemento de la lista
-        item->restantes += 1;
-        printf("\n   Has adquirido una Caja de Arena\n");
-        break;
-
-    case 5:
-        item = (Item*)list_get(lista, 4); // Obtener el quinto elemento de la lista
-        item->restantes += 1;
-        printf("\n   Has adquirido una Proteína\n");
-        break;
-
-    case 6:
-        item = (Item*)list_get(lista, 5); // Obtener el sexto elemento de la lista
-        item->restantes += 1;
-        printf("\n   Has adquirido un Redbull\n");
-        break;
-
-    case 7:
-        item = (Item*)list_get(lista, 6); // Obtener el séptimo elemento de la lista
-        item->restantes += 1;
-        printf("\n   Has adquirido una Gata a Domicilio\n");
-        break;
-
-    case 8:
-        break;
-
-    default:
-        // Opción no válida
-        printf("\n  Opcion no valida. Por favor, selecciona una opcion valida.\n");
+    if (opcion >= 1 && opcion <= 7) {
+        lista[opcion - 1].restantes += 1;
+        printf("\n   Has adquirido un(a) %s\n", lista[opcion - 1].nombre);
+    } else if (opcion == 8) {
+        printf("   Saliendo de la tienda...\n\n");
+    } else {
+        printf("\n   Opción no válida. Por favor, selecciona una opción válida.\n");
     }
-    return *lista;
+    printf("\n");
 }
 
+void menuInventario2(Item lista[7]) {
+    int opcion;
+    printf("   ===================================================\n");
+    printf("   ¡Bienvenido al inventario!\n");
+    printf("   Objetos en colección:\n\n");
+    
+    Item lista2[7];
+    int k = 0;
 
+    // Copiar elementos de lista a lista2 solo si restantes > 0
+    for (int i = 0; i < 7; i++) {
+        if (lista[i].restantes > 0) {
+            strcpy(lista2[k].nombre, lista[i].nombre);
+            lista2[k].coste = lista[i].coste;
+            lista2[k].restantes = lista[i].restantes;
+            k++;
+        }
+    }
 
+    for (int i = 0; i < k; i++) {
+        printf("   %d) Nombre: %s, Cantidad: %d\n", i + 1, lista2[i].nombre, lista2[i].restantes);
+    }
+    printf("   %d) Salir\n", k + 1);
+
+    printf("   Selecciona una opción: \n");
+    scanf("%d", &opcion);
+    while (getchar() != '\n');
+
+    if (opcion >= 1 && opcion <= k) {
+        lista2[opcion - 1].restantes -= 1;
+        esperarInput2();
+        printf("\n   Has consumido un(a) %s\n", lista2[opcion - 1].nombre);
+
+        // Actualizar el elemento correspondiente en lista
+        for (int i = 0; i < 7; i++) {
+            if (strcmp(lista[i].nombre, lista2[opcion - 1].nombre) == 0) {
+                lista[i].restantes -= 1;
+                break;
+            }
+        }
+    } else if (opcion == k + 1) {
+        printf("   Saliendo del inventario...\n\n");
+    } else {
+        printf("\n   Opción no válida. Por favor, selecciona una opción válida.\n");
+    }
+    printf("\n");
+}
 
 void limpiarPantalla4() { system("cls"); }
 
