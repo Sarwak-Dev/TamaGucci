@@ -12,7 +12,7 @@ void guardar_lista_en_archivo(FILE* file, List* lista, const char* tipo) {
 
         // Si la lista es de cadenas, se escribe en el formato indicado
         } else if (strcmp(tipo, "string") == 0) {
-            fprintf(file, "%s", (char*)node->data);
+            fprintf(file, "%s", (char*)node->data); //ERROR
         }
 
         // Si existen más elementos, se imprime una coma
@@ -87,7 +87,7 @@ void leer_lista_de_archivo(FILE* file, List* lista, const char* tipo) {
             // Si la lista es de cadenas, se inicializa en el formato indicado
             } else if (strcmp(tipo, "string") == 0) {
                 // Se agrega elemento a la lista
-                char* item = strdup(token);
+                char* item = strdup(token); //ERROR
                 list_pushBack(lista, item);
             }
             // Se toma siguiente parte de la línea hasta la coma
