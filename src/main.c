@@ -44,8 +44,6 @@ int main() {
     inicializar_lista_objetos(lista_objetos);
     printf("Mapa inicializado\n"); // Debug print
 
-    //menuTienda(lista_objetos);
-
     const char* filename = "cache/save.txt";
 
     // Inicializar juego y mascota

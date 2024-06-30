@@ -133,7 +133,7 @@ bool aplicar_efecto(char * nombre_accion, struct Tamagotchi *mascota, HashMap *m
     printf("\n   %d\n", efecto->alteracion_comida);
     printf("\n   %d\n", efecto->alteracion_descanso);
     printf("\n   %d\n", efecto->alteracion_animo);
-    sleep(3);
+    sleep(2);
 
     // Nivelar si estadísticas sobrepasan los límites
     if (mascota->comida > 100) mascota->comida = 100;

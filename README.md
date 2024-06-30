@@ -1,12 +1,8 @@
 # Proyecto_Estructura
- 
-gcc -o TamaGucci.exe src/main.c resources/icon/icon.res
-
-gcc -o TamaGucci.exe src/main.c src/functions/TDAs/hashmap.c src/functions/effect/effect.c resources/icon/icon.res
 
 ▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄
 
-para ejecutar el codigo hay que ejecutar este comando:
+Para ejecutar el codigo hay que ejecutar este comando:
 
 gcc -o TamaGucci.exe src/main.c src/functions/TDAs/hashmap.c src/functions/effect/effect.c src/functions/saves/save.c src/functions/TDAs/list.c src/functions/structs/structs.h resources/icon/icon.res src/interaction/games/games.c src/img/design.c src/interaction/shop/shop.c
 
