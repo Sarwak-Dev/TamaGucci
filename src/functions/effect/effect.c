@@ -1,48 +1,80 @@
 #include "effect.h"
+#include <unistd.h>
+
 // Comida Descanso Animo Precio Tipo
 
-// Incializa mapa de acciones y efectos en estadísticas
+// Inicializa mapa de acciones y efectos en estadísticas
 HashMap * inicializar_mapa_acciones(HashMap * mapa_acciones) {
 
     // Inicializar acción jugar y añadirla al mapa
-    Efecto efecto_jugar = {0, -20, 35};
-    insert_map(mapa_acciones, "Jugar", &efecto_jugar);
+    Efecto *efecto_jugar = malloc(sizeof(Efecto));
+    efecto_jugar->alteracion_comida = 0;
+    efecto_jugar->alteracion_descanso = -10;
+    efecto_jugar->alteracion_animo = 15;
+    insert_map(mapa_acciones, "Jugar", efecto_jugar);
 
     // Inicializar acción acariciar y añadirla al mapa
-    Efecto efecto_acariciar = {0, 0, 15};
-    insert_map(mapa_acciones, "Acariciar", &efecto_acariciar);
+    Efecto *efecto_acariciar = malloc(sizeof(Efecto));
+    efecto_acariciar->alteracion_comida = 0;
+    efecto_acariciar->alteracion_descanso = 0;
+    efecto_acariciar->alteracion_animo = 10;
+    insert_map(mapa_acciones, "Acariciar", efecto_acariciar);
 
     // Inicializar acción palmaditas y añadirla al mapa
-    Efecto efecto_palmaditas = {0, 10, -5};
-    insert_map(mapa_acciones, "Palmadita", &efecto_palmaditas);
+    Efecto *efecto_palmaditas = malloc(sizeof(Efecto));
+    efecto_palmaditas->alteracion_comida = 0;
+    efecto_palmaditas->alteracion_descanso = 10;
+    efecto_palmaditas->alteracion_animo = -5;
+    insert_map(mapa_acciones, "Palmadita", efecto_palmaditas);
 
     // Inicializar acción comer pescado y añadirla al mapa
-    Efecto efecto_pescado = {20, -5, 10};
-    insert_map(mapa_acciones, "Pescado", &efecto_pescado);
+    Efecto *efecto_pescado = malloc(sizeof(Efecto));
+    efecto_pescado->alteracion_comida = 10;
+    efecto_pescado->alteracion_descanso = -5;
+    efecto_pescado->alteracion_animo = 5;
+    insert_map(mapa_acciones, "Pescado", efecto_pescado);
 
-    // Inicializar acción comere hamburguesa y añadirla al mapa
-    Efecto efecto_hamburguesa = {20, -10, 15};
-    insert_map(mapa_acciones, "Hamburguesa", &efecto_hamburguesa);
+    // Inicializar acción comer hamburguesa y añadirla al mapa
+    Efecto *efecto_hamburguesa = malloc(sizeof(Efecto));
+    efecto_hamburguesa->alteracion_comida = 15;
+    efecto_hamburguesa->alteracion_descanso = -10;
+    efecto_hamburguesa->alteracion_animo = 10;
+    insert_map(mapa_acciones, "Hamburguesa", efecto_hamburguesa);
 
-    // Inicializar acción comere sushi y añadirla al mapa
-    Efecto efecto_sushi = {30, 0, 20};
-    insert_map(mapa_acciones, "Sushi", &efecto_sushi);
+    // Inicializar acción comer sushi y añadirla al mapa
+    Efecto *efecto_sushi = malloc(sizeof(Efecto));
+    efecto_sushi->alteracion_comida = 20;
+    efecto_sushi->alteracion_descanso = 0;
+    efecto_sushi->alteracion_animo = 10;
+    insert_map(mapa_acciones, "Sushi", efecto_sushi);
 
     // Inicializar acción cajaArena y añadirla al mapa
-    Efecto efecto_cajaArena = {-10, -20, -30};
-    insert_map(mapa_acciones, "Caja de Arena", &efecto_cajaArena);
+    Efecto *efecto_cajaArena = malloc(sizeof(Efecto));
+    efecto_cajaArena->alteracion_comida = -10;
+    efecto_cajaArena->alteracion_descanso = -15;
+    efecto_cajaArena->alteracion_animo = -25;
+    insert_map(mapa_acciones, "Caja de Arena", efecto_cajaArena);
 
     // Inicializar acción proteina y añadirla al mapa
-    Efecto efecto_proteina = {35, -10, -10};
-    insert_map(mapa_acciones, "Proteina", &efecto_proteina);
+    Efecto *efecto_proteina = malloc(sizeof(Efecto));
+    efecto_proteina->alteracion_comida = 35;
+    efecto_proteina->alteracion_descanso = -10;
+    efecto_proteina->alteracion_animo = -10;
+    insert_map(mapa_acciones, "Proteina", efecto_proteina);
 
     // Inicializar acción redbull y añadirla al mapa
-    Efecto efecto_redbull = {-10, 35, -10};
-    insert_map(mapa_acciones, "Redbull", &efecto_redbull);
+    Efecto *efecto_redbull = malloc(sizeof(Efecto));
+    efecto_redbull->alteracion_comida = -10;
+    efecto_redbull->alteracion_descanso = 35;
+    efecto_redbull->alteracion_animo = -10;
+    insert_map(mapa_acciones, "Redbull", efecto_redbull);
 
     // Inicializar acción gata y añadirla al mapa
-    Efecto efecto_gata = {-10, -10, 35};
-    insert_map(mapa_acciones, "Gata a domicilio", &efecto_gata);
+    Efecto *efecto_gata = malloc(sizeof(Efecto));
+    efecto_gata->alteracion_comida = -10;
+    efecto_gata->alteracion_descanso = -10;
+    efecto_gata->alteracion_animo = 35;
+    insert_map(mapa_acciones, "Gata a domicilio", efecto_gata);
 
     // Retornamos mapa con sus pares acción-efecto inicializadas
     return mapa_acciones;
@@ -52,7 +84,7 @@ void inicializar_lista_objetos(Item lista_objetos[7]) {
     // Inicializar el primer objeto
     strcpy(lista_objetos[0].nombre, "Pescado");
     lista_objetos[0].restantes = 5;
-    lista_objetos[0].coste = 1;
+    lista_objetos[0].coste = 4;
 
     // Inicializar el segundo objeto
     strcpy(lista_objetos[1].nombre, "Hamburguesa");
@@ -67,22 +99,22 @@ void inicializar_lista_objetos(Item lista_objetos[7]) {
     // Inicializar el cuarto objeto
     strcpy(lista_objetos[3].nombre, "Caja de Arena");
     lista_objetos[3].restantes = 0;
-    lista_objetos[3].coste = 4;
+    lista_objetos[3].coste = 7;
 
     // Inicializar el quinto objeto
     strcpy(lista_objetos[4].nombre, "Proteina");
     lista_objetos[4].restantes = 0;
-    lista_objetos[4].coste = 5;
+    lista_objetos[4].coste = 8;
 
     // Inicializar el sexto objeto
     strcpy(lista_objetos[5].nombre, "Redbull");
     lista_objetos[5].restantes = 0;
-    lista_objetos[5].coste = 6;
+    lista_objetos[5].coste = 8;
 
     // Inicializar el séptimo objeto
     strcpy(lista_objetos[6].nombre, "Gata a domicilio");
     lista_objetos[6].restantes = 0;
-    lista_objetos[6].coste = 7;
+    lista_objetos[6].coste = 8;
 }
 
 // Definir acciones para los items
@@ -93,10 +125,15 @@ bool aplicar_efecto(char * nombre_accion, struct Tamagotchi *mascota, HashMap *m
     if (par_accion == NULL) return false; // Indicar que no se pudo aplicar
 
     // Aplicar variación de estadísticas por el efecto
-    printf("\n\n\n\n         FUNCIONO WEONNNNN\n\n\n");
-    mascota->comida     +=  par_accion->value->alteracion_comida;
-    mascota->descanso   +=  par_accion->value->alteracion_descanso;
-    mascota->animo      +=  par_accion->value->alteracion_animo;
+    Efecto *efecto = (Efecto *) par_accion->value;
+    mascota->comida     +=  efecto->alteracion_comida;
+    mascota->descanso   +=  efecto->alteracion_descanso;
+    mascota->animo      +=  efecto->alteracion_animo;
+
+    printf("\n   %d\n", efecto->alteracion_comida);
+    printf("\n   %d\n", efecto->alteracion_descanso);
+    printf("\n   %d\n", efecto->alteracion_animo);
+    sleep(3);
 
     // Nivelar si estadísticas sobrepasan los límites
     if (mascota->comida > 100) mascota->comida = 100;
@@ -107,7 +144,6 @@ bool aplicar_efecto(char * nombre_accion, struct Tamagotchi *mascota, HashMap *m
 
     if (mascota->animo > 100) mascota->animo = 100;
     if (mascota->animo < 0) mascota->animo = 0;
-
 
     // Confirmar que el efecto pudo aplicarse
     return true;
