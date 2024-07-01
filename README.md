@@ -1,14 +1,11 @@
-# Proyecto_Estructura
+# TamaGucci
 
+<br>
 ▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄
 
-Para ejecutar el codigo hay que ejecutar este comando:
-
-gcc -o TamaGucci.exe src/main.c src/functions/TDAs/hashmap.c src/functions/effect/effect.c src/functions/saves/save.c src/functions/TDAs/list.c src/functions/structs/structs.h resources/icon/icon.res src/interaction/games/games.c src/img/design.c src/interaction/shop/shop.c
-
-luego acceder a la carpeta y abrir TamaGucci.exe.
-
-▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄
+<br>
+<br>
+<br>
 
 Structs: El juego está simentado en un sistema de guardado basado principalmente en structs, donde se almacenaran todos los datos del juego:
 
