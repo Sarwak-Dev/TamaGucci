@@ -48,7 +48,7 @@ void muertePor_hambre();
 void animacion_acariciar(Juego * juego);
 
 // Animación de palmaditas
-void palmada(Juego * juego);
+void animacion_palmaditas(Juego * juego);
 
 // Animación para imprimir el cuerpo actual del gato
 void mostrar_cuerpo(Juego * juego);

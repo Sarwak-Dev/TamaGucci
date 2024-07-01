@@ -6,7 +6,7 @@
 #include "../../functions/effect/effect.h"
 #include "contact.h"
 
-// Función para efectuar caricia en el gato
+// Función para efectuar caricia en el tamagotchi
 void acariciar(Juego * juego, HashMap * mapa_accion_efecto) {
     time_t ahora = time(NULL); // Hora actual
     time_t* caricia_tiempo;
@@ -40,4 +40,21 @@ void acariciar(Juego * juego, HashMap * mapa_accion_efecto) {
         // Indicar que caricia no hizo efecto
         printf("\n\n  Has alcanzado el límite de caricias por hora. Caricia sin efecto\n\n");
     }
+}
+
+// Función para dar palmaditas al gato
+void dar_palmaditas(Juego* juego, HashMap* mapa_accion_efecto) {
+    time_t ahora = time(NULL); // Hora actual
+    double diferencia = difftime(ahora, juego->ultima_palmadita); // Diferencia de tiempo en segundos
+
+    if (diferencia > 3600) { // Si la diferencia es menor a una hora
+        aplicar_efecto("Palmaditas", &juego->mascota, mapa_accion_efecto);
+        printf("\n\n  Le has dado palmaditas a tu mascota\n\n");
+    } else {
+        aplicar_efecto("Palmaditas Innecesarias", &juego->mascota, mapa_accion_efecto);
+        printf("\n\n  Palmaditas innecesarias. Tu mascota no necesitaba más palmaditas.\n\n");
+    }
+
+    // Actualizar la hora de la última palmadita
+    juego->ultima_palmadita = ahora;
 }

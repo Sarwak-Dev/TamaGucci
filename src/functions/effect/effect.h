@@ -9,6 +9,7 @@ struct HashMap;
 // Incializa mapa de acciones y efectos en estadísticas
 HashMap * inicializar_mapa_acciones(HashMap * mapa_acciones);
 
+// Inicializa arreglo de objetos
 void inicializar_arreglo_objetos(Item arreglo_objetos[7]);
 
 // Definir acciones para los items
