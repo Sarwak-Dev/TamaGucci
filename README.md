@@ -54,13 +54,13 @@ typedef struct Efecto {
 *Estructura para almacenar variables de juego.*
 ```c
 typedef struct Juego {
-    Tamagotchi mascota;                  //Tamagotchi en juego
-    int dinero;                          //Dinero de juego
-    List mochila;                        //Mochila de Items almacenados
-    time_t ultima_actualizacion;         //Hora de última actualización
-    time_t ultima_palmadita;             //Hora de última palmadita
-    time_t ultimo_pago;                  //Hora del último pago de dinero
-    List caricias_ultima_hora;           //Lista con las horas de las últimas caricias
+    Tamagotchi mascota;                  // Tamagotchi en juego
+    int dinero;                          // Dinero de juego
+    int almacenamiento[7];               // Arreglo con la cantidad almacenada de cada objeto
+    time_t ultima_actualizacion;         // Hora de última actualización
+    time_t ultima_palmadita;             // Hora de última palmadita
+    time_t ultimo_pago;                  // Hora del último pago de dinero
+    List caricias_ultima_hora;           // Lista con las horas de las últimas caricias
 } Juego;
 ```
 <br>
@@ -69,7 +69,7 @@ typedef struct Juego {
 ▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄   
 <br>
 
-**TDA´s:** Se utilizan 2, Hashmap *(almacenado en las bibliotecas `hashmap.c` y `hashmap.h`)*, y Lista *(almacenado en `list.c` y `list.h`)*. Conservan el funcionamiento promedio de cualquier Tda de estos dos estilos:
+**TDA´s:** Se utilizan 2, Mapa *(almacenado en las bibliotecas `hashmap.c` y `hashmap.h`)*, y Lista *(almacenado en `list.c` y `list.h`)*. Conservan el funcionamiento promedio de cualquier TDA de estos dos estilos:
 
 <br>
 
@@ -183,7 +183,7 @@ El funcionamiento de este menú resulta sencillo, espera que ingreses uno de las
 
 - **Acariciar:** Se muestra la animacion predeterminada para el acariciado y se sube la estadistica de animo. Esta accion solo surte efecto un numero limitado de veces hasta pasado un tiempo.
 
-- **Palmaditas:** Se muestra la animacion predeterminada para las palmaditas y se sube la estadistica de descanso. Esta accion solo surte efecto un numero limitado de veces hasta pasado un tiempo antes de ser     contraproducente.
+- **Palmaditas:** Se muestra la animacion predeterminada para las palmaditas y se sube la estadistica de descanso. Esta accion solo surte efecto una sola vez hasta pasado un tiempo, luego de eso se vuelve contraproducente.
 
 - **Salir:** te devuelve al menu principal.
 
@@ -193,7 +193,7 @@ El funcionamiento de este menú resulta sencillo, espera que ingreses uno de las
  
 <br>
 
-El menú de inventario funciona gracias a un arreglo inicializado el cuál contiene los 7 objetos pensados para el programa, los cuales serían: `Pescado`, `Hamburguesa`, `Sushi`, `Caja de arena`, `Proteína`, `Redbull`, `gata a domicilio`, de los cuales cada ítem tiene sus pros y contras respecto a las estadísticas que otorga a la mascota. El arreglo contiene tres variables, el nombre ***{string}***, la cantidad restante ***{int}*** y el coste ***{int}***.
+El menú de inventario funciona gracias a un arreglo inicializado el cuál contiene los 7 objetos pensados para el programa, los cuales serían: `Pescado`, `Hamburguesa`, `Sushi`, `Caja de arena`, `Proteína`, `Redbull`, `gata a domicilio`, de los cuales cada ítem tiene sus pros y contras respecto a las estadísticas que otorga a la mascota. El arreglo contiene el struct Item con sus tres variables, el nombre ***{string}***, la cantidad restante ***{int}*** y el coste ***{int}***.
 
 <br>
 
@@ -201,21 +201,23 @@ El menú de inventario funciona gracias a un arreglo inicializado el cuál conti
 #define ARR_SIZE 7
 //Cantidad de objetos creados
 
-void menuInventario(Item lista[ARR_SIZE], Juego * juego, HashMap * mapa_acciones, Tamagotchi * mascota) {
+void menuInventario(Item arreglo[ARR_SIZE], Juego * juego, HashMap * mapa_acciones, Tamagotchi * mascota) {
   
-    // Crear una lista temporal de objetos con restantes > 0
-    Item listaTemp[ARR_SIZE];
+    // Crear un arreglo temporal de objetos con restantes > 0
+    Item arregloTemp[ARR_SIZE];
     int numObjetos = 0;
 
+    // Recorre arreglo de objetos para corroborar cuáles tienen restantes
     for (int i = 0; i < ARR_SIZE; i++) {
-        if (lista[i].restantes > 0) {
-            strcpy(listaTemp[numObjetos].nombre, lista[i].nombre);
-            listaTemp[numObjetos].coste = lista[i].coste;
-            listaTemp[numObjetos].restantes = lista[i].restantes;
+        if (arreglo[i].restantes > 0) {
+
+            // Le damos al objeto de el arreglo temporal los valores correspondientes
+            strcpy(arregloTemp[numObjetos].nombre, arreglo[i].nombre); // Copiamos nombre
+            arregloTemp[numObjetos].coste = arreglo[i].coste; // Asignamos coste
+            arregloTemp[numObjetos].restantes = arreglo[i].restantes; // Asignamos cantidad restante
             numObjetos++;
         }
     }
-}
 
 ```
 
@@ -241,15 +243,16 @@ El menú de la tienda posee un funcionamiento muy parecido al del inventario, pe
 
 void menuTienda(Item lista[ARR_SIZE], Juego * juego) {
     for (int i = 0; i < ARR_SIZE; i++) {
-        printf("   ║ %2d) %-30s $%d  ║\n", i + 1, lista[i].nombre, lista[i].coste);
+        printf("   ║ %2d) %-30s $%d  ║\n", i + 1, arreglo[i].nombre, arreglo[i].coste);
     }
     printf("   ║ %2d) %-30s     ║\n", ARR_SIZE + 1, "Salir");
     printf("   ╚════════════════════════════════════════╝\n");
 
-    // Leer la opción del usuario
-    int opcion;
+    int opcion; // Variable para almacenar opción del usuario
+
     printf("\n   Selecciona una opción: ");
 
+    // De entregar una opción no válida, se sale de la tienda
     if (scanf("%d", &opcion) != 1) {
         printf("\n   Error: entrada no válida. Saliendo de la tienda.\n");
         esperarInput2();
