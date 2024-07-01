@@ -297,9 +297,8 @@ void menuAcciones(HashMap * mapa_accion_efecto, Juego * juego, Tamagotchi * masc
         case 3:
             // Palmaditas
             limpiarPantalla(); // Limpiar pantalla
-            palmada(juego); // Muestra animación de palmadita
-            aplicar_efecto("Palmaditas", &juego->mascota, mapa_accion_efecto); // Aplica efecto palmaditas
-            printf("\n\n  Le has dado palmaditas a tu mascota\n\n");
+            animacion_palmaditas(juego); // Muestra animación de palmadita
+            dar_palmaditas(juego, mapa_accion_efecto); // Aplica efecto de palmaditas
             esperarInput();
             break;
         case 4:

@@ -126,9 +126,9 @@ void cargar_estado(Juego* juego, const char* filename) {
         juego->mascota.animo = 100.0f;
         juego->mascota.dormido = false;
         juego->mascota.vivo = true;
-        juego->dinero = 500;
+        juego->dinero = 100;
         juego->ultima_actualizacion = time(NULL);
-        juego->ultima_palmadita = time(NULL);
+        juego->ultima_palmadita = time(NULL) - 3600;
         juego->ultimo_pago = time(NULL);
 
         // Inicializamos el almacenamiento y las listas vacías

@@ -1490,7 +1490,7 @@ void animacion_acariciar(Juego * juego){
   return;
 }
 
-void palmada(Juego * juego){
+void animacion_palmaditas(Juego * juego){
   limpiarPantalla3();
   for(int i=0; i<7; i++){
 
