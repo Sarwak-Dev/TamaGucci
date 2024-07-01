@@ -22,9 +22,9 @@ void dejarDormir();
 void esperarInput();
 void limpiarPantalla();
 
-
 bool ilum = true;
 
+// Agregar colores a la consola
 void setConsoleColor(const char* color) {
     char command[10];
     snprintf(command, sizeof(command), "color %s", color);
@@ -72,25 +72,18 @@ int main() {
     printf("Mascota inicializada\n"); // Debug print
 
     // Carga, actualización y guardado del juego
-    /* */cargar_estado(juego, filename);
+    cargar_estado(juego, filename);
     printf("Carga finalizada\n"); // Debug print
-
-    /*printf("%f %f %f\n", juego->mascota.comida, juego->mascota.descanso, juego->mascota.animo);
-    if (juego->mochila->head == NULL) printf("Lista mochila vacía");*/
 
     actualizar_estado(juego);
     printf("Actualización realizada\n"); // Debug print
 
     actualizar_arreglo_objetos(arreglo_objetos, juego->almacenamiento);
 
-    /*printf("%f %f %f\n", juego->mascota.comida, juego->mascota.descanso, juego->mascota.animo);
-    if (juego->mochila->head == NULL) printf("Lista mochila vacía");*/
-
     guardar_estado(juego, filename);
     printf("Guardado realizado\n"); // Debug print
 
     // Se declara colores de pantalla y texto predeterminados
-    //printf("\033[0;97;107m");
     setConsoleColor("F0");
     printf("\033[H\033[J");
 
