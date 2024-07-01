@@ -1389,9 +1389,7 @@ void muertePor_hambre(){
 return;
 }
 
-
-
-void acaricia(Juego * juego){
+void animacion_acariciar(Juego * juego){
 
   limpiarPantalla3();
   for(int i=0; i<3; i++){

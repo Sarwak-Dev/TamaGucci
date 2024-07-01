@@ -11,6 +11,7 @@
 #include "img/design.h"
 #include "interaction/games/games.h"
 #include "interaction/shop/shop.h"
+#include "interaction/contact/contact.h"
 
 void menuPrincipal(HashMap * mapa_accion_efecto, Juego * juego);
 void imprimir_barra(float valor);
@@ -289,9 +290,8 @@ void menuAcciones(HashMap * mapa_accion_efecto, Juego * juego, Tamagotchi * masc
         case 2:
             // Acariciar
             limpiarPantalla(); // Limpiar pantalla
-            acaricia(juego);
-            aplicar_efecto("Acariciar", &juego->mascota, mapa_accion_efecto);
-            printf("\n\n  Has acariciado a tu mascota\n\n");
+            animacion_acariciar(juego);
+            acariciar(juego, mapa_accion_efecto);
             esperarInput();
             break;
         case 3:

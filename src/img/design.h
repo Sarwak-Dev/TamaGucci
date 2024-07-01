@@ -45,7 +45,7 @@ void muertePor_agotamiento();
 void muertePor_hambre();
 
 // Animación de caricia
-void acaricia(Juego * juego);
+void animacion_acariciar(Juego * juego);
 
 // Animación de palmaditas
 void palmada(Juego * juego);
