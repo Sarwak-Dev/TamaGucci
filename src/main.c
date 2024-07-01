@@ -152,15 +152,12 @@ void menuPrincipal(HashMap * mapa_accion_efecto, Juego * juego) {
 
     printf("    Comida:");
     imprimir_barra(juego->mascota.comida);
-    //printf(" %.0f%%    ", juego->mascota.comida);
     
     printf("    Descanso: ");
     imprimir_barra(juego->mascota.descanso);
-    //printf(" %.0f%%    ", juego->mascota.descanso);
 
     printf("    Animo:");
     imprimir_barra(juego->mascota.animo);
-    //printf(" %.0f%%    \n \n \n", juego->mascota.animo);
 
     printf("    Dinero: ");
     printf("%d$\n\n\n", juego->dinero);
