@@ -47,30 +47,21 @@ void list_pushFront(List *L, void *data) {
 
 void list_pushBack(List *L, void *data) {
   if (L == NULL) {
-    printf("L0\n");
     return; // Lista no inicializada
   }
-  printf("L1\n");
   Node *newNode = (Node *)malloc(sizeof(Node));
-  printf("L2\n");
   if (newNode == NULL) {
-    printf("L3\n");
     return; // Fallo en la asignación de memoria
   }
   newNode->data = data;
-  printf("L4\n");
   newNode->next = NULL;
-  printf("L5\n");
   if (L->tail == NULL) { // Si la lista está vacía
-    printf("L6\n");
     L->head = newNode;
     L->tail = newNode;
   } else {
-    printf("L7\n");
     L->tail->next = newNode;
     L->tail = newNode;
   }
-  printf("L8\n");
   L->size++;
 }
 

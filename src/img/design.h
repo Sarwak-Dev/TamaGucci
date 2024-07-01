@@ -35,21 +35,28 @@ void cuerpo_hambre();
 // Muestra el cuerpo normal
 void cuerpo_normal();
 
+// Animación de la muerte por depresión
 void muertePor_tristeza();
 
+// Animación de la muerte por burnout
 void muertePor_agotamiento();
 
+// Animación de la muerte por inanición
 void muertePor_hambre();
 
+// Animación de caricia
+void acaricia(Juego * juego);
 
-void acaricia(Tamagotchi * mascota, Juego * juego);
+// Animación de palmaditas
+void palmada(Juego * juego);
 
-void palmada(Tamagotchi * mascota, Juego * juego);
-
-
-void mostrar_cuerpo(Tamagotchi * mascota, Juego * juego);
+// Animación para imprimir el cuerpo actual del gato
+void mostrar_cuerpo(Juego * juego);
 
 // Función para mostrar el gato en función del estado de sus estadísticas
-void mostrar_mascota(Tamagotchi * mascota, Juego * juego);
+void mostrar_mascota(Juego * juego);
+
+// Función para eliminar archivo de guardado
+void eliminar_archivo_guardado(const char *nombreArchivo, const char *rutaDirectorio);
 
 #endif

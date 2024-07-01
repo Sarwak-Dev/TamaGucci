@@ -49,8 +49,11 @@ void guardar_estado(Juego* juego, const char* filename) {
     // Guardar el dinero del juego
     fprintf(file, "%d\n", juego->dinero);
 
-    // Guardar los ítems en la mochila
-    guardar_lista_en_archivo(file, juego->mochila, "string");
+    // Guardar los ítems en el almacenamiento
+    for (int i = 0; i < 7; i++) {
+        fprintf(file, "%d ", juego->almacenamiento[i]);
+    }
+    fprintf(file, "\n");
 
     // Guardar la hora de la última actualización
     fprintf(file, "%ld\n", juego->ultima_actualizacion);
@@ -66,6 +69,7 @@ void guardar_estado(Juego* juego, const char* filename) {
 
     fclose(file); // Cerramos el archivo
 }
+
 
 // Función para leer la lista de archivos
 void leer_lista_de_archivo(FILE* file, List* lista, const char* tipo) {
@@ -126,8 +130,11 @@ void cargar_estado(Juego* juego, const char* filename) {
         juego->ultima_actualizacion = time(NULL);
         juego->ultima_palmadita = time(NULL);
         juego->ultimo_pago = time(NULL);
-        // Inicializamos las listas vacías
-        juego->mochila = list_create();
+
+        // Inicializamos el almacenamiento y las listas vacías
+        for (int i = 0; i < 7; i++) {
+            juego->almacenamiento[i] = 0;
+        }
         juego->caricias_ultima_hora = list_create();
         return;
     }
@@ -135,24 +142,14 @@ void cargar_estado(Juego* juego, const char* filename) {
     // Leer las estadísticas del Tamagotchi y sus estados
     printf("Leyendo datos del save.txt\n"); // Debug print
 
-    /*fscanf(file, "%f %f %f %d %d\n",
+    fscanf(file, "%f %f %f %d %d\n",
            &juego->mascota.comida,
            &juego->mascota.descanso,
            &juego->mascota.animo,
            (int*)&juego->mascota.dormido,
-           (int*)&juego->mascota.vivo);*/
+           (int*)&juego->mascota.vivo);
 
-    fscanf(file, "%f ", &juego->mascota.comida);
-    printf("Se ha leído comida con éxito\n");
-    fscanf(file, "%f ", &juego->mascota.descanso);
-    printf("Se ha leído descanso con éxito\n");
-    fscanf(file, "%f", &juego->mascota.animo);
-    printf("Se ha leído animo con éxito\n");
-    fscanf(file, "%d " ,(int*)&juego->mascota.dormido);
-    printf("Se ha leído dormido con éxito\n");
-    fscanf(file, "%d\n" ,(int*)&juego->mascota.vivo);
-    printf("Se ha leído vivo con éxito\n");
-
+    printf("Se han leído las estadísticas del Tamagotchi con éxito\n");
 
     // Leer el dinero del juego
     if (fscanf(file, "%d\n", &juego->dinero) != 1) {
@@ -162,8 +159,15 @@ void cargar_estado(Juego* juego, const char* filename) {
     }
     printf("Se ha leído dinero con éxito\n");
 
-    // Leer los ítems de la mochila
-    leer_lista_de_archivo(file, juego->mochila, "string");
+    // Leer los ítems en el almacenamiento
+    for (int i = 0; i < 7; i++) {
+        if (fscanf(file, "%d", &juego->almacenamiento[i]) != 1) {
+            perror("Error al leer los ítems del almacenamiento");
+            fclose(file);
+            return;
+        }
+    }
+    printf("Se han leído los ítems del almacenamiento con éxito\n");
 
     // Leer la última actualización
     if (fscanf(file, "%ld\n", &juego->ultima_actualizacion) != 1) {
@@ -171,7 +175,7 @@ void cargar_estado(Juego* juego, const char* filename) {
         fclose(file);
         return;
     }
-    printf("Se ha leído ultima actualizacion con éxito\n");
+    printf("Se ha leído última actualización con éxito\n");
 
     // Leer la última palmadita
     if (fscanf(file, "%ld\n", &juego->ultima_palmadita) != 1) {
@@ -179,7 +183,7 @@ void cargar_estado(Juego* juego, const char* filename) {
         fclose(file);
         return;
     }
-    printf("Se ha leído ultima palmadita con éxito\n");
+    printf("Se ha leído última palmadita con éxito\n");
 
     // Leer el último pago
     if (fscanf(file, "%ld\n", &juego->ultimo_pago) != 1) {
@@ -187,7 +191,7 @@ void cargar_estado(Juego* juego, const char* filename) {
         fclose(file);
         return;
     }
-    printf("Se ha leído ultimo pago con éxito\n");
+    printf("Se ha leído último pago con éxito\n");
 
     // Leer las horas de las últimas caricias
     leer_lista_de_archivo(file, juego->caricias_ultima_hora, "time_t");

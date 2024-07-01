@@ -20,12 +20,19 @@ HashMap * inicializar_mapa_acciones(HashMap * mapa_acciones) {
     efecto_acariciar->alteracion_animo = 10;
     insert_map(mapa_acciones, "Acariciar", efecto_acariciar);
 
-    // Inicializar acción palmaditas y añadirla al mapa
+    // Inicializar acción palmaditas efectivas y añadirla al mapa
     Efecto *efecto_palmaditas = malloc(sizeof(Efecto));
     efecto_palmaditas->alteracion_comida = 0;
     efecto_palmaditas->alteracion_descanso = 10;
     efecto_palmaditas->alteracion_animo = -5;
-    insert_map(mapa_acciones, "Palmadita", efecto_palmaditas);
+    insert_map(mapa_acciones, "Palmaditas", efecto_palmaditas);
+
+    // Inicializar acción palmaditas innecesarias y añadirla al mapa
+    Efecto *efecto_palmaditas_innecesarias = malloc(sizeof(Efecto));
+    efecto_palmaditas_innecesarias->alteracion_comida = 0;
+    efecto_palmaditas_innecesarias->alteracion_descanso = 0;
+    efecto_palmaditas_innecesarias->alteracion_animo = -8;
+    insert_map(mapa_acciones, "Palmaditas Innecesarias", efecto_palmaditas_innecesarias);
 
     // Inicializar acción comer pescado y añadirla al mapa
     Efecto *efecto_pescado = malloc(sizeof(Efecto));
@@ -80,41 +87,42 @@ HashMap * inicializar_mapa_acciones(HashMap * mapa_acciones) {
     return mapa_acciones;
 }
 
-void inicializar_lista_objetos(Item lista_objetos[7]) {
+// Función que se encarga de inicializar 
+void inicializar_arreglo_objetos(Item arreglo_objetos[7]) {
     // Inicializar el primer objeto
-    strcpy(lista_objetos[0].nombre, "Pescado");
-    lista_objetos[0].restantes = 5;
-    lista_objetos[0].coste = 4;
+    strcpy(arreglo_objetos[0].nombre, "Pescado");
+    arreglo_objetos[0].restantes = 5;
+    arreglo_objetos[0].coste = 4;
 
     // Inicializar el segundo objeto
-    strcpy(lista_objetos[1].nombre, "Hamburguesa");
-    lista_objetos[1].restantes = 1;
-    lista_objetos[1].coste = 2;
+    strcpy(arreglo_objetos[1].nombre, "Hamburguesa");
+    arreglo_objetos[1].restantes = 1;
+    arreglo_objetos[1].coste = 2;
 
     // Inicializar el tercer objeto
-    strcpy(lista_objetos[2].nombre, "Sushi");
-    lista_objetos[2].restantes = 1;
-    lista_objetos[2].coste = 3;
+    strcpy(arreglo_objetos[2].nombre, "Sushi");
+    arreglo_objetos[2].restantes = 1;
+    arreglo_objetos[2].coste = 3;
 
     // Inicializar el cuarto objeto
-    strcpy(lista_objetos[3].nombre, "Caja de Arena");
-    lista_objetos[3].restantes = 0;
-    lista_objetos[3].coste = 7;
+    strcpy(arreglo_objetos[3].nombre, "Caja de Arena");
+    arreglo_objetos[3].restantes = 0;
+    arreglo_objetos[3].coste = 7;
 
     // Inicializar el quinto objeto
-    strcpy(lista_objetos[4].nombre, "Proteina");
-    lista_objetos[4].restantes = 0;
-    lista_objetos[4].coste = 8;
+    strcpy(arreglo_objetos[4].nombre, "Proteina");
+    arreglo_objetos[4].restantes = 0;
+    arreglo_objetos[4].coste = 8;
 
     // Inicializar el sexto objeto
-    strcpy(lista_objetos[5].nombre, "Redbull");
-    lista_objetos[5].restantes = 0;
-    lista_objetos[5].coste = 8;
+    strcpy(arreglo_objetos[5].nombre, "Redbull");
+    arreglo_objetos[5].restantes = 0;
+    arreglo_objetos[5].coste = 8;
 
     // Inicializar el séptimo objeto
-    strcpy(lista_objetos[6].nombre, "Gata a domicilio");
-    lista_objetos[6].restantes = 0;
-    lista_objetos[6].coste = 8;
+    strcpy(arreglo_objetos[6].nombre, "Gata a domicilio");
+    arreglo_objetos[6].restantes = 0;
+    arreglo_objetos[6].coste = 8;
 }
 
 // Definir acciones para los items

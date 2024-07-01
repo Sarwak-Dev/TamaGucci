@@ -13,7 +13,7 @@
 #include "../functions/structs/structs.h"
 
 
-void eliminarArchivo(const char *nombreArchivo, const char *rutaDirectorio);
+void eliminar_archivo_guardado(const char *nombreArchivo, const char *rutaDirectorio);
 
 
 
@@ -1391,7 +1391,7 @@ return;
 
 
 
-void acaricia(Tamagotchi * mascota, Juego * juego){
+void acaricia(Juego * juego){
 
   limpiarPantalla3();
   for(int i=0; i<3; i++){
@@ -1408,7 +1408,7 @@ void acaricia(Tamagotchi * mascota, Juego * juego){
     printf("  █   ▄  ▄   █\n");
     printf("   █   ▀▀   █\n");
     printf("    ████████\n");
-  mostrar_cuerpo(mascota, juego);
+   mostrar_cuerpo(juego);
 
 
     sleep(1);
@@ -1428,7 +1428,7 @@ void acaricia(Tamagotchi * mascota, Juego * juego){
     printf("  █   ▄  ▄   █\n");
     printf("   █   ▀▀   █\n");
     printf("    ████████\n");
-    mostrar_cuerpo(mascota, juego);
+    mostrar_cuerpo(juego);
 
     sleep(1);
     limpiarPantalla3();
@@ -1447,7 +1447,7 @@ void acaricia(Tamagotchi * mascota, Juego * juego){
   printf("  █   ▄  ▄   █\n");
   printf("   █   ▀▀   █\n");
   printf("    ████████\n");
-  mostrar_cuerpo(mascota, juego);
+  mostrar_cuerpo(juego);
   Sleep(300);
   //sleep(1);
   limpiarPantalla3();
@@ -1465,7 +1465,7 @@ void acaricia(Tamagotchi * mascota, Juego * juego){
   printf("  █   ▄  ▄   █\n");
   printf("   █   ▀▀   █\n");
   printf("    ████████\n");
-  mostrar_cuerpo(mascota, juego);
+  mostrar_cuerpo(juego);
   Sleep(300);
   //sleep(1);
 
@@ -1484,7 +1484,7 @@ void acaricia(Tamagotchi * mascota, Juego * juego){
   printf("  █   ▄  ▄   █\n");
   printf("   █   ▀▀   █\n");
   printf("    ████████\n");
-  mostrar_cuerpo(mascota, juego);
+  mostrar_cuerpo(juego);
 
   sleep(1);
   limpiarPantalla3();
@@ -1492,7 +1492,7 @@ void acaricia(Tamagotchi * mascota, Juego * juego){
   return;
 }
 
-void palmada(Tamagotchi * mascota, Juego * juego){
+void palmada(Juego * juego){
   limpiarPantalla3();
   for(int i=0; i<7; i++){
 
@@ -1512,7 +1512,7 @@ void palmada(Tamagotchi * mascota, Juego * juego){
     printf("  █   ▄▄▄▄   █\n");
     printf("   █        █\n");
     printf("    ████████\n");
-    mostrar_cuerpo(mascota, juego);
+    mostrar_cuerpo(juego);
 
     Sleep(200);
     //sleep(1);
@@ -1534,7 +1534,7 @@ void palmada(Tamagotchi * mascota, Juego * juego){
     printf("  █   ▄▄▄▄   █\n");
     printf("   █        █\n");
     printf("    ████████\n");
-    mostrar_cuerpo(mascota, juego);
+    mostrar_cuerpo(juego);
     Sleep(200);
     //sleep(1);
     limpiarPantalla3();
@@ -1556,7 +1556,7 @@ void palmada(Tamagotchi * mascota, Juego * juego){
   printf("  █   ▄▄▄▄   █\n");
   printf("   █        █\n");
   printf("    ████████\n");
-  mostrar_cuerpo(mascota, juego);
+  mostrar_cuerpo(juego);
   Sleep(700);
   //sleep(1);
   limpiarPantalla3();
@@ -1577,7 +1577,7 @@ void palmada(Tamagotchi * mascota, Juego * juego){
   printf("  █   ▄▄▄▄   █\n");
   printf("   █        █\n");
   printf("    ████████\n");
-  mostrar_cuerpo(mascota, juego);
+  mostrar_cuerpo(juego);
 
   //Sleep(1000000);
   sleep(1);
@@ -1599,7 +1599,7 @@ void palmada(Tamagotchi * mascota, Juego * juego){
   printf("  █   ▄▄▄▄   █\n");
   printf("   █        █\n");
   printf("    ████████\n");
-  mostrar_cuerpo(mascota, juego);
+  mostrar_cuerpo(juego);
 
   //usleep(1000000);
   sleep(1);
@@ -1621,21 +1621,21 @@ void palmada(Tamagotchi * mascota, Juego * juego){
   printf("  █   ▄▄▄▄   █\n");
   printf("   █        █\n");
   printf("    ████████\n");
-  mostrar_cuerpo(mascota, juego);
+  mostrar_cuerpo(juego);
   sleep(1);
   limpiarPantalla3();
 }
 
 // Mostrar cuerpo
 
-void mostrar_cuerpo(Tamagotchi * mascota, Juego * juego){  
+void mostrar_cuerpo(Juego * juego){  
   if (juego->mascota.comida < LIMIT_LVL3 && juego->mascota.comida > 0) cuerpo_desnutrido();
   else if (juego->mascota.comida < LIMIT_LVL2) cuerpo_hambre();
   else cuerpo_normal();
 }
 
 // Función para mostrar el gato en función del estado de sus estadísticas
-void mostrar_mascota(Tamagotchi * mascota, Juego * juego){
+void mostrar_mascota(Juego * juego){
 
   
     // Nombre del archivo a eliminar
@@ -1646,7 +1646,7 @@ void mostrar_mascota(Tamagotchi * mascota, Juego * juego){
   //revisa si alguna estadistica esta en 0
   if(juego->mascota.comida <= 0){
     muertePor_hambre();
-    eliminarArchivo(nombreArchivo, rutaDirectorio);
+    eliminar_archivo_guardado(nombreArchivo, rutaDirectorio);
     limpiarPantalla3();
     printf("  \n HAS MATADO A TU GATO DE HAMBRE!");
     sleep(1);
@@ -1656,7 +1656,7 @@ void mostrar_mascota(Tamagotchi * mascota, Juego * juego){
 } 
   if(juego->mascota.descanso <= 0){
     muertePor_agotamiento();
-    eliminarArchivo(nombreArchivo, rutaDirectorio);
+    eliminar_archivo_guardado(nombreArchivo, rutaDirectorio);
     limpiarPantalla3();
     printf("  \n HAS MATADO A TU GATO DE AGOTAMIENTO!");
     sleep(1);
@@ -1667,7 +1667,7 @@ void mostrar_mascota(Tamagotchi * mascota, Juego * juego){
 
   if(juego->mascota.animo <= 0){
     muertePor_tristeza();
-    eliminarArchivo(nombreArchivo, rutaDirectorio);
+    eliminar_archivo_guardado(nombreArchivo, rutaDirectorio);
     limpiarPantalla3();
     printf("  \n HAS MATADO A TU GATO DE PENA!");
     sleep(1);
@@ -1685,11 +1685,12 @@ void mostrar_mascota(Tamagotchi * mascota, Juego * juego){
   else if (juego->mascota.animo < LIMIT_LVL2) cabeza_seriaInferior();
   else cabeza_normalInferior();
 
-  mostrar_cuerpo(mascota, juego);
-
+  // Mostrar cueroi del gato
+  mostrar_cuerpo(juego);
 }
 
-void eliminarArchivo(const char *nombreArchivo, const char *rutaDirectorio) {
+// Función para eliminar archivo de guardado
+void eliminar_archivo_guardado(const char *nombreArchivo, const char *rutaDirectorio) {
     char rutaCompleta[1024];
 
     // Crear la ruta completa al archivo
