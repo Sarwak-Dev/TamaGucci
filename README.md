@@ -143,7 +143,7 @@ void list_sortedInsert(List *L, void *data,
 
 FUNCIONAMIENTO DEL PROGRAMA.
 
-El programa te llevara a un menu donde podras elegir la opcion que te interesa:
+El programa te llevará a un menú donde podrás elegir la opción que te interesa:
 ==================
  1) Acciones
  2) Abrir Inventario
@@ -151,7 +151,7 @@ El programa te llevara a un menu donde podras elegir la opcion que te interesa:
  4) Dormir
 
 
-El funcionamiento de este menu resulta sencillo, espera que ingreses uno de las 4 opciones y presciones enter.
+El funcionamiento de este menú resulta sencillo, espera que ingreses uno de las 4 opciones y presiones enter.
 ```c
 while (true) {
 
@@ -181,7 +181,7 @@ while (true) {
     guardar_estado(juego, filename);
 }
 ```
-cada opcion tiene una funcion distinta auto descriptiva. Empezando por la primera(1), que nos llevara al menu de interacciones; la segunda(2), que nos dirigira al inventario; la tercera(3), que nos lleva a la tienda; y por ultimo una opcion para sali del menu de interacciones(4), que nos devuelve al menu anterior.
+cada opción tiene una función distinta auto descriptiva. Empezando por la primera(1), que nos llevara al menu de interacciones; la segunda(2), que nos dirigira al inventario; la tercera(3), que nos lleva a la tienda; y por ultimo una opcion para sali del menu de interacciones(4), que nos devuelve al menu anterior.
 
 (1) ACCIONES:
 
@@ -226,46 +226,52 @@ este menu de interacciones tiene varias opciones a nuestra disposicion, las expl
 
 ------------------------------------------------------------------------------------------------------------------------------------
 
-(2)INVENTARIO: 
+(2)INVENTARIO  (shop.c): 
 
- 1) Manzana x6
- 2) Agua x3
- 3) Super 8 x8
- 4) Coca-Cola x8
- 5) Salir
+El menú de inventario funciona gracias a un arreglo inicializado el cuál contiene los siete objetos pensados para el programa, los cuales serían: Pescado, Hamburguesa, Sushi, Caja de arena, Proteína, Redbull y finalmente una gata a domicilio, de los cuales cada ítem tiene sus pros y contrar respecto a las estadísticas que otorga a la mascota. El arreglo contiene tres variables, el nombre (string) la cantidad restante (int) y el coste (int).
 ```c
-void menuInventario() {
+void menuInventario(Item lista[ARR_SIZE], Juego * juego, HashMap * mapa_acciones, Tamagotchi * mascota) {
   
-    ...
+    // Crear una lista temporal de objetos con restantes > 0
+    Item listaTemp[ARR_SIZE];
+    int numObjetos = 0;
 
-    switch(opcion) {
-        case 1:
-            //Manzana
-            ...
-        case 2:
-            //Agua
-            ...
-        case 3:
-            //Super8
-            ...
-                            
-        case 4:
-            //Coca-Cola
-            ...
-        case 5:
-            //Salir
-            ...
-        default:
-            // Opción no válida
-            ...
+    for (int i = 0; i < ARR_SIZE; i++) {
+        if (lista[i].restantes > 0) {
+            strcpy(listaTemp[numObjetos].nombre, lista[i].nombre);
+            listaTemp[numObjetos].coste = lista[i].coste;
+            listaTemp[numObjetos].restantes = lista[i].restantes;
+            numObjetos++;
         }
+    }
 }
 ```
-El menu de inventario tiene 4 opciones con un mismo funcionamiento y una quinta que nos devuelve al menu anterior:
-(2.1 - 2.4). Manzana/Agua/Super8/Coca-Cola: En el menu se guarda como tipo item los 4 objetos, conteniendo la cantidad de ese objeto que se tiene y su nombre. A la hora de usar uno de ellos se buscara el nombre de ese objeto como key en una tabla hash, en la cual estan contenidos los valores con los que se modificaran las estadisticas. Al elegir una de esta opcion, si es que la cantidad en posecion es mayor que 0, se aplicara su efecto y se restara uno al contador de existencias.
+El arreglo servirá tanto para el menú del inventario cómo para el menú de tienda, solo que habrán un par de condiciones para mostrar cada uno, por lo mismo, el arreglo es inicializado con todos los siete items existentes, y aquellos que no posea el usuario, quedarían con cantidad = 0.
 
-(2.5). Salir:te devuelve al menu principal.
+En este caso, para el menú del inventario solo se imprimirán los objetos que posea el usuario, osea, todos los items cuya cantidad restante sean mayor a 0. Además, cuando selecciones uno de los objetos se consumirá, lo que es igual a aplicar el efecto del objeto y modificar las estadísticas de la mascota.
 
 ------------------------------------------------------------------------------------------------------------------------------------
 
-(3) TIENDA: 
+(3) TIENDA: El menú de la tienda posee un funcionamiento muy parecido al del inventario, pero con un par de condiciones menos, ya que en vez de imprimir solo aquellos que tienen cantidad restante mayor a 0, aquí se imprimirán todos los items del arreglo, pero se ocultará la cantidad restante, por lo que se mostrarán todos los ítems disponibles (los inicializados en el arreglo), y su nombre.
+````c
+void menuTienda(Item lista[ARR_SIZE], Juego * juego) {
+    for (int i = 0; i < ARR_SIZE; i++) {
+        printf("   ║ %2d) %-30s $%d  ║\n", i + 1, lista[i].nombre, lista[i].coste);
+    }
+    printf("   ║ %2d) %-30s     ║\n", ARR_SIZE + 1, "Salir");
+    printf("   ╚════════════════════════════════════════╝\n");
+
+    // Leer la opción del usuario
+    int opcion;
+    printf("\n   Selecciona una opción: ");
+
+    if (scanf("%d", &opcion) != 1) {
+        printf("\n   Error: entrada no válida. Saliendo de la tienda.\n");
+        esperarInput2();
+        return;
+    }
+}
+````
+Ahora, a diferencia del menú inventario, que consume un objeto cada vez que se selecciona, aquí se compraría un objeto, lo que es igual a incrementar por uno la cantidad restante del objeto en el arreglo.
+
+------------------------------------------------------------------------------------------------------------------------------------
