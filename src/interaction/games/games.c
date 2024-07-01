@@ -15,7 +15,7 @@ void mostrarResultado(int jugador, int computadora) {
     const char *opciones[] = {"Tijeras", "Piedra", "Papel"};
 
     printf("\n   Tú elegiste: %s\n", opciones[jugador - 1]);
-    printf("   La computadora eligió: %s\n\n", opciones[computadora - 1]);
+    printf("   El gato eligió: %s\n\n", opciones[computadora - 1]);
 
     if (jugador == computadora) {
         printf("   Es un empate!\n");
@@ -80,14 +80,14 @@ void jugarRonda() {
             puntosComputadora++;
         }
 
-        printf("   Puntuación: Jugador %d - %d Computadora\n\n", puntosJugador, puntosComputadora);
+        printf("   Puntuación: Jugador %d - %d Gato\n\n", puntosJugador, puntosComputadora);
     }
 
     if (puntosJugador == 2) {
         printf("   ¡Felicidades! Ganaste el juego.\n");
         scanf(" ");
     } else {
-        printf("   ¡Lo siento! La mascota ganó el juego.\n");
+        printf("   ¡Lo siento! El Gato ganó el juego.\n");
         scanf(" ");
     }
 }
